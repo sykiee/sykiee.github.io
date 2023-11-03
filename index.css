@@ -1,0 +1,171 @@
+html, body {
+    background: #000;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    scroll-behavior: smooth;
+    font-family: "Roboto", monospace;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    display: block;
+}
+  
+img {
+    filter: drop-shadow(5px 5px 5px #666666);
+    border-radius: 10px;
+}
+  
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+  
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+  
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+  
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+  
+h1 {
+    color: #000;
+    margin-bottom: 16px;
+    font-size: 32px;
+    font-weight: 400;
+}
+  
+h2 {
+    margin-bottom: 13px;
+    color: #000;
+    font-size: 24px;
+    font-weight: 400;
+}
+  
+p {
+    margin-bottom: 16px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+}
+  
+a {
+    font-size: 1em;
+    text-decoration: none;
+    color: #fff;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-shadow: 1px 0px 10px (5px 5px 5px #666666);
+    transition: 0.3s;
+}
+  
+section {
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#background {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    opacity: 0.7;
+}
+  
+#cover {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    position: absolute;
+}
+  
+#logocover {
+    transition: 0.3s;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+  
+#logo {
+    transition: 0.3s;
+    width: 15em;
+    height: auto;
+}
+  
+#links {
+  text-decoration: none;
+  margin-top: 40px;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 3rem;
+  transition: 0.3s;
+}
+  
+#info {
+    position: absolute;
+    margin: auto;
+    top: 100vh;
+    width: 475px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 40px;
+    box-shadow: 20px (5px 5px 5px #666666);
+    text-align: center;
+}
+
+.fab, .fas {
+    font-size: 1.8em;
+    text-decoration: none;
+    color: white;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-shadow: (5px 5px 5px #666666);
+    transition: 0.3s;
+}
+
+.space {
+    margin-top: 100px;
+}
+
+a:hover {
+    font-size: 1.1rem;
+}
+  
+#logo:hover {
+    width: 16em;
+    height: auto;
+}
+  
+.fab:hover, .fas:hover {
+    font-size: 2.1rem;
+}
+  
+a:hover {
+    font-size: 1.1rem;
+}
