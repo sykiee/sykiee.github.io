@@ -40,7 +40,7 @@ iframe {
 
 #background {
     height: 100vh;
-    background: url("background.jpg") center/cover no-repeat;
+    background: url("images/cartographer2.png") center/cover no-repeat;
 }
 
 #main {
