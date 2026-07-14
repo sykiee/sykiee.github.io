@@ -1,3 +1,3 @@
-personal webpage
+<h>🌍</h1>
 
-mostly for social links and other misc
+⤿ mostly for social links and other misc
