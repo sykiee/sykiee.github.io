@@ -1,4 +1,2 @@
 <h1>🌍</h1>
-⤿ <b>mostly for social links and other misc</b>
-<br>
-     will add to and update whenever :p
+⤿ <b>mostly for social links and other misc ; updates whenever</b>
