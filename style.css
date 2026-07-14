@@ -1,7 +1,8 @@
 /* elements */
 body {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
     font-family: "Arial", monospace;
     font-size: 15px;
     background-color: #EBEBEB;
@@ -22,10 +23,12 @@ iframe {
 
 /* main containers */
 .page {
-    margin: 0 auto;
-    display: flex;
+    margin: 0;
     height: 100vh;
-    width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .content {
@@ -36,6 +39,7 @@ iframe {
     justify-content: center;
     align-items: center;
     height: 80vh;
+    width: 30vw;
 }
 
 #background {
@@ -51,8 +55,8 @@ iframe {
     box-sizing: border-box;
     border: 1px solid #000000;
     display: grid;
-    grid-template-columns: 0.2fr 1fr;
-    grid-template-rows: 0.3fr 0.1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 0.1fr 1fr;
     grid-template-areas:
     "header header"
     "nav nav"
@@ -167,6 +171,12 @@ iframe {
     overflow: auto;
     padding: 5px;
     box-sizing: border-box;
+}
+
+.navbar {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .fab,
