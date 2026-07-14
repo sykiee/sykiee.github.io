@@ -22,6 +22,7 @@ iframe {
 
 /* main containers */
 .page {
+    margin: 0 auto;
     display: flex;
     height: 100vh;
     width: 450px;
