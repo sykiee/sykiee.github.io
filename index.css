@@ -1,0 +1,190 @@
+/* elements */
+body {
+    height: 100vh;
+    width: 100vw;
+    font-family: "Arial", monospace;
+    font-size: 15px;
+    background-color: #EBEBEB;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+h1 {
+    padding: 0;
+}
+
+iframe {
+    border: none;
+}
+
+/* main containers */
+.page {
+    margin: 0 auto;
+    display: flex;
+    height: 100vh;
+    width: 450px;
+}
+
+.content {
+    border-radius: 5px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+#background {
+    height: 100vh;
+    background: url("background.jpg") center/cover no-repeat;
+}
+
+#main {
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #000000;
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+    grid-template-rows: 0.3fr 0.1fr 1fr;
+    grid-template-areas:
+    "header header"
+    "nav nav"
+    "main main";
+    gap: 5px;
+}
+
+#header {
+    background-color: #EBEBEB;
+    border-radius: 3px;
+    padding: 5px;
+    box-sizing: border-box;
+    grid-area: header;
+}
+
+#nav {
+    background-color: #EBEBEB;
+    border-radius: 3px;
+    padding: 5px;
+    box-sizing: border-box;
+    grid-area: nav;
+}
+
+#content-container {
+    border-radius: 3px;
+    background-color: #EBEBEB;
+    grid-area: main;
+}
+
+/* sub containers */
+#content {
+    width: 100%;
+    height: 100%;
+}
+
+#socialbar {
+    display: flex;
+    gap: 5px;
+}
+
+/* status.cafe */
+#status-container {
+    display: flex;
+    height: 90px;
+    gap: 10px;
+}
+
+#status-container img {
+    width: 90px;
+    transition: transform 0.3s ease;
+}
+
+#statuscafe {
+    background-color: #FFFFFF;
+    top: 38%;
+    height: 45px;
+    border-radius: 3px;
+    position: relative;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+#statuscafe-username a {
+    display: none;
+}
+
+#statuscafe::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #FFFFFF;
+    transform: translateY(-50%);
+}
+
+#statuscafe-username {
+    font-weight: bold;
+    font-family: "Arial", monospace;
+}
+
+#statuscafe-content {
+    font-family: "Arial", monospace;
+}
+
+/* content */
+.container {
+    border-radius: 3px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.container-bg {
+    border-radius: 3px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.container-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.container-scroll {
+    height: 60px;
+    border-radius: 3px;
+    overflow: auto;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.fab,
+.fas {
+    font-size: 22px;
+    text-decoration: none;
+    color: #000000;
+    transition: 0.2s ease;
+    display: inline-block;
+}
+
+/* element transitions */
+a:hover {
+    color: #474747;
+}
+
+/* scrollbar */
+html::-webkit-scrollbar,
+#content::-webkit-scrollbar {
+    display: none;
+}
