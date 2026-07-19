@@ -133,6 +133,54 @@ h1 {
     display: inline-block;
 }
 
+/* status.cafe */
+#status-container {
+    display: flex;
+    height: 90px;
+    gap: 10px;
+}
+
+#status-container img {
+    width: 90px;
+    transition: transform 0.3s ease;
+}
+
+#statuscafe {
+    background-color: #FFFFFF;
+    top: 38%;
+    height: 45px;
+    border-radius: 6px;
+    position: relative;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+#statuscafe-username a {
+    display: none;
+}
+
+#statuscafe::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #FFFFFF;
+    transform: translateY(-50%);
+}
+
+#statuscafe-username {
+    font-weight: bold;
+    font-family: "Arial", monospace;
+}
+
+#statuscafe-content {
+    font-family: "Arial", monospace;
+}
+
 /* element transitions */
 a:hover {
     color: #474747;
