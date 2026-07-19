@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: "Arial", monospace;
     font-size: 15px;
-    background-color: #EBEBEB;
+    background-image: url(images/cartographer2.png);
     height: 100vh;
     width: 100vw;
     display: flex;
