@@ -136,6 +136,8 @@ h1 {
 /* status.cafe */
 #status-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     height: 90px;
     gap: 10px;
 }
@@ -147,7 +149,6 @@ h1 {
 
 #statuscafe {
     background-color: #FFFFFF;
-    top: 38%;
     height: 45px;
     border-radius: 6px;
     position: relative;
