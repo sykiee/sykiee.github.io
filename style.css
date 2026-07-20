@@ -35,9 +35,9 @@ h1 {
     grid-template-rows: 0.4fr 0.4fr 0.4fr 0.4fr;
     grid-template-areas:
         "header header"
-        "socials lastfm"
+        "socials ."
         "info ."
-        "info ."
+        "updates ."
         "filler filler";
 }
 
