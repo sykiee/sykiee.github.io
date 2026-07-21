@@ -84,12 +84,14 @@ p {
 }
 
 #stars {
+    position: relative;
     width: 30%;
     display: flex;
     grid-area: stars;
 }
 
 #stamps {
+    position: relative;
     width: 30%;
     display: flex;
     grid-area: stamps;
@@ -126,20 +128,32 @@ p {
 
 .flower1 {
     position: absolute;
+    top: -40%;
+    left: -210%;
     filter: drop-shadow(0 0 1px rgba(var(--dropShadow), 0.3));
 }
 
 .stamp1 {
     position: absolute;
+    top: 12%;
+    left: -45%;
+    rotate: -15deg;
     filter: drop-shadow(0 0 1px rgba(var(--dropShadow), 0.3));
 }
 
 .star1 {
     position: absolute;
+    top: -50%;
+    left: 140%;
+    filter: drop-shadow(0 0 1px rgba(var(--dropShadow), 0.3));
 }
 
 .star2 {
     position: absolute;
+    top: -8%;
+    left: 130%;
+    rotate: 15deg;
+    filter: drop-shadow(0 0 1px rgba(var(--dropShadow), 0.3));
 }
 
 /* element transitions */
