@@ -1,7 +1,12 @@
 /* elements */
+@font-face {
+    font-family: Mairy;
+    src: url(fonts/MairyRegular.otf);
+}
+
 body {
     margin: 0;
-    font-family: "Ariel";
+    font-family: "Mairy";
     font-size: 15px;
     background-image: url(images/cartographer2.png);
     background-repeat: true;
@@ -24,11 +29,11 @@ body {
 
 #main {
     height: 25rem;
-    width: auto;
+    width: 30rem;
     background-color: #ffffff;
     border-radius: 0px 6px 0px 6px;
     grid-template-columns: 0.7fr 0.6fr;
-    grid-template-rows: 0.4fr 0.5fr 0.5fr 0.4fr;
+    grid-template-rows: 0.6fr 0.5fr 0.5fr 0.4fr;
     padding: 10px;
     box-sizing: border-box;
     grid-row-gap: 5px;
@@ -149,30 +154,22 @@ body {
 .flower1 {
     position: absolute;
     top: -360%;
-    left: -245%;
-    filter: drop-shadow(0 0 1px rgba(var(--dropShadow), 0.3));
-}
-
-.stamp1 {
-    position: absolute;
-    top: -290%;
-    left: -160%;
-    rotate: -10deg;
+    left: -210%;
     filter: drop-shadow(0 0 1px rgba(var(--dropShadow), 0.3));
 }
 
 .star1 {
     position: absolute;
-    top: -50%;
-    left: 140%;
+    top: -120%;
+    left: 175%;
+    rotate: 15deg;
     filter: drop-shadow(0 0 1px rgba(var(--dropShadow), 0.3));
 }
 
 .star2 {
     position: absolute;
-    top: 70%;
-    left: 140%;
-    rotate: 15deg;
+    top: 110%;
+    left: 155%;
     filter: drop-shadow(0 0 1px rgba(var(--dropShadow), 0.3));
 }
 
