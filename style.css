@@ -6,7 +6,7 @@
 
 body {
     margin: 0;
-    font-family: "Mairy";
+    font-family: "Arial", Monospace;
     font-size: 15px;
     background-image: url(images/topography.png);
     background-repeat: true;
@@ -28,8 +28,8 @@ body {
 }
 
 #main {
-    height: 25rem;
-    width: 30rem;
+    height: 65vh;
+    width: 35vw;
     background-color: #ffffff;
     border-radius: 0px 6px 0px 6px;
     grid-template-columns: 0.7fr 0.6fr;
@@ -43,10 +43,13 @@ body {
         "header header"
         "info ."
         "info lastfm"
-        "updates lastfm";
+        "updates .";
 }
 
 #header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: url(images/4kGnZI9.gif);
     background-position: center;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
@@ -91,6 +94,61 @@ body {
 #lastfm img {
     border: 1px #000000 solid;
     border-radius: 6px;
+}
+
+/* status.cafe */
+#status-container {
+    display: flex;
+    height: 90px;
+    gap: 10px;
+}
+
+#statuscafe {
+    background-color: #fff;
+    top: 38%;
+    height: 45px;
+    border-radius: 3px;
+    position: relative;
+    padding: 5px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateX(-10px);
+    pointer-events: none;
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
+}
+
+#status-container:hover #statuscafe {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+#statuscafe-username a {
+    display: none;
+}
+
+#statuscafe::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #FFFFFF;
+    transform: translateY(-50%);
+}
+
+#statuscafe-username {
+    font-weight: bold;
+    font-family: "Arial", monospace;
+}
+
+#statuscafe-content {
+    font-family: "Arial", monospace;
 }
 
 #footer {
