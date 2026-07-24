@@ -58,9 +58,9 @@ p {
     grid-column-gap: 10px;
     display: grid;
     grid-template-areas:
-        "header header"
-        "info ."
-        "updates lastfm";
+        "header bio"
+        "updates bio"
+        ". lastfm";
 }
 
 #header {
@@ -77,13 +77,13 @@ p {
     grid-area: header;
 }
 
-#info {
+#bio {
     background-color: #ffffff;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
     border-radius: 6px;
     box-sizing: border-box;
     overflow: hidden;
-    grid-area: info;
+    grid-area: bio;
 }
 
 #updates {
