@@ -1,15 +1,39 @@
 /* elements */
+@font-face {
+    font-family: Mairy;
+    src: url(fonts/MairyRegular.otf);
+}
+
 body {
     margin: 0;
-    font-family: "Ariel";
+    font-family: "Arial", Monospace;
     font-size: 15px;
-    background-image: url(images/cartographer2.png);
+    background-image: url(images/topography.png);
     background-repeat: true;
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+h1 {
+    background: #ebebeb;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
+    margin: 0;
+    padding: 8px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+h2,
+h3 {
+    margin: 0;
+    font-size: 14px;
+}
+
+p {
+    font-size: 12px;
 }
 
 /* main containers */
@@ -23,22 +47,26 @@ body {
 }
 
 #main {
-    height: 25rem;
-    width: auto;
     background-color: #ffffff;
     border-radius: 0px 6px 0px 6px;
-    grid-template-columns: 0.7fr 0.6fr;
-    grid-template-rows: 0.4fr 0.5fr 0.5fr 0.4fr;
-    padding: 10px;
+    grid-template-columns: 1.2fr 1.8fr;
+    grid-template-rows: 0.2fr 0.5fr 0.5fr;
+    padding: 6px;
     box-sizing: border-box;
-    grid-row-gap: 5px;
-    grid-column-gap: 10px;
     display: grid;
     grid-template-areas:
-        "header header"
-        "info ."
-        "info lastfm"
-        "updates lastfm";
+        "status status"
+        "main info"
+        "bio info";
+    gap: 5px;
+}
+
+#status {
+    background: #ebebeb;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
+    border-radius: 6px;
+    box-sizing: border-box;
+    grid-area: status;
 }
 
 #header {
@@ -46,46 +74,73 @@ body {
     background-position: center;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
     border-radius: 6px;
-    overflow: hidden;
-    padding: 2px 6px 2px 6px;
+    overflow: show;
     box-sizing: border-box;
-    grid-area: header;
+    grid-area: main;
 }
 
-#info {
+#bio {
     background-color: #ffffff;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
     border-radius: 6px;
-    overflow: auto;
-    padding: 2px 6px 2px 6px;
     box-sizing: border-box;
+    overflow: hidden;
+    grid-area: bio;
+}
+
+#content-container {
+    background-color: #ffffff;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
+    border-radius: 6px;
+    box-sizing: border-box;
+    overflow: hidden;
     grid-area: info;
 }
 
-#updates {
-    background-color: #ffffff;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
-    border-radius: 6px;
-    overflow: auto;
-    padding: 2px 6px 2px 6px;
+/* status.cafe widget*/
+#statuscafe {
+    position: relative;
+    border-radius: 3px;
+    padding: 5px;
     box-sizing: border-box;
-    grid-area: updates;
-}
-
-#lastfm {
-    height: auto;
-    background-color: #ffffff;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
-    border-radius: 6px;
     overflow: hidden;
-    padding: 2px 6px 2px 6px;
-    box-sizing: border-box;
-    grid-area: lastfm;
 }
 
-#lastfm img {
-    border: 1px #000000 solid;
-    border-radius: 6px;
+#statuscafe-content {
+    background: #ffffff;
+    font-family: "Arial", monospace;
+    padding: 5px 10px;
+    margin: 0 60px 20px 0;
+    border-radius: 5px 5px 5px 5px;
+    position: relative;
+}
+
+#statuscafe-content::after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    top: 70%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #ffffff;
+}
+
+#statuscafe-username {
+    position: absolute;
+    bottom: 5px;
+    right: 72px;
+    font-size: 13px;
+}
+
+.statusdeer {
+    position: absolute;
+    right: -2%;
+    bottom: -14%;
+    height: 75px;
+    width: 75px;
 }
 
 #footer {
@@ -105,32 +160,20 @@ body {
     gap: 12px;
 }
 
-#stars {
-    position: relative;
-    width: 30%;
-    display: flex;
-}
-
-#stamps {
-    position: relative;
-    width: 30%;
-    display: flex;
-}
-
 /* content */
 .container {
     height: 100%;
+    padding: 6px;
     border-radius: 6px;
-    padding: 8px;
     box-sizing: border-box;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .sykiee {
     width: 30%;
     padding: 5px;
     background: #ffffff;
-    border-radius: 6px 6px 0px 0px;
+    border-radius: 0px 6px 6px 0px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -146,42 +189,12 @@ body {
     display: inline-block;
 }
 
-.flower1 {
-    position: absolute;
-    top: -360%;
-    left: -245%;
-    filter: drop-shadow(0 0 1px rgba(var(--dropShadow), 0.3));
-}
-
-.stamp1 {
-    position: absolute;
-    top: -290%;
-    left: -160%;
-    rotate: -10deg;
-    filter: drop-shadow(0 0 1px rgba(var(--dropShadow), 0.3));
-}
-
-.star1 {
-    position: absolute;
-    top: -50%;
-    left: 140%;
-    filter: drop-shadow(0 0 1px rgba(var(--dropShadow), 0.3));
-}
-
-.star2 {
-    position: absolute;
-    top: 70%;
-    left: 140%;
-    rotate: 15deg;
-    filter: drop-shadow(0 0 1px rgba(var(--dropShadow), 0.3));
-}
-
 /* element transitions */
 a:hover {
     color: #474747;
 }
 
-/* scrollbar */
-html::-webkit-scrollbar {
+#body,
+.container::-webkit-scrollbar {
     display: none;
 }
