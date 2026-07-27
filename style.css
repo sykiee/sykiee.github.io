@@ -1,15 +1,8 @@
-/* elements */
-@font-face {
-    font-family: Mairy;
-    src: url(fonts/MairyRegular.otf);
-}
-
 body {
     margin: 0;
-    font-family: "Arial", Monospace;
+    font-family: "Trebuchet MS";
     font-size: 15px;
     background-image: url(images/topography.png);
-    background-repeat: true;
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -108,7 +101,6 @@ p {
 
 #statuscafe-content {
     background: #ffffff;
-    font-family: "Arial", monospace;
     padding: 5px 10px;
     margin: 0 60px 20px 0;
     border-radius: 5px 5px 5px 5px;
@@ -173,7 +165,7 @@ p {
     width: 30%;
     padding: 5px;
     background: #ffffff;
-    border-radius: 0px 6px 6px 0px;
+    border-radius: 6px 6px 0px 0px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
