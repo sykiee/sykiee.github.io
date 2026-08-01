@@ -1,8 +1,15 @@
 body {
     margin: 0;
-    font-family: "Trebuchet MS";
-    font-size: 15px;
-    background-image: url(images/topography.png);
+    font-family: "MS PGothic", sans-serif;
+    font-size: 14px;
+    background-image: url(images/background-3.jpg);
+    background-size: cover;
+    backdrop-filter: blur(6px);
+    background-color: #ffffff;
+}
+
+/* main containers */
+#content {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -10,105 +17,44 @@ body {
     align-items: center;
 }
 
-h1 {
-    background: #ebebeb;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
-    margin: 0;
-    padding: 8px;
-    font-size: 15px;
-    font-weight: 500;
-}
-
-h2,
-h3 {
-    margin: 0;
-    font-size: 15px;
-}
-
-p {
-    font-size: 14px;
-}
-
-/* main containers */
-#content {
-    height: auto;
-    width: auto;
-}
-
 #main {
+    height: auto;
+    width: 400px;
     background-color: #ffffff;
-    border-radius: 0px 6px 0px 6px;
-    grid-template-columns: 1.2fr 1.4fr;
-    grid-template-rows: 1.5fr 0.5fr 1.5fr;
+    border-radius: 6px;
     padding: 6px;
     box-sizing: border-box;
-    display: grid;
-    grid-template-areas:
-        "header info"
-        "social info"
-        "bio info";
-    gap: 5px;
+    gap: 12px;
 }
 
 #header {
-    background: url(images/4kGnZI9.gif);
-    background-position: center;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 6px;
-    overflow: show;
     box-sizing: border-box;
-    grid-area: header;
 }
 
 #social {
+    width: 175px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
-    border-radius: 6px;
     padding: 5px;
     box-sizing: border-box;
     gap: 12px;
-    grid-area: social;
-}
-
-#bio {
-    background-color: #ffffff;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
-    border-radius: 6px;
-    box-sizing: border-box;
-    overflow: hidden;
-    grid-area: bio;
-}
-
-#info {
-    background-color: #ffffff;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25), 0 0 5px rgba(30, 30, 30, 0.25);
-    border-radius: 6px;
-    box-sizing: border-box;
-    overflow: hidden;
-    grid-area: info;
 }
 
 /* content */
-.container {
-    height: 100%;
-    padding: 6px;
-    border-radius: 6px;
-    box-sizing: border-box;
-    overflow-y: auto;
+.page {
+    display: flex;
+    flex-direction: column;
 }
 
-.title {
-    width: 30%;
-    padding: 5px;
-    background: #ffffff;
-    border-radius: 6px 6px 0px 0px;
+.container {
+    padding: 6px;
     box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .fab,
@@ -123,9 +69,4 @@ p {
 /* element transitions */
 a:hover {
     color: #474747;
-}
-
-#body,
-.container::-webkit-scrollbar {
-    display: none;
 }
