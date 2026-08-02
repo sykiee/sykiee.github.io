@@ -8,6 +8,14 @@ body {
     background-color: #ffffff;
 }
 
+h1 {
+
+}
+
+h2 {
+
+}
+
 /* main containers */
 #content {
     height: 100vh;
@@ -20,7 +28,9 @@ body {
 #main {
     height: auto;
     width: 400px;
-    background-color: #ffffff;
+    background-color: #ebebeb;
+    display: flex;
+    flex-direction: column;
     border-radius: 6px;
     padding: 6px;
     box-sizing: border-box;
@@ -28,20 +38,37 @@ body {
 }
 
 #header {
+    height: auto;
+    width: auto;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     border-radius: 6px;
     box-sizing: border-box;
 }
 
 #social {
-    width: 175px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
+    box-sizing: border-box;
+    gap: 12px;
+}
+
+#navbar {
+    display: flex;
+    box-sizing: border-box;
+    gap: 12px;
+}
+
+.content-container {
+    display: none;
+}
+
+.content-container.show {
+    display: block;
+    margin-top: 5px;
+    background-color: #ebebeb;
+    border-radius: 6px;
+    padding: 6px;
     box-sizing: border-box;
     gap: 12px;
 }
@@ -55,6 +82,8 @@ body {
 .container {
     padding: 6px;
     box-sizing: border-box;
+        background-color: #ffffff;
+    border-radius: 6px;
 }
 
 .fab,
@@ -65,6 +94,9 @@ body {
     transition: 0.2s ease;
     display: inline-block;
 }
+
+/* elements*/
+
 
 /* element transitions */
 a:hover {
