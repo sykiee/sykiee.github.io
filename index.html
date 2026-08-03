@@ -14,41 +14,41 @@
     <div class="page">
       <h1 style="color: white;">sykiee.me</h1>
       <div id="main">
-        <div id="social">
-          <div class="socialbutton"><a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank"
-              class="fab fa-square-steam"></a></div>
-          <div class="socialbutton"><a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube"
-              target="_blank" class="fab fa-youtube"></a></div>
-          <div class="socialbutton"><a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank"
-              class="fab fa-lastfm-square"></a></div>
-        </div>
         <div id="header">
-          <p><b>welcome</b> hi there, welcome to my page. poke around to find cool stuff</p>
+          <p><b>welcome</b> blah blah blah blah blah</p>
         </div>
         <div id="navbar">
-          <span>
-            <b>index</b>
-          </span>
-          <button onclick="showContainer('about')">about</button>
-          <button onclick="showContainer('music')">music</button>
-          <button onclick="showContainer('more')">more</button>
+          <select id="pageSelect" onchange="showContainer(this.value)">
+            <option value="" selected>more..</option>
+            <option value="about">about</option>
+            <option value="socials">socials</option>
+            <option value="music">music</option>
+          </select>
+        </div>
+        <div id="info">
+          <div id="about" class="content-container">
+            <button onclick="closeContainer()">✕</button>
+            <h2>about</h2>
+          </div>
+          <div id="socials" class="content-container">
+            <button onclick="closeContainer()">✕</button>
+            <h2>find me here!</h2>
+            <div id="social">
+              <div class="socialbutton"><a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank"
+                  class="fab fa-square-steam"></a></div>
+              <div class="socialbutton"><a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?"
+                  title="youtube" target="_blank" class="fab fa-youtube"></a></div>
+              <div class="socialbutton"><a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank"
+                  class="fab fa-lastfm-square"></a></div>
+            </div>
+          </div>
+          <div id="music" class="content-container">
+            <button onclick="closeContainer()">✕</button>
+            <h2>music</h2>
+          </div>
         </div>
       </div>
-      <div id="about" class="content-container">
-        <div class="container">
-        <p>lol</p>
-        </div>
-      </div>
-      <div id="music" class="content-container">
-        <div class="container">
-        <p>lol</p>
-        </div>
-      </div>
-      <div id="more" class="content-container">
-        <div class="container">
-        <p>lol</p>
-        </div>
-      </div>
+
     </div>
     <script src="scripts/windowscript.js"></script>
 </body>

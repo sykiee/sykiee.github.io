@@ -8,12 +8,15 @@ body {
     background-color: #ffffff;
 }
 
-h1 {
+h1 {}
 
-}
+h2 {}
 
-h2 {
-
+select {
+    border-radius: 6px;
+    font-family: "MS PGothic", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 /* main containers */
@@ -47,6 +50,16 @@ h2 {
     box-sizing: border-box;
 }
 
+#info {
+    height: auto;
+    width: auto;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
 #social {
     display: flex;
     box-sizing: border-box;
@@ -65,12 +78,6 @@ h2 {
 
 .content-container.show {
     display: block;
-    margin-top: 5px;
-    background-color: #ebebeb;
-    border-radius: 6px;
-    padding: 6px;
-    box-sizing: border-box;
-    gap: 12px;
 }
 
 /* content */
@@ -82,8 +89,20 @@ h2 {
 .container {
     padding: 6px;
     box-sizing: border-box;
-        background-color: #ffffff;
+    background-color: #ffffff;
     border-radius: 6px;
+}
+
+.content-container button {
+    float: right;
+    all: unset;
+    cursor: pointer;
+    color: #777;
+    transition: color .2s ease;
+}
+
+.content-container button:hover {
+    color: #000;
 }
 
 .fab,

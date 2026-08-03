@@ -1,17 +1,22 @@
 const containers = document.querySelectorAll(".content-container");
+const pageSelect = document.getElementById("pageSelect");
 
 function showContainer(id) {
 
-    const selected = document.getElementById(id);
-
-    if (selected.classList.contains("show")) {
-        selected.classList.remove("show");
-        return;
-    }
+    if (id === "") return;
 
     containers.forEach(container => {
         container.classList.remove("show");
     });
 
-    selected.classList.add("show");
+    document.getElementById(id).classList.add("show");
+}
+
+function closeContainer() {
+
+    containers.forEach(container => {
+        container.classList.remove("show");
+    });
+
+    pageSelect.value = "";
 }
