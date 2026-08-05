@@ -1,22 +1,22 @@
 const containers = document.querySelectorAll(".content-container");
-const pageSelect = document.getElementById("pageSelect");
+let activeContainer = null;
 
-function showContainer(id) {
+function toggleContainer(id) {
+    const selected = document.getElementById(id);
 
-    if (id === "") return;
+    // If the clicked container is already open, close it
+    if (activeContainer === selected) {
+        selected.classList.remove("show");
+        activeContainer = null;
+        return;
+    }
 
+    // Close all containers
     containers.forEach(container => {
         container.classList.remove("show");
     });
 
-    document.getElementById(id).classList.add("show");
-}
-
-function closeContainer() {
-
-    containers.forEach(container => {
-        container.classList.remove("show");
-    });
-
-    pageSelect.value = "";
+    // Open the selected one
+    selected.classList.add("show");
+    activeContainer = selected;
 }

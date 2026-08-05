@@ -1,22 +1,33 @@
 body {
     margin: 0;
     font-family: "MS PGothic", sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     background-image: url(images/background-3.jpg);
     background-size: cover;
     backdrop-filter: blur(6px);
     background-color: #ffffff;
 }
 
-h1 {}
+h1 {
+    margin: 5px;
+}
 
-h2 {}
-
-select {
+mark {
     border-radius: 6px;
+    background-color: #ebebeb;
+    opacity: (50%);
+    font-weight: bold;
+    padding: 4px;
+}
+
+button {
+    border-radius: 0px 0px 6px 6px;
     font-family: "MS PGothic", sans-serif;
+    background-color: #ebebeb;
     font-size: 14px;
-    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    padding: 5px;
 }
 
 /* main containers */
@@ -34,8 +45,8 @@ select {
     background-color: #ebebeb;
     display: flex;
     flex-direction: column;
-    border-radius: 6px;
-    padding: 6px;
+    border-radius: 6px 6px 6px 0px;
+    padding: 5px;
     box-sizing: border-box;
     gap: 12px;
 }
@@ -43,11 +54,19 @@ select {
 #header {
     height: auto;
     width: auto;
-    background-color: #ffffff;
+    position: relative;
     display: flex;
-    flex-direction: column;
     border-radius: 6px;
     box-sizing: border-box;
+}
+
+#header img {
+    position: absolute;
+    right: -110px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    height: auto;
 }
 
 #info {
@@ -63,6 +82,7 @@ select {
 #social {
     display: flex;
     box-sizing: border-box;
+    padding: 5px;
     gap: 12px;
 }
 
@@ -78,6 +98,7 @@ select {
 
 .content-container.show {
     display: block;
+    padding: 5px;
 }
 
 /* content */
@@ -86,23 +107,20 @@ select {
     flex-direction: column;
 }
 
+.text-container {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
 .container {
-    padding: 6px;
+    padding: 5px;
     box-sizing: border-box;
     background-color: #ffffff;
     border-radius: 6px;
-}
-
-.content-container button {
-    float: right;
-    all: unset;
-    cursor: pointer;
-    color: #777;
-    transition: color .2s ease;
-}
-
-.content-container button:hover {
-    color: #000;
 }
 
 .fab,

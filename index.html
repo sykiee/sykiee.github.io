@@ -15,24 +15,23 @@
       <h1 style="color: white;">sykiee.me</h1>
       <div id="main">
         <div id="header">
-          <p><b>welcome</b> blah blah blah blah blah</p>
-        </div>
-        <div id="navbar">
-          <select id="pageSelect" onchange="showContainer(this.value)">
-            <option value="" selected>more..</option>
-            <option value="about">about</option>
-            <option value="socials">socials</option>
-            <option value="music">music</option>
-          </select>
+          <div class="text-container">
+          <p><mark>bruce, he / him, 23, infp</mark> one more time around</p>
+          </div>
+          <img src="images/dacougar1.png">
         </div>
         <div id="info">
-          <div id="about" class="content-container">
-            <button onclick="closeContainer()">✕</button>
-            <h2>about</h2>
+          <div id="about me" class="content-container">
+            <h2><mark>about me</mark></h2>
+          </div>
+          <div id="games" class="content-container">
+            <h2><mark>games</mark></h2>
+          </div>
+          <div id="music" class="content-container">
+            <h2><mark>music</mark></h2>
           </div>
           <div id="socials" class="content-container">
-            <button onclick="closeContainer()">✕</button>
-            <h2>find me here!</h2>
+            <h2><mark>find me here!<mark></h2>
             <div id="social">
               <div class="socialbutton"><a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank"
                   class="fab fa-square-steam"></a></div>
@@ -42,11 +41,13 @@
                   class="fab fa-lastfm-square"></a></div>
             </div>
           </div>
-          <div id="music" class="content-container">
-            <button onclick="closeContainer()">✕</button>
-            <h2>music</h2>
-          </div>
         </div>
+      </div>
+      <div id="navbar">
+        <button onclick="toggleContainer('about me')">about me</button>
+        <button onclick="toggleContainer('games')">games</button>
+        <button onclick="toggleContainer('music')">♫</button>
+        <button onclick="toggleContainer('socials')">socials</button>
       </div>
 
     </div>
