@@ -12,19 +12,15 @@
 <body>
   <div id="content">
     <div class="page">
-      <h1 style="color: white;">sykiee.me</h1>
+        <h1 style="color: white;">sykiee.me</h1>
       <div id="main">
         <div id="header">
-          <div class="text-container">
-          <p><mark>bruce, he / him, 23, infp</mark> one more time around</p>
+          <div id="header-text">
+            <p><mark>bruce, he / him, 23, infp</mark> one more time around</p>
           </div>
           <img src="images/dacougar1.png">
         </div>
         <div id="info">
-          <div id="about me" class="content-container">
-            <h2><mark>about me</mark></h2>
-            <p>w.i.p</p>
-          </div>
           <div id="games" class="content-container">
             <h2><mark>games</mark></h2>
             <p>w.i.p</p>
@@ -33,8 +29,12 @@
             <h2><mark>music</mark></h2>
             <p>w.i.p</p>
           </div>
+          <div id="media" class="content-container">
+            <h2><mark>movies + tv shows</mark></h2>
+            <p>w.i.p</p>
+          </div>
           <div id="socials" class="content-container">
-            <h2><mark>find me here!<mark></h2>
+            <h2><mark>find me here<mark></h2>
             <div id="social">
               <div class="socialbutton"><a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank"
                   class="fab fa-square-steam"></a></div>
@@ -47,9 +47,9 @@
         </div>
       </div>
       <div id="navbar">
-        <button onclick="toggleContainer('about me')">about me</button>
-        <button onclick="toggleContainer('games')">games</button>
-        <button onclick="toggleContainer('music')">♫</button>
+        <button onclick="toggleContainer('games')"><i class="fa-solid fa-gamepad"></i></button>
+        <button onclick="toggleContainer('music')"><i class="fa-solid fa-music"></i></button>
+        <button onclick="toggleContainer('media')"><i class="fa-solid fa-video"></i></button>
         <button onclick="toggleContainer('socials')">socials</button>
       </div>
 
