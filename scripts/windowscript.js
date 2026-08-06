@@ -1,25 +1,68 @@
-const containers = document.querySelectorAll(".content-container");
-const home = document.getElementById("home");
+const info = document.getElementById("info");
 
-home.classList.add("show");
+const pages = {
+    home: document.getElementById("home"),
+    about: document.getElementById("about"),
+    socials: document.getElementById("socials")
+};
 
-let activeContainer = null;
+const fadeTime = 250;
+const resizeTime = 350;
+
+let current = pages.home;
+let busy = false;
+
+current.classList.add("show");
+current.style.opacity = "1";
+
+requestAnimationFrame(() => {
+    info.style.height = current.scrollHeight + "px";
+});
+
 
 function toggleContainer(id) {
 
-    const selected = document.getElementById(id);
+    if (busy) return;
 
-    if (activeContainer === selected) {
-        selected.classList.remove("show");
-        home.classList.add("show");
-        activeContainer = null;
-        return;
+    let next = pages[id];
+
+    if (current === next) {
+        next = pages.home;
     }
 
-    containers.forEach(container => {
-        container.classList.remove("show");
-    });
+    if (current === next) return;
 
-    selected.classList.add("show");
-    activeContainer = selected;
+    busy = true;
+
+
+    current.style.transition = `opacity ${fadeTime}ms ease`;
+    current.style.opacity = "0";
+
+
+    setTimeout(() => {
+
+        current.classList.remove("show");
+
+
+        next.classList.add("show");
+        next.style.opacity = "0";
+
+        const newHeight = next.scrollHeight;
+
+        info.style.height = newHeight + "px";
+
+
+        setTimeout(() => {
+
+            next.style.transition = `opacity ${fadeTime}ms ease`;
+            next.style.opacity = "1";
+
+            current = next;
+
+            busy = false;
+
+        }, resizeTime);
+
+    }, fadeTime);
+
 }
