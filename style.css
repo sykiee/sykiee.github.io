@@ -57,6 +57,7 @@ button {
     height: auto;
     width: 15.6rem;
     position: absolute;
+    color: #ffffff;
     z-index: 1;
     right: 6.5rem;
     top: -1.3rem;
