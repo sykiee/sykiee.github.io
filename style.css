@@ -17,17 +17,18 @@ mark {
     background-color: #ebebeb;
     opacity: (50%);
     font-weight: bold;
-    padding: 0.25rem;
+    padding: 0.35rem;
 }
 
 button {
+    width: 4.5rem;
     border-radius: 0rem 0rem 0.4rem 0.4rem;
     font-family: "Arial", sans-serif;
     background-color: #ebebeb;
     font-size: 1.1rem;
     border: none;
     font-weight: bold;
-    padding: 0.4rem;
+    padding: 0.4rem 0.4rem 0.4rem 0.4rem;
 }
 
 /* main containers */
@@ -41,7 +42,7 @@ button {
 
 #main {
     height: auto;
-    width: 25rem;
+    width: 23rem;
     background-color: #ebebeb;
     display: flex;
     flex-direction: column;
@@ -51,44 +52,21 @@ button {
     gap: 0.75rem;
 }
 
-#header {
-    height: 5rem;
-    width: 26rem;
-    position: relative;
-    display: flex;
-    border-radius: 0.4rem;
-    box-sizing: border-box;
-}
-
-#header-text {
-    width: 85%;
+#info {
     height: auto;
-    background-color: #ffffff;
-    display: flex;
-    overflow: auto;
-    flex-direction: column;
+    width: 23rem;
+    position: relative;
     border-radius: 0.4rem;
-    padding: 0.4rem;
     box-sizing: border-box;
 }
 
-#header img {
+#info img {
     position: absolute;
     right: -8.3rem;
     top: 50%;
     transform: translateY(-50%);
     width: 15.6rem;
     height: auto;
-}
-
-#info {
-    height: auto;
-    width: auto;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.4rem;
-    box-sizing: border-box;
 }
 
 #social {
@@ -100,7 +78,7 @@ button {
 #navbar {
     display: flex;
     box-sizing: border-box;
-    gap: 0.75rem;
+    gap: 0.25rem;
 }
 
 .content-container {
@@ -109,29 +87,20 @@ button {
 
 .content-container.show {
     display: block;
-    padding: 0.4rem;
 }
 
 /* content */
 .page {
+    width: auto;
     display: flex;
     flex-direction: column;
-}
-
-.text-container {
-    width: 85%;
-    height: 14rem;
-    background-color: #ffffff;
-    display: flex;
-    overflow: auto;
-    flex-direction: column;
-    border-radius: 0.4rem;
-    padding: 0.4rem;
-    box-sizing: border-box;
 }
 
 .container {
+    width: 20rem;
+    max-height: 10rem;
     padding: 0.4rem;
+    overflow: auto;
     box-sizing: border-box;
     background-color: #ffffff;
     border-radius: 0.4rem;
