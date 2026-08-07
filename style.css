@@ -123,7 +123,7 @@ button {
 }
 
 .fab,
-.fas {
+.fas, .fa-brands {
     font-size: 1.4rem;
     text-decoration: none;
     color: #000000;
