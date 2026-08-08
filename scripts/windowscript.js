@@ -19,7 +19,6 @@ requestAnimationFrame(() => {
     info.style.height = current.scrollHeight + "px";
 });
 
-
 function toggleContainer(id) {
 
     if (busy) return;
@@ -34,15 +33,21 @@ function toggleContainer(id) {
 
     busy = true;
 
+    document.querySelectorAll("#navbar button").forEach(button => {
+        button.classList.remove("active");
+    });
+
+    if (next !== pages.home) {
+        document.querySelector(`#navbar button[data-target="${id}"]`)
+            ?.classList.add("active");
+    }
 
     current.style.transition = `opacity ${fadeTime}ms ease`;
     current.style.opacity = "0";
 
-
     setTimeout(() => {
 
         current.classList.remove("show");
-
 
         next.classList.add("show");
         next.style.opacity = "0";
@@ -50,7 +55,6 @@ function toggleContainer(id) {
         const newHeight = next.scrollHeight;
 
         info.style.height = newHeight + "px";
-
 
         setTimeout(() => {
 
@@ -64,5 +68,4 @@ function toggleContainer(id) {
         }, resizeTime);
 
     }, fadeTime);
-
 }
