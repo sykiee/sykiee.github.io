@@ -25,9 +25,7 @@ function toggleContainer(id) {
 
     let next = pages[id];
 
-    if (current === next) {
-        next = pages.home;
-    }
+    if (current === next) { next = pages.home; }
 
     if (current === next) return;
 
@@ -38,8 +36,7 @@ function toggleContainer(id) {
     });
 
     if (next !== pages.home) {
-        document.querySelector(`#navbar button[data-target="${id}"]`)
-            ?.classList.add("active");
+        document.querySelector(`#navbar button[data-target="${id}"]`)?.classList.add("active");
     }
 
     current.style.transition = `opacity ${fadeTime}ms ease`;
@@ -50,6 +47,7 @@ function toggleContainer(id) {
         current.classList.remove("show");
 
         next.classList.add("show");
+
         next.style.opacity = "0";
 
         const newHeight = next.scrollHeight;
@@ -59,6 +57,7 @@ function toggleContainer(id) {
         setTimeout(() => {
 
             next.style.transition = `opacity ${fadeTime}ms ease`;
+
             next.style.opacity = "1";
 
             current = next;
