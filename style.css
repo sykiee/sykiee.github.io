@@ -17,13 +17,17 @@ h1 {
     margin: 0.4rem;
 }
 
+p {
+    line-height: 1.5;
+}
+
 mark {
     border-radius: 0.4rem;
     background-color: #ebebeb;
     opacity: (50%);
-    margin: 0px 0px 0px 0px;
+    margin: 2px 0px 2px 0px;
     font-weight: bold;
-    padding: 0.35rem;
+    padding: 0.20rem 0.35rem 0.20rem 0.35rem;
 }
 
 /* main containers */
@@ -56,7 +60,7 @@ mark {
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
     z-index: 1;
     font-family: AnotherTag;
-    right: 12.4rem;
+    right: 12.6rem;
     top: -1.5rem;
     transform: translateY(-50%);
     transition: transform 0.25s ease;
@@ -111,15 +115,34 @@ mark {
     z-index: -1;
 }
 
-.content-container {
-    display: none;
-    opacity: 0;
+/* content */
+.page {
+    width: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.content-container.show {
-    display: block;
+.container {
+    width: 22rem;
+    max-height: 10rem;
+    padding: 0.4rem;
+    overflow: auto;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 0.4rem;
 }
 
+.fab,
+.fas,
+.fa-brands {
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: #000000;
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+/* status.cafe css*/
 #status {
     width: auto;
     position: absolute;
@@ -167,11 +190,6 @@ mark {
     transform: translateY(-50%);
 }
 
-#status:hover #statuscafe {
-    opacity: 1;
-    visibility: visible;
-}
-
 #statuscafe-username {
     margin-bottom: 10px;
     font-weight: bold;
@@ -182,35 +200,7 @@ mark {
     font-family: "Trebuchet MS", monospace;
 }
 
-/* content */
-.page {
-    width: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.container {
-    width: 22rem;
-    max-height: 10rem;
-    padding: 0.4rem;
-    overflow: auto;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    border-radius: 0.4rem;
-}
-
-.fab,
-.fas,
-.fa-brands {
-    font-size: 1.4rem;
-    text-decoration: none;
-    color: #000000;
-    display: inline-block;
-    transition: transform 0.25s ease;
-}
-
 /* elements*/
-
 
 /* element transitions */
 a:hover {
@@ -226,4 +216,18 @@ a:hover {
 #navbar button.active {
     transform: translateY(0.4rem);
     color: #474747;
+}
+
+#status:hover #statuscafe {
+    opacity: 1;
+    visibility: visible;
+}
+
+.content-container {
+    display: none;
+    opacity: 0;
+}
+
+.content-container.show {
+    display: block;
 }

@@ -3,7 +3,8 @@ const info = document.getElementById("info");
 const pages = {
     home: document.getElementById("home"),
     about: document.getElementById("about"),
-    socials: document.getElementById("socials")
+    socials: document.getElementById("socials"),
+    music: document.getElementById("music")
 };
 
 const fadeTime = 250;
