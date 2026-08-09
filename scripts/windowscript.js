@@ -2,9 +2,7 @@ const info = document.getElementById("info");
 
 const pages = {
     home: document.getElementById("home"),
-    about: document.getElementById("about"),
-    socials: document.getElementById("socials"),
-    music: document.getElementById("music")
+    about: document.getElementById("more")
 };
 
 const fadeTime = 250;
@@ -20,25 +18,22 @@ requestAnimationFrame(() => {
     info.style.height = current.scrollHeight + "px";
 });
 
-function toggleContainer(id) {
+function toggleContainer() {
 
     if (busy) return;
 
-    let next = pages[id];
+    let next;
 
-    if (current === next) { next = pages.home; }
-
-    if (current === next) return;
+    if (current === pages.home) {
+        next = pages.about;
+    } else {
+        next = pages.home;
+    }
 
     busy = true;
 
-    document.querySelectorAll("#navbar button").forEach(button => {
-        button.classList.remove("active");
-    });
-
-    if (next !== pages.home) {
-        document.querySelector(`#navbar button[data-target="${id}"]`)?.classList.add("active");
-    }
+    document.getElementById("toggleButton").textContent =
+        next === pages.about ? "▲" : "▼";
 
     current.style.transition = `opacity ${fadeTime}ms ease`;
     current.style.opacity = "0";
@@ -48,7 +43,6 @@ function toggleContainer(id) {
         current.classList.remove("show");
 
         next.classList.add("show");
-
         next.style.opacity = "0";
 
         const newHeight = next.scrollHeight;
@@ -58,7 +52,6 @@ function toggleContainer(id) {
         setTimeout(() => {
 
             next.style.transition = `opacity ${fadeTime}ms ease`;
-
             next.style.opacity = "1";
 
             current = next;
