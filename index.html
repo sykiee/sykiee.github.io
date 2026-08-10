@@ -6,66 +6,116 @@
   <title>bruce!</title>
   <link rel="shortcut icon" type="image/x-icon" href="images/transparent.ico">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  <script>
+    msg = "";
+    msg = "bruce " + msg; position = 0;
+    function scrolltitle() {
+      document.title = msg.substring(position, msg.length) + msg.substring(0, position); position++;
+      if (position > msg.length) position = 0
+      window.setTimeout("scrolltitle()", 250);
+    }
+    scrolltitle();
+  </script>
   <script src="https://kit.fontawesome.com/5c560bddc0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <div id="content">
-    <div id="title">
-      <div class="sykiee">
-        <h2>sykiee.me</h2>
-      </div>
-    </div>
-    <div id="main">
+    <div class="page">
       <div id="status">
-        <div id="statuscafe">
-          <div id="statuscafe-content"></div>
-          <div id="statuscafe-username"></div>
-          <a href="https://status.cafe/users/grasscanons" target="_blank"><img src="images/DEER_5885632.gif" class="statusdeer"></a>
+        <img src="images/dacougar1.png">
+        <audio id="statusSound" src="audio/Cat_idle2.ogg"></audio>
+        <script src="scripts/statuscafe.js"></script>
+        <script>
+          const statusImage = document.querySelector("#status img");
+          const statusSound = document.getElementById("statusSound");
+
+          statusImage.addEventListener("click", () => {
+            statusSound.currentTime = 0;
+            statusSound.play();
+          });
+        </script>
+      </div>
+      <div id="main">
+        <h1>sykiee.me</h1>
+        <div id="info">
+          <div id="home" class="content-container">
+            <div class="container">
+              <p><mark>bruce, he / him, 23, ♏︎ , infp</mark> hi there :3</p>
+            </div>
+          </div>
+          <div id="more" class="content-container">
+            <div class="container">
+              <p><mark>about</mark> hello, my name is <b>bruce</b> and i like to make things.
+                i'm pretty easy to talk to so don't be a stranger. :)</p>
+              <br>
+              <p><mark>interests</mark>
+                webdev,
+                music (<b>pls send suggestions :p</b>), video games
+                pokemon (<b>vgc</b>, <b>shiny hunting</b>, <b>etc</b>.),
+                marine life,
+                fashion (<b>streetwear</b>, <b>sneakers</b>, <b>etc</b>.)</p>
+              <br>
+              <p><mark>fav albums</mark> maybe not my favorite albums, but these are the ones
+                i have on repeat pretty often. :p</p>
+              <div id="album-marquee">
+                <div id="album-marquee-content">
+                  <div class="marquee-group">
+                    <img src="images/album1.jpg" title="the powers that b - death grips">
+                    <img src="images/album2.jpg" title="all hail west texas - the mountain goats">
+                    <img src="images/album3.jpg" title="under the western freeway - grandaddy">
+                    <img src="images/album4.jpg" title="either/or - elliott smith">
+                    <img src="images/album5.jpg" title="house of sugar - alex g">
+                    <img src="images/album6.jpg" title="headlights - alex g">
+                    <img src="images/album7.jpg" title="heroin man - cherubs">
+                    <img src="images/album8.jpg" title="dusk at cubist castle - the olivia tremor control">
+                    <img src="images/album9.jpg" title="it's not the same - floor">
+                    <img src="images/album10.jpg" title="i can hear the heart beating as one - yo la tengo">
+                  </div>
+                  <div class="marquee-group">
+                    <img src="images/album1.jpg" title="the powers that b - death grips">
+                    <img src="images/album2.jpg" title="all hail west texas - the mountain goats">
+                    <img src="images/album3.jpg" title="under the western freeway - grandaddy">
+                    <img src="images/album4.jpg" title="either/or - elliott smith">
+                    <img src="images/album5.jpg" title="house of sugar - alex g">
+                    <img src="images/album6.jpg" title="headlights - alex g">
+                    <img src="images/album7.jpg" title="heroin man - cherubs">
+                    <img src="images/album8.jpg" title="dusk at cubist castle - the olivia tremor control">
+                    <img src="images/album9.jpg" title="it's not the same - floor">
+                    <img src="images/album10.jpg" title="i can hear the heart beating as one - yo la tengo">
+                  </div>
+                </div>
+              </div>
+              <br>
+              <p><mark>socials</mark>
+              <div id="social">
+                <div class="socialbutton"><a href="https://steamcommunity.com/id/47r739423/" title="steam"
+                    target="_blank" class="fab fa-square-steam"></a></div>
+                <div class="socialbutton"><a href="https://discordapp.com/users/384860738482733057" title="discord"
+                    target="_blank" class="fa-brands fa-discord"></a></div>
+                <div class="socialbutton"><a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?"
+                    title="youtube" target="_blank" class="fab fa-youtube"></a></div>
+                <div class="socialbutton"><a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank"
+                    class="fab fa-lastfm-square"></a></div>
+              </div>
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div id="header">
-      </div>
-      <div id="bio">
-        <h1>bio</h1>
-        <div class="container">
-          <p><b>bio</b> bruce, 23, he / him, infp</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
+        <div id="navbar">
+          <button id="toggleButton" onclick="toggleContainer()">
+            ▼ more
+          </button>
         </div>
-      </div>
-      <div id="content-container">
-        <h1>idk what goes here yet..</h1>
-        <div class="container">
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-          <p>blah blaa blah blah blah blaa blah</p>
-        </div>
-      </div>
-    </div>
-    <div id="footer">
-      <div id="socialbar">
-        <div class="socialbutton"><a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank"
-            class="fab fa-square-steam"></a></div>
-        <div class="socialbutton"><a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube"
-            target="_blank" class="fab fa-youtube"></a></div>
-        <div class="socialbutton"><a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank"
-            class="fab fa-lastfm-square"></a></div>
       </div>
     </div>
   </div>
-  <script src="scripts/statuscafe.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <script src="scripts/windowscript.js"></script>
+  <script src="scripts/moveelement.js"></script>
 </body>
 
 </html>
