@@ -6,6 +6,8 @@
   <title>bruce!</title>
   <link rel="shortcut icon" type="image/x-icon" href="images/transparent.ico">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <script src="scripts/scrolltitle.js"></script>
   <script src="https://kit.fontawesome.com/5c560bddc0.js" crossorigin="anonymous"></script>
 </head>
@@ -15,7 +17,17 @@
     <div class="page">
       <div id="status">
         <img src="images/dacougar1.png">
+        <audio id="statusSound" src="audio/Cat_idle2.ogg"></audio>
         <script src="scripts/statuscafe.js"></script>
+        <script>
+          const statusImage = document.querySelector("#status img");
+          const statusSound = document.getElementById("statusSound");
+
+          statusImage.addEventListener("click", () => {
+            statusSound.currentTime = 0;
+            statusSound.play();
+          });
+        </script>
       </div>
       <div id="main">
         <h1>sykiee.me</h1>
@@ -28,14 +40,42 @@
           <div id="more" class="content-container">
             <div class="container">
               <p><mark>about</mark> hello, my name is <b>bruce</b> and i like to make things.
-                i like to believe i'm pretty friendly and easy to get along with,
-                so if you share any of my interests, don't be a stranger!</p>
-              <p><mark>interests</mark> webdev,
-                music (<b>i listen to a lot of stuff</b>)
+                i'm pretty easy to talk to so don't be a stranger. :)</p>
+              <br>
+              <p><mark>interests</mark>
+                webdev,
+                music (<b>pls send suggestions :p</b>), video games
                 pokemon (<b>vgc</b>, <b>shiny hunting</b>, <b>etc</b>.),
                 marine life,
                 fashion (<b>streetwear</b>, <b>sneakers</b>, <b>etc</b>.)</p>
-              <p><mark>faq</mark></p>
+              <br>
+              <p><mark>fav albums</mark></p>
+              <div id="marquee">
+                <div id="marquee-content">
+                  <div class="marquee-group">
+                    <img src="images/album1.jpg" title="the powers that b - death grips">
+                    <img src="images/album2.jpg" title="all hail west texas - the mountain goats">
+                    <img src="images/album3.jpg" title="under the western freeway - grandaddy">
+                    <img src="images/album4.jpg" title="either/or - elliott smith">
+                    <img src="images/album5.jpg" title="house of sugar - alex g">
+                    <img src="images/album6.jpg" title="headlights - alex g">
+                    <img src="images/album7.jpg" title="heroin man - cherubs">
+                    <img src="images/album8.jpg" title="dusk at cubist castle - the olivia tremor control">
+                    <img src="images/album9.jpg" title="it's not the same - floor">
+                  </div>
+                  <div class="marquee-group">
+                    <img src="images/album1.jpg" title="the powers that b - death grips">
+                    <img src="images/album2.jpg" title="all hail west texas - the mountain goats">
+                    <img src="images/album3.jpg" title="under the western freeway - grandaddy">
+                    <img src="images/album4.jpg" title="either/or - elliott smith">
+                    <img src="images/album5.jpg" title="house of sugar - alex g">
+                    <img src="images/album6.jpg" title="headlights - alex g">
+                    <img src="images/album7.jpg" title="heroin man - cherubs">
+                    <img src="images/album8.jpg" title="dusk at cubist castle - the olivia tremor control">
+                    <img src="images/album9.jpg" title="it's not the same - floor">
+                  </div>
+                </div>
+              </div>
               <br>
               <p><mark>socials</mark>
               <div id="social">
@@ -54,13 +94,18 @@
         </div>
         <div id="navbar">
           <button id="toggleButton" onclick="toggleContainer()">
-            ▼
+            ▼ more
           </button>
+          <p>|</p>
+          <button id="resetStatus">⟲</button>
         </div>
       </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
   <script src="scripts/windowscript.js"></script>
+  <script src="scripts/moveelement.js"></script>
 </body>
 
 </html>

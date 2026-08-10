@@ -3,14 +3,21 @@
     src: url('fonts/aAnotherTag.ttf');
 }
 
+html,
 body {
+    width: 100%;
+    min-height: 100%;
     margin: 0;
     font-family: "Trebuchet MS", sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     background-image: url(images/background-3.jpg);
     background-size: cover;
-    backdrop-filter: blur(0.4rem);
     background-color: #ffffff;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -36,16 +43,18 @@ mark {
 
 /* main containers */
 #content {
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
 #main {
     height: auto;
-    width: 24.4rem;
+    width: 27.4rem;
+    max-width: calc(100vw - 2rem);
     position: relative;
     background-color: #ebebeb;
     box-shadow: 0px 0px 30px 15px rgba(0, 0, 0, 0.2);
@@ -58,20 +67,31 @@ mark {
 }
 
 #main h1 {
-    font-size: 3.7rem;
+    font-size: 4.6rem;
     position: absolute;
     color: #ffffff;
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
     z-index: 1;
     font-family: AnotherTag;
-    right: 12.6rem;
+    right: 13.3rem;
     top: -1.5rem;
     transform: translateY(-50%);
     transition: transform 0.25s ease;
 }
 
+#main button {
+    border: none;
+    background: none;
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    padding: 0.4rem;
+    color: #000000;
+    transition: transform 0.2s ease;
+}
+
 #info {
     height: 3rem;
+    width: 100%;
     position: relative;
     overflow: hidden;
     width: 23rem;
@@ -94,6 +114,8 @@ mark {
 
 #navbar button {
     border: none;
+    background: none;
+    font-family: "Trebuchet MS", sans-serif;
     font-weight: bold;
     padding: 0.4rem;
     color: #000000;
@@ -112,7 +134,8 @@ mark {
 }
 
 .container {
-    width: 22rem;
+    width: 25rem;
+    max-width: 100%;
     max-height: 10rem;
     padding: 0.4rem;
     overflow: auto;
@@ -137,16 +160,18 @@ mark {
     position: absolute;
     z-index: 10;
     left: 55%;
-    top: 30%;
+    top: 32%;
 }
 
 #status img {
     display: block;
-    width: 15.6rem;
+    width: 15.4rem;
     height: auto;
     filter: drop-shadow(8px 8px 16px rgba(0, 0, 0, 0.5));
+    cursor: pointer;
     transition: transform 0.25s ease;
 }
+
 
 #statuscafe {
     position: absolute;
@@ -190,6 +215,50 @@ mark {
 }
 
 /* elements*/
+#marquee {
+    width: 100%;
+    overflow: hidden;
+    background-color: #ebebeb;
+    padding: 5px 0px 5px 0px;
+    border-radius: 4px;
+}
+
+
+#marquee-content {
+    display: flex;
+    width: max-content;
+    animation: marquee 15s linear infinite;
+}
+
+
+.marquee-group {
+    display: flex;
+    gap: 0.5rem;
+    padding-right: 0.5rem;
+    flex-shrink: 0;
+}
+
+.marquee-group img {
+    height: 4rem;
+    width: auto;
+    border-radius: 4px;
+}
+
+
+#marquee:hover #marquee-content {
+    animation-play-state: paused;
+}
+
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
 
 /* element transitions */
 a:hover {
@@ -205,6 +274,10 @@ a:hover {
 #navbar button.active {
     color: #474747;
     transform: scale(1.15);
+}
+
+#status img:hover {
+    transform: scale(1.1);
 }
 
 #status:hover #statuscafe {

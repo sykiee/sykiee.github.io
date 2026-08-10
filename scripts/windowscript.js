@@ -33,7 +33,7 @@ function toggleContainer() {
     busy = true;
 
     document.getElementById("toggleButton").textContent =
-        next === pages.about ? "▲" : "▼";
+        next === pages.about ? "▲ back" : "▼ more";
 
     current.style.transition = `opacity ${fadeTime}ms ease`;
     current.style.opacity = "0";
