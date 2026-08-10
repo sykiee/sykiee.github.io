@@ -8,7 +8,16 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
     integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-  <script src="scripts/scrolltitle.js"></script>
+  <script>
+    msg = "";
+    msg = "bruce " + msg; position = 0;
+    function scrolltitle() {
+      document.title = msg.substring(position, msg.length) + msg.substring(0, position); position++;
+      if (position > msg.length) position = 0
+      window.setTimeout("scrolltitle()", 250);
+    }
+    scrolltitle();
+  </script>
   <script src="https://kit.fontawesome.com/5c560bddc0.js" crossorigin="anonymous"></script>
 </head>
 
@@ -34,7 +43,7 @@
         <div id="info">
           <div id="home" class="content-container">
             <div class="container">
-              <p><mark>bruce, he / him, 23, ♏︎ , infp</mark> one more time around</p>
+              <p><mark>bruce, he / him, 23, ♏︎ , infp</mark> hi there :3</p>
             </div>
           </div>
           <div id="more" class="content-container">
@@ -49,9 +58,10 @@
                 marine life,
                 fashion (<b>streetwear</b>, <b>sneakers</b>, <b>etc</b>.)</p>
               <br>
-              <p><mark>fav albums</mark></p>
-              <div id="marquee">
-                <div id="marquee-content">
+              <p><mark>fav albums</mark> maybe not my favorite albums, but these are the ones
+                i have on repeat pretty often. :p</p>
+              <div id="album-marquee">
+                <div id="album-marquee-content">
                   <div class="marquee-group">
                     <img src="images/album1.jpg" title="the powers that b - death grips">
                     <img src="images/album2.jpg" title="all hail west texas - the mountain goats">
@@ -62,6 +72,7 @@
                     <img src="images/album7.jpg" title="heroin man - cherubs">
                     <img src="images/album8.jpg" title="dusk at cubist castle - the olivia tremor control">
                     <img src="images/album9.jpg" title="it's not the same - floor">
+                    <img src="images/album10.jpg" title="i can hear the heart beating as one - yo la tengo">
                   </div>
                   <div class="marquee-group">
                     <img src="images/album1.jpg" title="the powers that b - death grips">
@@ -73,6 +84,7 @@
                     <img src="images/album7.jpg" title="heroin man - cherubs">
                     <img src="images/album8.jpg" title="dusk at cubist castle - the olivia tremor control">
                     <img src="images/album9.jpg" title="it's not the same - floor">
+                    <img src="images/album10.jpg" title="i can hear the heart beating as one - yo la tengo">
                   </div>
                 </div>
               </div>
@@ -96,8 +108,6 @@
           <button id="toggleButton" onclick="toggleContainer()">
             ▼ more
           </button>
-          <p>|</p>
-          <button id="resetStatus">⟲</button>
         </div>
       </div>
     </div>

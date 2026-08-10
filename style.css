@@ -12,7 +12,7 @@ body {
     font-size: 0.9rem;
     background-image: url(images/background-3.jpg);
     background-size: cover;
-    background-color: #ffffff;
+    background-color: #FFFAFB;
 }
 
 body {
@@ -34,7 +34,8 @@ a {
 
 mark {
     border-radius: 0.4rem;
-    background-color: #ebebeb;
+    background-color: #6A706E;
+    color: #FFFAFB;
     opacity: (50%);
     margin: 2px 0px 2px 0px;
     font-weight: bold;
@@ -57,7 +58,7 @@ mark {
     max-width: calc(100vw - 2rem);
     position: relative;
     background-color: #ebebeb;
-    box-shadow: 0px 0px 30px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 48px -3px rgba(0, 0, 0, 0.81);
     display: flex;
     flex-direction: column;
     border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
@@ -69,7 +70,7 @@ mark {
 #main h1 {
     font-size: 4.6rem;
     position: absolute;
-    color: #ffffff;
+    color: #FFFAFB;
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
     z-index: 1;
     font-family: AnotherTag;
@@ -96,6 +97,8 @@ mark {
     overflow: hidden;
     width: 23rem;
     border-radius: 0.4rem;
+    border: 1px dashed #000000;
+    background: #fffafb;
     box-sizing: border-box;
     transition: height .35s cubic-bezier(.22, 1, .36, 1);
 }
@@ -122,10 +125,6 @@ mark {
     transition: transform 0.2s ease;
 }
 
-#navbar button:hover {
-    color: #474747;
-}
-
 /* content */
 .page {
     width: auto;
@@ -140,7 +139,7 @@ mark {
     padding: 0.4rem;
     overflow: auto;
     box-sizing: border-box;
-    background-color: #ffffff;
+    background: #fffafb;
     border-radius: 0.4rem;
 }
 
@@ -160,7 +159,7 @@ mark {
     position: absolute;
     z-index: 10;
     left: 55%;
-    top: 32%;
+    top: 30%;
 }
 
 #status img {
@@ -214,8 +213,9 @@ mark {
     font-family: "Trebuchet MS", monospace;
 }
 
-/* elements*/
-#marquee {
+/* element transitions*/
+#album-marquee,
+#games-marquee {
     width: 100%;
     overflow: hidden;
     background-color: #ebebeb;
@@ -224,7 +224,8 @@ mark {
 }
 
 
-#marquee-content {
+#album-marquee-content,
+#games-marquee-content {
     display: flex;
     width: max-content;
     animation: marquee 15s linear infinite;
@@ -245,7 +246,7 @@ mark {
 }
 
 
-#marquee:hover #marquee-content {
+#album-marquee:hover #album-marquee-content {
     animation-play-state: paused;
 }
 
