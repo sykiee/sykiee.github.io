@@ -1,15 +1,29 @@
-/* START SCROLL TITLE SCRIPT*/
-    msg = "";
-    msg = "bruce " + msg; position = 0;
-    function scrolltitle() {
-      document.title = msg.substring(position, msg.length) + msg.substring(0, position); position++;
-      if (position > msg.length) position = 0
-      window.setTimeout("scrolltitle()", 250);
-    }
-    scrolltitle();
-/* STOP SCRIPT */
+/* START SCROLL TITLE SCRIPT */
 
-/* START MOUSE PARALLAX SCRIPT*/
+let msg = "bruce ";
+let position = 0;
+
+function scrolltitle() {
+    document.title =
+        msg.substring(position, msg.length) +
+        msg.substring(0, position);
+
+    position++;
+
+    if (position > msg.length) {
+        position = 0;
+    }
+
+    window.setTimeout(scrolltitle, 250);
+}
+
+scrolltitle();
+
+/* END SCRIPT */
+
+
+/* START MOUSE PARALLAX SCRIPT */
+
 let backgroundNumber = parseInt(
     localStorage.getItem("backgroundNumber")
 ) || 0;
@@ -20,10 +34,7 @@ if (backgroundNumber > 3) {
     backgroundNumber = 1;
 }
 
-localStorage.setItem(
-    "backgroundNumber",
-    backgroundNumber
-);
+localStorage.setItem("backgroundNumber", backgroundNumber);
 
 document.body.style.setProperty(
     "--background-url",
@@ -41,9 +52,12 @@ document.addEventListener("mousemove", function (event) {
     );
 
 });
-/* END SCRIPT*/
 
-/* START CONTAINER WINDOW SCRIPT*/
+/* END SCRIPT */
+
+
+/* START CONTAINER WINDOW SCRIPT */
+
 const info = document.getElementById("info");
 
 const pages = {
@@ -64,14 +78,19 @@ requestAnimationFrame(() => {
     info.style.height = current.scrollHeight + "px";
 });
 
+
 function toggleContainer() {
+
     if (busy) return;
+
     let next;
+
     if (current === pages.home) {
         next = pages.about;
     } else {
         next = pages.home;
     }
+
     busy = true;
 
     document.getElementById("toggleButton").textContent =
@@ -87,9 +106,7 @@ function toggleContainer() {
         next.classList.add("show");
         next.style.opacity = "0";
 
-        const newHeight = next.scrollHeight;
-
-        info.style.height = newHeight + "px";
+        info.style.height = next.scrollHeight + "px";
 
         setTimeout(() => {
 
@@ -97,16 +114,19 @@ function toggleContainer() {
             next.style.opacity = "1";
 
             current = next;
-
             busy = false;
 
         }, resizeTime);
 
     }, fadeTime);
 }
-/* END SCRIPT*/
 
-/* START MOVEABLE ELEMENTS SCRIPT*/
+
+/* END SCRIPT */
+
+
+/* START MOVEABLE ELEMENTS SCRIPT */
+
 $(function () {
 
     $("#status").draggable({
@@ -124,4 +144,5 @@ $(function () {
     });
 
 });
+
 /* END SCRIPT */
