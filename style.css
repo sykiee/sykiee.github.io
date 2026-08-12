@@ -68,7 +68,7 @@ mark {
 
 #main {
     height: auto;
-    width: 27.4rem;
+    width: 20.4rem;
     max-width: calc(100vw - 2rem);
     position: relative;
     background-color: #ebebeb;
@@ -88,8 +88,8 @@ mark {
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
     z-index: 1;
     font-family: AnotherTag;
-    right: 13.3rem;
-    top: -1.5rem;
+    right: 6.2rem;
+    top: -1.4rem;
     transform: translateY(-50%);
     transition: transform 0.25s ease;
 }
@@ -110,8 +110,8 @@ mark {
 
 /* info */
 #info {
-    height: 3rem;
-    width: 23rem;
+    height: 8rem;
+    width: auto;
     position: relative;
     overflow: hidden;
     border-radius: 0.4rem;
@@ -132,13 +132,14 @@ mark {
 
 /* content */
 .page {
-    width: auto;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
 }
 
 .container {
-    width: 25rem;
+    width: auto;
     max-width: 100%;
     max-height: 10rem;
     padding: 0.4rem;
@@ -179,15 +180,14 @@ mark {
 /* status.cafe */
 #status {
     width: auto;
-    position: absolute;
     z-index: 10;
-    left: 55%;
-    top: 30%;
+    position: relative;
+    flex-shrink: 0;
 }
 
 #status img {
     display: block;
-    width: 15.4rem;
+    width: 9.2rem;
     height: auto;
     filter: drop-shadow(8px 8px 16px rgba(0, 0, 0, 0.5));
     cursor: pointer;
@@ -196,9 +196,9 @@ mark {
 
 #statuscafe {
     position: absolute;
-    left: 70%;
-    top: 27%;
-    transform: translateY(-50%);
+    left: 50%;
+    bottom: calc(100% + 1.3rem);
+    transform: translateX(-50%);
     width: 15rem;
     height: 3.5rem;
     padding: 5px;
@@ -215,14 +215,14 @@ mark {
 #statuscafe::after {
     content: "";
     position: absolute;
-    left: -8px;
-    top: 70%;
+    left: 70%;
+    bottom: -8px;
     width: 0;
     height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right: 8px solid #fffafb;
-    transform: translateY(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #fffafb;
+    transform: translateX(-50%);
 }
 
 #statuscafe-username {
@@ -237,7 +237,6 @@ mark {
 
 
 /* marquees */
-
 #album-marquee,
 #games-marquee {
     width: 100%;
