@@ -8,16 +8,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
     integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-  <script>
-    msg = "";
-    msg = "bruce " + msg; position = 0;
-    function scrolltitle() {
-      document.title = msg.substring(position, msg.length) + msg.substring(0, position); position++;
-      if (position > msg.length) position = 0
-      window.setTimeout("scrolltitle()", 250);
-    }
-    scrolltitle();
-  </script>
   <script src="https://kit.fontawesome.com/5c560bddc0.js" crossorigin="anonymous"></script>
 </head>
 
@@ -28,15 +18,6 @@
         <img src="images/dacougar1.png">
         <audio id="statusSound" src="audio/Cat_idle2.ogg"></audio>
         <script src="scripts/statuscafe.js"></script>
-        <script>
-          const statusImage = document.querySelector("#status img");
-          const statusSound = document.getElementById("statusSound");
-
-          statusImage.addEventListener("click", () => {
-            statusSound.currentTime = 0;
-            statusSound.play();
-          });
-        </script>
       </div>
       <div id="main">
         <h1>sykiee.me</h1>
@@ -114,8 +95,8 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-  <script src="scripts/windowscript.js"></script>
-  <script src="scripts/moveelement.js"></script>
+  <script src="scripts/sitejs.js"></script>
+  <script src="scripts/tooltips.js"></script>
 </body>
 
 </html>
