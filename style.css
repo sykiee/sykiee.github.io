@@ -64,6 +64,7 @@ mark {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    gap: 2rem;
 }
 
 #main {
@@ -141,7 +142,7 @@ mark {
 .container {
     width: auto;
     max-width: 100%;
-    max-height: 10rem;
+    max-height: 13rem;
     padding: 0.4rem;
     overflow: auto;
     box-sizing: border-box;
