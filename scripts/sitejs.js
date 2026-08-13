@@ -94,7 +94,7 @@ function toggleContainer() {
     busy = true;
 
     document.getElementById("toggleButton").textContent =
-        next === pages.about ? "▲ back" : "▼ more";
+        next === pages.about ? "▲" : "▼";
 
     current.style.transition = `opacity ${fadeTime}ms ease`;
     current.style.opacity = "0";
