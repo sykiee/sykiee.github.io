@@ -182,7 +182,9 @@ mark {
 #status {
     width: auto;
     z-index: 10;
-    position: relative;
+    top: 40%;
+    left: 57%;
+    position: absolute;
     flex-shrink: 0;
 }
 
