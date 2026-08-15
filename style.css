@@ -68,7 +68,7 @@ mark {
 
 #main {
     height: auto;
-    width: 23.4rem;
+    width: 26.4rem;
     max-width: calc(100vw - 2rem);
     position: relative;
     background-color: #ebebeb;
@@ -88,7 +88,7 @@ mark {
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
     z-index: 1;
     font-family: AnotherTag;
-    right: 9.2rem;
+    right: 11.9rem;
     top: -1.6rem;
     transform: translateY(-50%);
     transition: transform 0.25s ease;
@@ -115,7 +115,6 @@ mark {
     position: relative;
     overflow: hidden;
     border-radius: 0.4rem;
-    border: 1px dashed #000000;
     background: #fffafb;
     box-sizing: border-box;
     transition: height 0.35s cubic-bezier(.22, 1, .36, 1);
