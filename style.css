@@ -68,7 +68,7 @@ mark {
 
 #main {
     height: auto;
-    width: 26.4rem;
+    width: 27.4rem;
     max-width: calc(100vw - 2rem);
     position: relative;
     background-color: #ebebeb;
@@ -88,7 +88,7 @@ mark {
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
     z-index: 1;
     font-family: AnotherTag;
-    right: 11.9rem;
+    right: 12.9rem;
     top: -1.6rem;
     transform: translateY(-50%);
     transition: transform 0.25s ease;
@@ -111,7 +111,7 @@ mark {
 /* info */
 #info {
     height: 8rem;
-    width: auto;
+    width: 90%;
     position: relative;
     overflow: hidden;
     border-radius: 0.4rem;
@@ -160,7 +160,14 @@ mark {
 
 /* social */
 #social {
+    position: absolute;
+    height: 2.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    right: 1.3rem;
+    top: -2.4rem;
     display: flex;
+    background: #ebebeb;
+    border-radius: 0.4rem 0.4rem 0rem 0rem;
     box-sizing: border-box;
     gap: 0.75rem;
 }
@@ -168,7 +175,7 @@ mark {
 .fab,
 .fas,
 .fa-brands {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     text-decoration: none;
     color: #333635;
     display: inline-block;
