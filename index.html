@@ -15,15 +15,17 @@
   <div id="content">
     <div id="main">
       <h1>sykiee.me</h1>
-      <div id="social">
-        <div class="socialbutton"><a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank"
-            class="fab fa-square-steam"></a></div>
-        <div class="socialbutton"><a href="https://discordapp.com/users/384860738482733057" title="discord"
-            target="_blank" class="fa-brands fa-discord"></a></div>
-        <div class="socialbutton"><a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube"
-            target="_blank" class="fab fa-youtube"></a></div>
-        <div class="socialbutton"><a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank"
-            class="fab fa-lastfm-square"></a></div>
+      <div id="navbar">
+        <button id="pageSelector" type="button">
+          home <span>▼</span>
+        </button>
+        <div id="pageOptions">
+
+          <button data-target="home">home</button>
+          <button data-target="about">about</button>
+          <button data-target="interests">interests</button>
+          <button data-target="music">music</button>
+        </div>
       </div>
       <div id="info">
         <div id="home" class="content-container">
@@ -32,16 +34,31 @@
               enthusiast</p>
           </div>
         </div>
-        <div id="more" class="content-container">
+        <div id="about" class="content-container">
           <div class="container">
             <p><mark>about</mark> hello, my name is <b>bruce</b> and i like to make things.
               i'm pretty easy to talk to so don't be a stranger. :)</p>
+              <br>
             <p><mark>interests</mark>
               webdev,
               music (<b>pls send suggestions :p</b>), video games
               pokemon (<b>vgc</b>, <b>shiny hunting</b>, <b>etc</b>.),
               marine life,
               fashion (<b>streetwear</b>, <b>sneakers</b>, <b>etc</b>.), having fun</p>
+          </div>
+        </div>
+        <div id="interests" class="content-container">
+          <div class="container">
+            <p><mark>interests</mark>
+              webdev,
+              music (<b>pls send suggestions :p</b>), video games
+              pokemon (<b>vgc</b>, <b>shiny hunting</b>, <b>etc</b>.),
+              marine life,
+              fashion (<b>streetwear</b>, <b>sneakers</b>, <b>etc</b>.), having fun</p>
+          </div>
+        </div>
+        <div id="music" class="content-container">
+          <div class="container">
             <p><mark>fav albums</mark> maybe not my favorite albums, but these are the ones
               i have on repeat pretty often. :p</p>
             <div id="album-marquee">
@@ -72,14 +89,18 @@
                 </div>
               </div>
             </div>
-            </p>
           </div>
         </div>
       </div>
-      <div id="navbar">
-        <button id="toggleButton" onclick="toggleContainer()">
-          ▼
-        </button>
+      <div id="social">
+        <div class="socialbutton"><a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank"
+            class="fab fa-square-steam"></a></div>
+        <div class="socialbutton"><a href="https://discordapp.com/users/384860738482733057" title="discord"
+            target="_blank" class="fa-brands fa-discord"></a></div>
+        <div class="socialbutton"><a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube"
+            target="_blank" class="fab fa-youtube"></a></div>
+        <div class="socialbutton"><a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank"
+            class="fab fa-lastfm-square"></a></div>
       </div>
     </div>
     <div id="status">
@@ -92,6 +113,7 @@
   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
   <script src="scripts/sitejs.js"></script>
   <script src="scripts/tooltips.js"></script>
+  <script src="scripts/blobsbackground.js"></script>
 </body>
 
 </html>

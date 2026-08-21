@@ -5,6 +5,7 @@
 
 
 /* background */
+
 html,
 body {
     width: 100%;
@@ -31,16 +32,23 @@ body::before {
     background-position: center;
     background-repeat: no-repeat;
     transform: var(--background-transform);
+    filter: blur(3px) brightness(0.9);
 }
 
 
 /* text */
+
 h1 {
     margin: 0.4rem;
 }
 
 p {
     line-height: 1.5;
+}
+
+a:hover {
+    color: #474747;
+    transform: scale(1.1);
 }
 
 mark {
@@ -54,31 +62,37 @@ mark {
 
 
 /* main containers */
+
 #content {
     min-height: 100vh;
     width: 100%;
     position: relative;
     z-index: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    gap: 2rem;
+    opacity: 0;
+    transition: opacity 1.0s ease;
+}
+
+#content.loaded {
+    opacity: 1;
 }
 
 #main {
     height: auto;
-    width: 27.4rem;
+    width: 24.4rem;
     max-width: calc(100vw - 2rem);
     position: relative;
-    background-color: #ebebeb;
-    box-shadow: 1px 1px 48px -3px rgba(0, 0, 0, 0.81);
     display: flex;
     flex-direction: column;
-    border-radius: 0.4rem;
-    padding: 0.5rem;
+    padding: 0.4rem;
     box-sizing: border-box;
-    gap: 0.75rem;
+    background: #9c9b9b;
+    border-radius: 0.4rem;
+    box-shadow: 1px 1px 48px -3px rgba(0, 0, 0, 0.81);
 }
 
 #main h1 {
@@ -88,14 +102,19 @@ mark {
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
     z-index: 1;
     font-family: AnotherTag;
-    right: 12.9rem;
+    right: -0.9rem;
     top: -1.6rem;
     transform: translateY(-50%);
     transition: transform 0.25s ease;
 }
 
+#main h1:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
 
 /* buttons */
+
 #main button,
 #navbar button {
     border: none;
@@ -109,32 +128,15 @@ mark {
 
 
 /* info */
+
 #info {
-    height: 8rem;
-    width: 90%;
-    position: relative;
+    width: 98%;
+    padding: 0.4rem;
+    box-sizing: border-box;
     overflow: hidden;
-    border-radius: 0.4rem;
     background: #fffafb;
-    box-sizing: border-box;
+    border-radius: 0.4rem;
     transition: height 0.35s cubic-bezier(.22, 1, .36, 1);
-}
-
-
-/* navbar */
-#navbar {
-    display: flex;
-    z-index: 1;
-    box-sizing: border-box;
-}
-
-
-/* content */
-.page {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    position: relative;
 }
 
 .container {
@@ -148,6 +150,106 @@ mark {
     border-radius: 0.4rem;
 }
 
+
+/* navbar */
+
+#navbar {
+    top: -25%;
+    left: 4%;
+    position: absolute;
+    display: inline-block;
+    z-index: 10;
+    box-sizing: border-box;
+    background: #e9e6e7;
+    border: 0.3rem solid #9c9b9b;
+    box-shadow: 1px 1px 48px -3px rgba(0, 0, 0, 0.81);
+    border-radius: 0.4rem;
+    padding: 0.2rem 0.5rem;
+}
+
+#pageSelector {
+    border: none;
+    padding: 0.5rem 0.7rem;
+    background: #fffafb;
+    border-radius: 0.4rem;
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        border-radius 0.25s ease;
+}
+
+#pageSelector:hover {
+    color: #474747;
+    transform: scale(1.05);
+}
+
+#pageSelector span {
+    display: inline-block;
+    margin-left: 0.3rem;
+    transition: transform 0.25s ease;
+}
+
+#navbar.open #pageSelector span {
+    transform: rotate(180deg);
+}
+
+#pageOptions {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 0.25rem);
+    min-width: 100%;
+    padding: 0.3rem;
+    box-sizing: border-box;
+    background: #fffafb;
+    border-radius: 0.4rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-0.5rem) scaleY(0.95);
+    transform-origin: top;
+    transition:
+        opacity 0.2s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+}
+
+#pageOptions button.hidden {
+    display: none;
+}
+
+#navbar.open #pageOptions {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scaleY(1);
+}
+
+#pageOptions button {
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    padding: 0.4rem 0.6rem;
+    text-align: left;
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition:
+        background-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+#pageOptions button:hover {
+    color: #474747;
+    background-color: #ebebeb;
+    transform: translateX(0.15rem);
+}
+
+
+/* content */
+
 .content-container {
     display: none;
     opacity: 0;
@@ -159,15 +261,16 @@ mark {
 
 
 /* social */
+
 #social {
-    position: absolute;
-    height: 2.5rem;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-    right: 1.3rem;
-    top: -2.4rem;
     display: flex;
-    background: #ebebeb;
-    border-radius: 0.4rem 0.4rem 0rem 0rem;
+    position: absolute;
+    left: 5%;
+    top: 95%;
+    border-radius: 0.4rem;
+    padding: 0.4rem;
+    background: #fffafb;
+    border: 0.3rem solid #9c9b9b;
     box-sizing: border-box;
     gap: 0.75rem;
 }
@@ -184,6 +287,7 @@ mark {
 
 
 /* status.cafe */
+
 #status {
     width: auto;
     z-index: 10;
@@ -191,6 +295,7 @@ mark {
     left: 57%;
     position: absolute;
     flex-shrink: 0;
+    transition: opacity 0.2s ease;
 }
 
 #status img {
@@ -200,6 +305,10 @@ mark {
     filter: drop-shadow(8px 8px 16px rgba(0, 0, 0, 0.5));
     cursor: pointer;
     transition: transform 0.25s ease;
+}
+
+#status img:hover {
+    transform: scale(1.1);
 }
 
 #statuscafe {
@@ -233,6 +342,11 @@ mark {
     transform: translateX(-50%);
 }
 
+#status:hover #statuscafe {
+    opacity: 1;
+    visibility: visible;
+}
+
 #statuscafe-username {
     margin-bottom: 10px;
     font-weight: bold;
@@ -245,6 +359,7 @@ mark {
 
 
 /* marquees */
+
 #album-marquee,
 #games-marquee {
     width: 100%;
@@ -280,6 +395,7 @@ mark {
 }
 
 @keyframes marquee {
+
     from {
         transform: translateX(0);
     }
@@ -287,49 +403,21 @@ mark {
     to {
         transform: translateX(-50%);
     }
+
 }
 
 
 /* tooltip */
+
 #s-m-t-tooltip {
     max-width: 300px;
     z-index: 10;
     margin: 24px 14px;
-    padding: 0.4em;
+    padding: 0.2em 0.5em;
     font-size: 0.8em;
-    background-color: #474747;
+    background-color: #2a2a2a;
     border: 1px solid #fffafb;
     color: #fffafb;
     border-radius: 5px;
     box-sizing: border-box;
-}
-
-
-/* hover effects */
-a:hover {
-    color: #474747;
-    transform: scale(1.1);
-}
-
-#main h1:hover {
-    transform: translateY(-50%) scale(1.1);
-}
-
-mark:hover {
-    transform: scale(1.1);
-}
-
-#navbar button:hover,
-#navbar button.active {
-    color: #474747;
-    transform: scale(1.15);
-}
-
-#status img:hover {
-    transform: scale(1.1);
-}
-
-#status:hover #statuscafe {
-    opacity: 1;
-    visibility: visible;
 }
