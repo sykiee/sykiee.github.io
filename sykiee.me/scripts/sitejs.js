@@ -1,7 +1,9 @@
 /* a lot of this is poached from around the internet and shit,
    but works for my site :) */
 
-/* ──────── START CLICK SOUND SCRIPT ─────────────────────────────── */
+
+
+/* ──────── START CLICK SOUND SCRIPT ────────────────────────────────────── */
 
 const clickSound = document.getElementById("mouseclick");
 
@@ -12,7 +14,9 @@ document.addEventListener("click", function () {
 
 });
 
-/* ──────── END CLICK SOUND SCRIPT ──────────────────────────────── */
+/* ──────── END CLICK SOUND SCRIPT ─────────────────────────────────────── */
+
+
 
 /* ──────── START BACKGROUND CHANGE SCRIPT ─────────────────────────────── */
 
@@ -40,38 +44,38 @@ document.body.style.setProperty(
 /* ──────── END BACKGROUND CHANGE SCRIPT ──────────────────────────────── */
 
 
-/* ──────── START CONTAINER WINDOW SCRIPT ─────────────────────── */
 
-// page selector for gay little carrd.co function lol
+/* ──────── START UPDATE BOX SCRIPT ───────────────────────────────────── */
+
+const updates = document.getElementById("updates");
+const updatesHead = updates.querySelector(".updates-head");
+
+updatesHead.addEventListener("click", function () {
+
+    updates.classList.toggle("open");
+
+});
+
+/* ──────── END UPDATE BOX SCRIPT ────────────────────────────────────── */
+
+
+
+/* ──────── START CONTAINER WINDOW SCRIPT ────────────────────────────── */
+
+// gay little scroll thingy
 
 const info = document.getElementById("info");
 
 const pages = {
     home: document.getElementById("home"),
     about: document.getElementById("about"),
+    interests: document.getElementById("interests"),
     music: document.getElementById("music")
 };
 
 const navbar = document.getElementById("navbar");
 const selector = document.getElementById("pageSelector");
 const options = document.querySelectorAll("#pageOptions button");
-
-const fadeTime = 250;
-const resizeTime = 350;
-
-let current = pages.home;
-let busy = false;
-
-
-current.classList.add("show");
-current.style.opacity = "1";
-
-requestAnimationFrame(function () {
-
-    info.style.height =
-        current.scrollHeight + "px";
-
-});
 
 
 function updateOptions(currentPage) {
@@ -93,8 +97,6 @@ updateOptions("home");
 
 selector.addEventListener("click", function () {
 
-    if (busy) return;
-
     navbar.classList.toggle("open");
 
 });
@@ -104,10 +106,29 @@ options.forEach(function (option) {
 
     option.addEventListener("click", function () {
 
-        const pageName =
-            this.dataset.target;
+        const pageName = this.dataset.target;
+        const target = pages[pageName];
 
-        showPage(pageName);
+        if (!target) return;
+
+
+        selector.innerHTML =
+            `${pageName} <span>▼</span>`;
+
+
+        updateOptions(pageName);
+
+
+        const top =
+            target.getBoundingClientRect().top -
+            info.getBoundingClientRect().top +
+            info.scrollTop;
+
+        info.scrollTo({
+            top: top,
+            behavior: "smooth"
+        });
+
 
         navbar.classList.remove("open");
 
@@ -116,66 +137,11 @@ options.forEach(function (option) {
 });
 
 
-function showPage(pageName) {
-
-    if (busy) return;
-
-    const next = pages[pageName];
-
-    if (!next || current === next) {
-        return;
-    }
-
-    busy = true;
+/* ──────── END CONTAINER WINDOW SCRIPT ──────────────────────────────── */
 
 
-    selector.innerHTML =
-        `${pageName} <span>▼</span>`;
 
-
-    updateOptions(pageName);
-
-
-    current.style.transition =
-        `opacity ${fadeTime}ms ease`;
-
-    current.style.opacity = "0";
-
-
-    setTimeout(function () {
-
-        current.classList.remove("show");
-
-
-        next.classList.add("show");
-        next.style.opacity = "0";
-
-
-        info.style.height =
-            next.scrollHeight + "px";
-
-
-        setTimeout(function () {
-
-            next.style.transition =
-                `opacity ${fadeTime}ms ease`;
-
-            next.style.opacity = "1";
-
-
-            current = next;
-            busy = false;
-
-        }, resizeTime);
-
-    }, fadeTime);
-
-}
-
-/* ──────── END SCRIPT ───────────────────────── */
-
-
-/* ──────── START DROPDOWN MENU SCRIPT ───────────────────────── */
+/* ──────── START DROPDOWN MENU SCRIPT ───────────────────────────────── */
 
 // dropdown menu lol
 
@@ -191,4 +157,4 @@ $(document).ready(function () {
 
 });
 
-/* ──────── END DROPDOWN MENU SCRIPT ─────────────────────────── */
+/* ──────── END DROPDOWN MENU SCRIPT ────────────────────────────────── */

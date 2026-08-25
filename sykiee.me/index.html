@@ -20,8 +20,12 @@
       </div>
       <div class="updates-body">
         <p>
+          <b>8/25/26</b>
+          site js updated, content formatting changed, general code cleanup!
+        </p>
+        <p>
           <b>8/24/26</b>
-          update box!
+          update box created!
         </p>
         <p>
           <b>8/23/26</b>
@@ -32,9 +36,8 @@
     <div id="main">
       <h1>sykiee.me</h1>
       <div id="info">
-        <div id="home" class="content-container">
-          <div class="container"
-            style="display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center;">
+        <div id="home">
+          <div class="container">
             <mark>bruce / grasscanons, 23, he / him, infp</mark>
             <p>graphic designer, (amateur) web dev, shark
               enthusiast</p>
@@ -50,11 +53,14 @@
             </div>
           </div>
         </div>
-        <div id="about" class="content-container">
+        <div id="about">
           <div class="container">
             <p><mark>about</mark> hello, my name is <b>bruce</b> and i like to make things.
               i'm pretty easy to talk to so don't be a stranger. :)</p>
-            <br>
+          </div>
+        </div>
+        <div id="interests">
+          <div class="container">
             <p><mark>interests</mark>
               webdev,
               music (<b>pls send suggestions :p</b>), video games
@@ -63,7 +69,7 @@
               fashion (<b>streetwear</b>, <b>sneakers</b>, <b>etc</b>.), having fun and shit</p>
           </div>
         </div>
-        <div id="music" class="content-container">
+        <div id="music">
           <div class="container">
             <p><mark>fav albums</mark> maybe not my favorite albums, but these are the ones
               i have on repeat pretty often. :p</p>
@@ -111,6 +117,7 @@
         <div id="pageOptions">
           <button data-target="home">home</button>
           <button data-target="about">about</button>
+          <button data-target="interests">interests</button>
           <button data-target="music">music</button>
         </div>
       </div>
@@ -121,16 +128,33 @@
       <script src="scripts/statuscafe.js"></script>
     </div>
     <div id="footer">
-        <p><div id="created"></div>
+      <div id="footer-marquee">
+        <div id="footer-marquee-content">
+          <div class="footer-marquee-group">
+            <img src="images/gc_bourbonstreet.gif">
+            <a href="https://brainmade.org/" target="_blank"><img src="images/88x31-light.png"></a>
+            <a href="https://nekoweb.org/" target="_blank"><img src="images/button11.gif"></a><!-- button by milkyway.moe -->
+          </div>
+          <div class="footer-marquee-group">
+            <img src="images/gc_bourbonstreet.gif">
+            <a href="https://brainmade.org/" target="_blank"><img src="images/88x31-light.png"></a>
+            <a href="https://nekoweb.org/" target="_blank"><img src="images/button11.gif"></a><!-- button by milkyway.moe -->
+          </div>
+        </div>
+      </div>
+      <div id="footer-info">
+        <div id="created"></div>
         <div id="visitors"></div>
-        <div>hosted by <a href="https://nekoweb.org/">nekoweb</a>.</p></div>
+        <div>hosted by <a href="https://nekoweb.org/">nekoweb</a>.</div>
+      </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-    <script src="scripts\nekowebstats.js"></script>
-    <script src="scripts/sitejs.js"></script>
-    <script src="scripts/tooltips.js"></script>
-    <script src="scripts/blobsbackground.js"></script>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <script src="scripts\nekowebstats.js"></script>
+  <script src="scripts/sitejs.js"></script>
+  <script src="scripts/tooltips.js"></script>
+  <script src="scripts/blobsbackground.js"></script>
 </body>
 
 </html>
