@@ -40,30 +40,36 @@ body::before {
 
 h1 {
     margin: 0.4rem;
+    font-weight: 900;
 }
 
 p {
     line-height: 1.5;
 }
 
-a {
-    color: #fffafb;
-    font-weight: bold;
-}
-
-a:hover {
-    color: #474747;
-    transform: scale(1.1);
-}
-
 mark {
     border-radius: 0.4rem;
     background-color: #6A706E;
     color: #FFFAFB;
-    font-weight: bold;
+    font-weight: 900;
     padding: 0.20rem 0.35rem;
 }
 
+.row-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.column-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+}
 
 /* main containers */
 
@@ -81,7 +87,7 @@ mark {
 
 #main {
     height: auto;
-    width: 25.4rem;
+    width: 23.6rem;
     max-width: calc(100vw - 2rem);
     position: relative;
     display: flex;
@@ -90,7 +96,7 @@ mark {
     box-sizing: border-box;
     border: 1px solid #000000;
     border-radius: 0.4rem;
-    background: url(images/main-background.jpg);
+    background: #ebebeb;
     background-size: cover;
     box-shadow: 1px 1px 48px -3px rgba(0, 0, 0, 0.81);
 }
@@ -102,7 +108,7 @@ mark {
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
     z-index: 1;
     font-family: AnotherTag;
-    right: 9.7rem;
+    right: 7.8rem;
     top: -1.7rem;
     transform: translateY(-50%);
     transition: transform 0.25s ease;
@@ -168,7 +174,7 @@ mark {
 
 #info {
     width: 100%;
-    height: 13rem;
+    height: 22.4rem;
     padding: 0.4rem;
     box-sizing: border-box;
     overflow-y: auto;
@@ -187,7 +193,9 @@ mark {
     border-radius: 0.4rem;
 }
 
-#home, #about, #music {
+#home,
+#about,
+#music {
     min-height: 100%;
     box-sizing: border-box;
 }
@@ -214,7 +222,7 @@ mark {
 
 #navbar {
     width: 8rem;
-    top: 94%;
+    top: 96%;
     left: 34%;
     position: absolute;
     display: inline-block;
@@ -330,8 +338,8 @@ mark {
 
 #status {
     width: auto;
-    z-index: -1;
-    top: 30%;
+    z-index: 1;
+    top: 35%;
     left: 58%;
     position: absolute;
     flex-shrink: 0;
@@ -340,7 +348,7 @@ mark {
 
 #status img {
     display: block;
-    width: 9.5rem;
+    width: 11.5rem;
     height: auto;
     cursor: pointer;
     transition: transform 0.25s ease;
@@ -405,7 +413,7 @@ mark {
     flex-direction: column;
     align-items: center;
     color: #fffafb;
-    top: 72%;
+    top: 79%;
     gap: 0.4rem;
 }
 
@@ -413,6 +421,16 @@ mark {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+}
+
+#footer-info a {
+    color: #fffafb;
+    font-weight: bold;
+}
+
+#footer-footer a:hover {
+    color: #474747;
+    transform: scale(1.1);
 }
 
 #footer-marquee {
