@@ -47,6 +47,16 @@ p {
     line-height: 1.5;
 }
 
+a {
+    color: #fffafb;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #474747;
+    transform: scale(1.1);
+}
+
 mark {
     border-radius: 0.4rem;
     background-color: #6A706E;
@@ -428,7 +438,7 @@ mark {
     font-weight: bold;
 }
 
-#footer-footer a:hover {
+#footer-info a:hover {
     color: #474747;
     transform: scale(1.1);
 }
