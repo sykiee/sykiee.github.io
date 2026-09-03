@@ -1,6 +1,5 @@
 /* a lot of this is poached from around the internet and shit,
-   but works for my site :) feel free to take whatever you want*/
-
+   but works for my site :) */
 
 
 
@@ -9,14 +8,13 @@
 // makes the cute little clicky sounds
 
 const clickSound = document.getElementById("mouseclick");
-document.addEventListener("click", function() {
-	clickSound.currentTime = 0;
-	clickSound.play();
+document.addEventListener("click", function () {
+    clickSound.currentTime = 0;
+    clickSound.play();
 });
 
 
 /* ──────── END CLICK SOUND SCRIPT ─────────────────────────────────────── */
-
 
 
 
@@ -25,21 +23,21 @@ document.addEventListener("click", function() {
 // change background on site refresh
 
 let backgroundNumber =
-	parseInt(localStorage.getItem("backgroundNumber")) || 0;
+    parseInt(localStorage.getItem("backgroundNumber")) || 0;
 backgroundNumber++;
 
 if (backgroundNumber > 3) {
-	backgroundNumber = 1;
+    backgroundNumber = 1;
 }
 
 localStorage.setItem(
-	"backgroundNumber",
-	backgroundNumber
+    "backgroundNumber",
+    backgroundNumber
 );
 
 document.body.style.setProperty(
-	"--background-url",
-	`url("images/background-${backgroundNumber}.jpg")`
+    "--background-url",
+    `url("images/background-${backgroundNumber}.jpg")`
 );
 
 
@@ -47,141 +45,191 @@ document.body.style.setProperty(
 
 
 
+/* ──────── START CONTAINER WINDOW SCRIPT ─────────────────────── */
 
-/* ──────── START LANDING CHANGE SCRIPT ───────────────────────────────── */
+// page selector for gay little carrd.co function lol
 
-// landing page shit
+const info = document.getElementById("page-container");
 
-const landing = document.getElementById("landing");
-const logo = document.getElementById("logo");
-const main = document.getElementById("main");
-const status = document.getElementById("status");
-
-let entered = false;
-
-logo.addEventListener("click", function() {
-	if (!entered) {
-		entered = true;
-		landing.classList.add("hide");
-		main.classList.add("show");
-		status.classList.add("show");
-		logo.classList.add("main-position");
-
-	} else {
-		entered = false;
-		main.classList.remove("show");
-		status.classList.remove("show");
-		logo.classList.remove("main-position");
-		landing.classList.remove("hide");
-
-	}
-
-});
-
-
-/* ──────── END LANDING CHANGE SCRIPT ─────────────────────────────────── */
-
-
-
-
-/* ──────── START UPDATE BOX SCRIPT ───────────────────────────────────── */
-
-// cool little update box thingy
-
-const updates = document.getElementById("updates");
-const updatesHead = updates.querySelector(".updates-head");
-
-updatesHead.addEventListener("click", function() {
-	updates.classList.toggle("open");
-
-});
-
-
-/* ──────── END UPDATE BOX SCRIPT ────────────────────────────────────── */
-
-
-
-
-/* ──────── START CONTAINER WINDOW SCRIPT ────────────────────────────── */
-
-// gay little scroll thingy for my stupid little interests and stuff
-
-const info = document.getElementById("info");
 const pages = {
-	home: document.getElementById("home"),
-	about: document.getElementById("about"),
-	interests: document.getElementById("interests"),
-	music: document.getElementById("music")
+    home: document.getElementById("home"),
+    about: document.getElementById("info")
 };
 
+const sections = {
+    "section-about": document.getElementById("section-about"),
+    "section-interests": document.getElementById("section-interests"),
+    "section-music": document.getElementById("section-music")
+};
+
+const header = document.getElementById("logo");
 const navbar = document.getElementById("navbar");
 const selector = document.getElementById("pageSelector");
 const options = document.querySelectorAll("#pageOptions button");
+const aboutScroll = document.getElementById("infoScroll");
 
-function updateOptions(currentPage) {
-	options.forEach(function(option) {
-		if (option.dataset.target === currentPage) {
-			option.style.display = "none";
-		} else {
-			option.style.display = "";
-		}
-	});
+const fadeTime = 250;
+const resizeTime = 350;
+
+const ABOUT_HEIGHT =
+    (19.6 * parseFloat(getComputedStyle(document.documentElement).fontSize)) +
+    (parseFloat(getComputedStyle(info).paddingTop) * 2);
+
+let current = pages.home;
+let currentSection = "section-about";
+let busy = false;
+
+
+current.classList.add("show");
+current.style.opacity = "1";
+info.style.height = info.scrollHeight + "px";
+
+
+function updateOptions(currentTarget) {
+    options.forEach(function (option) {
+        if (option.dataset.target === currentTarget) {
+            option.style.display = "none";
+        } else {
+            option.style.display = "";
+        }
+    });
 }
 
-updateOptions("home");
+updateOptions(currentSection);
 
-selector.addEventListener("click", function() {
-	navbar.classList.toggle("open");
-});
 
-options.forEach(function(option) {
-	option.addEventListener("click", function() {
-
-		const pageName = this.dataset.target;
-		const target = pages[pageName];
-		if (!target) return;
-
-		selector.innerHTML =
-			`${pageName} <span>▼</span>`;
-
-		updateOptions(pageName);
-
-		const top =
-			target.getBoundingClientRect().top -
-			info.getBoundingClientRect().top +
-			info.scrollTop;
-		info.scrollTo({
-			top: top,
-			behavior: "smooth"
-		});
-
-		navbar.classList.remove("open");
-
-	});
-
+header.addEventListener("click", function () {
+    const nextPage = current === pages.home ? "about" : "home";
+    showPage(nextPage);
 });
 
 
-/* ──────── END CONTAINER WINDOW SCRIPT ──────────────────────────────── */
+selector.addEventListener("click", function () {
+    navbar.classList.toggle("open");
+});
+
+
+options.forEach(function (option) {
+
+    option.addEventListener("click", function () {
+
+        const sectionName = this.dataset.target;
+        const target = sections[sectionName];
+        if (!target) return;
+
+        function scrollToSection() {
+
+            const top =
+                target.getBoundingClientRect().top -
+                aboutScroll.getBoundingClientRect().top +
+                aboutScroll.scrollTop;
+
+            aboutScroll.scrollTo({
+                top: top,
+                behavior: "smooth"
+            });
+
+            selector.innerHTML =
+                `${sectionName.replace("section-", "")} <span>▼</span>`;
+
+            updateOptions(sectionName);
+            currentSection = sectionName;
+
+        }
+
+        navbar.classList.remove("open");
+
+        if (current !== pages.about) {
+            showPage("about");
+            setTimeout(scrollToSection, fadeTime + resizeTime);
+        } else {
+            scrollToSection();
+        }
+
+    });
+
+});
+
+
+function showPage(pageName) {
+
+    if (busy) return;
+
+    const next = pages[pageName];
+
+    if (!next || current === next) {
+        return;
+    }
+
+    busy = true;
+
+    info.style.height = info.getBoundingClientRect().height + "px";
+
+    current.style.transition = `opacity ${fadeTime}ms ease`;
+    current.style.opacity = "0";
+
+    if (pageName !== "about") {
+        navbar.classList.remove("show");
+    }
+
+    setTimeout(function () {
+
+        current.classList.remove("show");
+
+        next.classList.add("show");
+        next.style.opacity = "0";
+
+        if (pageName === "about") {
+            info.classList.remove("scrollable");
+        }
+
+        const targetHeight =
+            pageName === "about" ? ABOUT_HEIGHT : next.scrollHeight;
+
+        requestAnimationFrame(function () {
+            info.style.height = targetHeight + "px";
+            header.classList.toggle("info-position", pageName === "about");
+            if (pageName === "about") {
+                info.classList.add("scrollable");
+            }
+        });
+
+        setTimeout(function () {
+
+            next.style.transition = `opacity ${fadeTime}ms ease`;
+            next.style.opacity = "1";
+
+            current = next;
+            busy = false;
+
+            if (pageName === "about") {
+                navbar.classList.add("show");
+            }
+
+        }, resizeTime);
+
+    }, fadeTime);
+
+}
+
+/* ──────── END SCRIPT ───────────────────────── */
 
 
 
-
-/* ──────── START DROPDOWN MENU SCRIPT ───────────────────────────────── */
+/* ──────── START DROPDOWN MENU SCRIPT ───────────────────────── */
 
 // dropdown menu lol
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-	$(".about_body").hide();
+    $(".about_body").hide();
 
-	$(".about_head").click(function() {
+    $(".about_head").click(function () {
 
-		$(this).next(".about_body").slideToggle("active");
+        $(this).next(".about_body").slideToggle("active");
 
-	});
+    });
 
 });
 
-
-/* ──────── END DROPDOWN MENU SCRIPT ────────────────────────────────── */
+/* ──────── END DROPDOWN MENU SCRIPT ─────────────────────────── */

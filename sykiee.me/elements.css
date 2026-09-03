@@ -9,35 +9,30 @@
     text-align: center;
     background-image: url(https://bruce.nekoweb.org/sykiee.me/images/dacougar2.png); /* Only nekoweb URLs allowed, use full url to your site like https://example.nekoweb.org/images/coolbg.png */
     background-repeat: no-repeat;
-    background-size: cover;
     border-radius: 5px;
-    border: 2px solid #000000;
-    color: #000000;
+    color: #b08271;
     font-size: 12px;
 }
 .site-box > a > p {
-    color: #000000;
+    color: white;
     font-weight: bold;
 }
 .site-box > a > span {
-    color: #000000;
-}
-.site-box .sitefeature {
-  display: none; /* disable nekoweb's rendering */
+    color: white;
 }
 
 /* Style for your 'Follow on Nekoweb' button (<iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28"></iframe>) */
 .follow {
-    color: #000000;
+    
 }
 
 /* Style for your post box (must start with ".post-box") */
 .post-box {
-    background-color: #fffafb;
+    background-color: #fff2cc;
     border: 4px solid white;
     padding: 15px;
     border-radius: 5px;
-    color: #000000;
+    color: #634c53;
     font-weight: normal;
 }
 
