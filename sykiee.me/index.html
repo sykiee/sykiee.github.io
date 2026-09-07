@@ -14,90 +14,70 @@
 <body>
   <audio id="mouseclick" src="audio/click.mp3" preload="auto"></audio>
   <div id="content">
-    <div id="logo">sykiee.me</div>
     <div id="main">
+      <div id="logo" class="home-active">sykiee.me</div>
       <div id="page-container">
         <div id="home" class="content-container show">
-          <div class="container"
-            style="display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center;">
-            <mark>bruce / grasscanons, 23, he / him, infp</mark>
-            <p>graphic designer, (amateur) web dev, shark
-              enthusiast</p>
-            <div id="social">
-              <div class="socialbutton"><a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank"
-                  class="fab fa-square-steam"></a></div>
-              <div class="socialbutton"><a href="https://discordapp.com/users/384860738482733057" title="discord"
-                  target="_blank" class="fa-brands fa-discord"></a></div>
-              <div class="socialbutton"><a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?"
-                  title="youtube" target="_blank" class="fab fa-youtube"></a></div>
-              <div class="socialbutton"><a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank"
-                  class="fab fa-lastfm-square"></a></div>
-            </div>
+          <div class="container">
+            <mark>graphic designer, (amateur) web dev, shark enthusiast</mark>
           </div>
         </div>
-        <div id="info" class="content-container">
-          <div class="container" id="infoScroll">
-            <section id="section-about">
-              <p><mark>about</mark> hello, my name is <b>bruce</b> and i like to make things.
-                i'm pretty easy to talk to so don't be a stranger. :)</p>
-              <div class="column-wrapper">
-                <span>my site button:</span>
-                <div class="row-wrapper">
-                  <a href="https://sykiee.me/buttons/sykieebutton.png" download="sykiee">
-                    <img src="buttons/sykieebutton.png" title="click to download me">
-                  </a>
-                  <textarea readonly="" rows="4" cols="12">
-                            <a href="https://sykiee.me" target="_blank"><img src="PATH-TO-IMAGE-HERE" title="sykiee.me"></a>
-									</textarea>
+        <div id="about" class="content-container">
+          <div class="container">
+            <p><mark>about</mark> hi, my name is <b>bruce</b>.
+              i'm a (amatuer) web dev, photographer and graphic designer. i really like learning new things and
+              meeting new people.
+              i try to be as friendly as possible! so don't be too intimidated</p>
+          </div>
+        </div>
+        <div id="interests" class="content-container">
+          <div class="container">
+            <p><mark>interests</mark>
+              webdev,
+              music (<b>pls send suggestions :p</b>), video games
+              pokemon (<b>vgc</b>, <b>shiny hunting</b>, <b>etc</b>.),
+              marine life,
+              fashion (<b>streetwear</b>, <b>sneakers</b>, <b>etc</b>.), having fun</p>
+          </div>
+        </div>
+        <div id="music" class="content-container">
+          <div class="container">
+            <p><mark>fav albums</mark> maybe not my favorite albums, but these are the ones
+              i have on repeat pretty often. :p</p>
+            <div id="album-marquee">
+              <div id="album-marquee-content">
+                <div class="marquee-group">
+                  <img src="images/album1.jpg" title="the powers that b - death grips">
+                  <img src="images/album2.jpg" title="all hail west texas - the mountain goats">
+                  <img src="images/album3.jpg" title="under the western freeway - grandaddy">
+                  <img src="images/album4.jpg" title="either/or - elliott smith">
+                  <img src="images/album5.jpg" title="house of sugar - alex g">
+                  <img src="images/album6.jpg" title="headlights - alex g">
+                  <img src="images/album7.jpg" title="heroin man - cherubs">
+                  <img src="images/album8.jpg" title="dusk at cubist castle - the olivia tremor control">
+                  <img src="images/album9.jpg" title="it's not the same - floor">
+                  <img src="images/album10.jpg" title="i can hear the heart beating as one - yo la tengo">
+                  <img src="images/album11.jpg" title="13 songs - fugazi">
+                  <img src="images/album12.jpg" title="atom heart mother - pink floyd">
+                  <img src="images/album13.jpg" title="loveless - my bloody valentine">
+                </div>
+                <div class="marquee-group">
+                  <img src="images/album1.jpg" title="the powers that b - death grips">
+                  <img src="images/album2.jpg" title="all hail west texas - the mountain goats">
+                  <img src="images/album3.jpg" title="under the western freeway - grandaddy">
+                  <img src="images/album4.jpg" title="either/or - elliott smith">
+                  <img src="images/album5.jpg" title="house of sugar - alex g">
+                  <img src="images/album6.jpg" title="headlights - alex g">
+                  <img src="images/album7.jpg" title="heroin man - cherubs">
+                  <img src="images/album8.jpg" title="dusk at cubist castle - the olivia tremor control">
+                  <img src="images/album9.jpg" title="it's not the same - floor">
+                  <img src="images/album10.jpg" title="i can hear the heart beating as one - yo la tengo">
+                  <img src="images/album11.jpg" title="13 songs - fugazi">
+                  <img src="images/album12.jpg" title="atom heart mother - pink floyd">
+                  <img src="images/album13.jpg" title="loveless - my bloody valentine">
                 </div>
               </div>
-            </section>
-            <section id="section-interests">
-              <p><mark>interests</mark>
-                webdev,
-                music (<b>pls send suggestions :p</b>), video games
-                pokemon (<b>vgc</b>, <b>shiny hunting</b>, <b>etc</b>.),
-                marine life,
-                fashion (<b>streetwear</b>, <b>sneakers</b>, <b>etc</b>.), having fun</p>
-            </section>
-            <section id="section-music">
-              <p><mark>fav albums</mark> maybe not my favorite albums, but these are the ones
-                i have on repeat pretty often. :p</p>
-              <div id="album-marquee">
-                <div id="album-marquee-content">
-                  <div class="marquee-group">
-                    <img src="images/album1.jpg" title="the powers that b - death grips">
-                    <img src="images/album2.jpg" title="all hail west texas - the mountain goats">
-                    <img src="images/album3.jpg" title="under the western freeway - grandaddy">
-                    <img src="images/album4.jpg" title="either/or - elliott smith">
-                    <img src="images/album5.jpg" title="house of sugar - alex g">
-                    <img src="images/album6.jpg" title="headlights - alex g">
-                    <img src="images/album7.jpg" title="heroin man - cherubs">
-                    <img src="images/album8.jpg" title="dusk at cubist castle - the olivia tremor control">
-                    <img src="images/album9.jpg" title="it's not the same - floor">
-                    <img src="images/album10.jpg" title="i can hear the heart beating as one - yo la tengo">
-                    <img src="images/album11.jpg" title="13 songs - fugazi">
-                    <img src="images/album12.jpg" title="atom heart mother - pink floyd">
-                    <img src="images/album13.jpg" title="loveless - my bloody valentine">
-                  </div>
-                  <div class="marquee-group">
-                    <img src="images/album1.jpg" title="the powers that b - death grips">
-                    <img src="images/album2.jpg" title="all hail west texas - the mountain goats">
-                    <img src="images/album3.jpg" title="under the western freeway - grandaddy">
-                    <img src="images/album4.jpg" title="either/or - elliott smith">
-                    <img src="images/album5.jpg" title="house of sugar - alex g">
-                    <img src="images/album6.jpg" title="headlights - alex g">
-                    <img src="images/album7.jpg" title="heroin man - cherubs">
-                    <img src="images/album8.jpg" title="dusk at cubist castle - the olivia tremor control">
-                    <img src="images/album9.jpg" title="it's not the same - floor">
-                    <img src="images/album10.jpg" title="i can hear the heart beating as one - yo la tengo">
-                    <img src="images/album11.jpg" title="13 songs - fugazi">
-                    <img src="images/album12.jpg" title="atom heart mother - pink floyd">
-                    <img src="images/album13.jpg" title="loveless - my bloody valentine">
-                  </div>
-                </div>
-              </div>
-            </section>
+            </div>
           </div>
         </div>
       </div>
@@ -106,51 +86,32 @@
           about <span>▼</span>
         </button>
         <div id="pageOptions">
-          <button data-target="section-about">about</button>
-          <button data-target="section-interests">interests</button>
-          <button data-target="section-music">music</button>
+          <button data-target="about">about</button>
+          <button data-target="interests">interests</button>
+          <button data-target="music">music</button>
         </div>
       </div>
+    </div>
+    <div id="social">
+      <div class="socialbutton"><a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank"
+          class="fab fa-square-steam"></a></div>
+      <div class="socialbutton"><a href="https://discordapp.com/users/384860738482733057" title="discord"
+          target="_blank" class="fa-brands fa-discord"></a></div>
+      <div class="socialbutton"><a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube"
+          target="_blank" class="fab fa-youtube"></a></div>
+      <div class="socialbutton"><a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank"
+          class="fab fa-lastfm-square"></a></div>
     </div>
     <div id="status">
       <img src="images/dacougar3.gif">
       <audio id="statusSound" src="audio/Cat_idle2.ogg"></audio>
       <script src="scripts/statuscafe.js"></script>
     </div>
-    <div id="footer">
-      <div id="footer-marquee">
-        <div id="footer-marquee-content">
-          <div class="footer-marquee-group">
-            <img src="buttons/gc_bourbonstreet.gif">
-            <img src="buttons/yakunekobutton.png">
-            <a href="https://brainmade.org/" target="_blank"><img src="buttons/88x31-light.png"></a>
-            <img src="buttons/graphicdesign.png">
-            <a href="https://nekoweb.org/" target="_blank"><img
-                src="buttons/button11.gif"></a><!-- button by milkyway.moe -->
-          </div>
-          <div class="footer-marquee-group">
-            <img src="buttons/gc_bourbonstreet.gif">
-            <img src="buttons/yakunekobutton.png">
-            <a href="https://brainmade.org/" target="_blank"><img src="buttons/88x31-light.png"></a>
-            <img src="buttons/graphicdesign.png">
-            <a href="https://nekoweb.org/" target="_blank"><img
-                src="buttons/button11.gif"></a><!-- button by milkyway.moe -->
-          </div>
-        </div>
-      </div>
-      <div id="footer-info">
-        <div id="created"></div>
-        <div id="visitors"></div>
-        <div>hosted by <a href="https://nekoweb.org/">nekoweb</a>.</div>
-      </div>
-    </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-  <script src="scripts\nekowebstats.js"></script>
   <script src="scripts/sitejs.js"></script>
   <script src="scripts/tooltips.js"></script>
-  <script src="scripts/blobsbackground.js"></script>
 </body>
 
 </html>

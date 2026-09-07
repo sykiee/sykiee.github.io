@@ -45,7 +45,7 @@ document.body.style.setProperty(
 
 
 
-/* ──────── START CONTAINER WINDOW SCRIPT ─────────────────────── */
+/* ──────── START CONTAINER WINDOW SCRIPT ─────────────────────────────── */
 
 // page selector for gay little carrd.co function lol
 
@@ -53,59 +53,83 @@ const info = document.getElementById("page-container");
 
 const pages = {
     home: document.getElementById("home"),
-    about: document.getElementById("info")
-};
-
-const sections = {
-    "section-about": document.getElementById("section-about"),
-    "section-interests": document.getElementById("section-interests"),
-    "section-music": document.getElementById("section-music")
+    about: document.getElementById("about"),
+    interests: document.getElementById("interests"),
+    music: document.getElementById("music")
 };
 
 const header = document.getElementById("logo");
 const navbar = document.getElementById("navbar");
+const social = document.getElementById("social");
 const selector = document.getElementById("pageSelector");
 const options = document.querySelectorAll("#pageOptions button");
-const aboutScroll = document.getElementById("infoScroll");
 
 const fadeTime = 250;
 const resizeTime = 350;
 
-const ABOUT_HEIGHT =
-    (19.6 * parseFloat(getComputedStyle(document.documentElement).fontSize)) +
-    (parseFloat(getComputedStyle(info).paddingTop) * 2);
-
 let current = pages.home;
-let currentSection = "section-about";
+let lastNonHome = "about";
 let busy = false;
+
+
+function getPageContainerPadding() {
+    const style = getComputedStyle(info);
+    return parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+}
 
 
 current.classList.add("show");
 current.style.opacity = "1";
-info.style.height = info.scrollHeight + "px";
+social.classList.add("show");
+
+requestAnimationFrame(function () {
+
+    info.style.height =
+        current.scrollHeight + getPageContainerPadding() + "px";
+
+});
 
 
-function updateOptions(currentTarget) {
+function updateOptions(currentPage) {
+
     options.forEach(function (option) {
-        if (option.dataset.target === currentTarget) {
+
+        if (option.dataset.target === currentPage) {
             option.style.display = "none";
         } else {
             option.style.display = "";
         }
+
     });
+
 }
 
-updateOptions(currentSection);
+updateOptions("home");
 
 
 header.addEventListener("click", function () {
-    const nextPage = current === pages.home ? "about" : "home";
+
+    const currentName = Object.keys(pages).find(function (key) {
+        return pages[key] === current;
+    });
+
+    const nextPage = currentName === "home" ? lastNonHome : "home";
+
     showPage(nextPage);
+
+    if (currentName !== "home") {
+        lastNonHome = "about";
+    }
+
 });
 
 
 selector.addEventListener("click", function () {
+
+    if (busy) return;
+
     navbar.classList.toggle("open");
+
 });
 
 
@@ -113,38 +137,12 @@ options.forEach(function (option) {
 
     option.addEventListener("click", function () {
 
-        const sectionName = this.dataset.target;
-        const target = sections[sectionName];
-        if (!target) return;
+        const pageName =
+            this.dataset.target;
 
-        function scrollToSection() {
-
-            const top =
-                target.getBoundingClientRect().top -
-                aboutScroll.getBoundingClientRect().top +
-                aboutScroll.scrollTop;
-
-            aboutScroll.scrollTo({
-                top: top,
-                behavior: "smooth"
-            });
-
-            selector.innerHTML =
-                `${sectionName.replace("section-", "")} <span>▼</span>`;
-
-            updateOptions(sectionName);
-            currentSection = sectionName;
-
-        }
+        showPage(pageName);
 
         navbar.classList.remove("open");
-
-        if (current !== pages.about) {
-            showPage("about");
-            setTimeout(scrollToSection, fadeTime + resizeTime);
-        } else {
-            scrollToSection();
-        }
 
     });
 
@@ -163,47 +161,55 @@ function showPage(pageName) {
 
     busy = true;
 
-    info.style.height = info.getBoundingClientRect().height + "px";
+    selector.innerHTML =
+        `${pageName} <span>▼</span>`;
 
-    current.style.transition = `opacity ${fadeTime}ms ease`;
+
+    updateOptions(pageName);
+
+
+    current.style.transition =
+        `opacity ${fadeTime}ms ease`;
+
     current.style.opacity = "0";
 
-    if (pageName !== "about") {
+    if (pageName === "home") {
         navbar.classList.remove("show");
+    } else {
+        social.classList.remove("show");
     }
+
 
     setTimeout(function () {
 
         current.classList.remove("show");
 
+
         next.classList.add("show");
         next.style.opacity = "0";
 
-        if (pageName === "about") {
-            info.classList.remove("scrollable");
-        }
 
-        const targetHeight =
-            pageName === "about" ? ABOUT_HEIGHT : next.scrollHeight;
+        info.style.height =
+            next.scrollHeight + getPageContainerPadding() + "px";
 
-        requestAnimationFrame(function () {
-            info.style.height = targetHeight + "px";
-            header.classList.toggle("info-position", pageName === "about");
-            if (pageName === "about") {
-                info.classList.add("scrollable");
-            }
-        });
+        header.classList.toggle("home-active", pageName === "home");
+
 
         setTimeout(function () {
 
-            next.style.transition = `opacity ${fadeTime}ms ease`;
+            next.style.transition =
+                `opacity ${fadeTime}ms ease`;
+
             next.style.opacity = "1";
+
 
             current = next;
             busy = false;
 
-            if (pageName === "about") {
+            if (pageName !== "home") {
                 navbar.classList.add("show");
+            } else {
+                social.classList.add("show");
             }
 
         }, resizeTime);
@@ -212,7 +218,7 @@ function showPage(pageName) {
 
 }
 
-/* ──────── END SCRIPT ───────────────────────── */
+/* ──────── END SCRIPT ───────────────────────────────────────── */
 
 
 
