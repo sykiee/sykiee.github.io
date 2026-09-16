@@ -11,7 +11,7 @@ fetch("https://status.cafe/users/grasscanons/status.json")
   })
 
 /* MEOW SOUND EFFECT */
-const statusImage = document.querySelector("#status img");
+const statusImage = document.querySelector("#status-container img");
 const statusSound = document.getElementById("statusSound");
 
 statusImage.addEventListener("click", () => {

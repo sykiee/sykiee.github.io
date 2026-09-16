@@ -13,7 +13,6 @@ body {
     margin: 0;
     font-family: "Trebuchet MS", sans-serif;
     font-size: 0.9rem;
-    text-shadow: 2px 2px 4px #0a0a0a71;
     background-color: #060605;
     overflow-x: hidden;
 }
@@ -36,62 +35,24 @@ body::before {
     filter: blur(3px) brightness(0.9);
 }
 
-
-/* text */
-
-a,
-img {
-    transition: all 0.25s ease;
-}
-
-p {
-    line-height: 1.5;
-}
-
-a {
-    color: #f5f5f5;
-    font-weight: bold;
-}
-
-a:hover {
-    color: #696963;
-    transform: scale(1.1);
-}
-
-mark {
-    border-radius: 0.4rem;
-    background-color: #353126;
-    color: #FFFAFB;
-    font-weight: bold;
-    padding: 0.20rem 0.35rem;
-}
-
-
-.container {
-    box-sizing: border-box;
-}
-
 /* main containers */
 
-#content {
+#page-content {
     min-height: 100vh;
     width: 100%;
-    position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    transition: opacity 2.0s ease;
 }
 
-#main {
+#info-container {
     height: auto;
     width: 31.4rem;
     max-width: calc(100vw - 2rem);
-    position: relative;
-    background: #2c2727;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -99,52 +60,7 @@ mark {
     border-radius: 0.4rem;
 }
 
-#logo {
-    position: absolute;
-    left: 50%;
-    top: -15%;
-    margin: 0;
-    transform: translate(-50%, -50%);
-    font-family: AnotherTag;
-    font-size: 6.1rem;
-    font-weight: 800;
-    color: #F5F5F5;
-    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    pointer-events: auto;
-    z-index: 30;
-    transition:
-        top 0.2s cubic-bezier(.22, 1, .36, 1),
-        transform 0.2s ease;
-}
-
-#logo:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
-#logo.home-active {
-    top: -79%;
-}
-
-#logo.home-active:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
-
-/* buttons */
-
-#navbar button {
-    border: none;
-    background: none;
-    font-family: "Trebuchet MS", sans-serif;
-    font-weight: bold;
-    color: #060605;
-    transition: transform 0.2s ease;
-}
-
-
-/* page-container */
-
-#page-container {
+#info-wrapper {
     max-height: 100%;
     width: 100%;
     box-sizing: border-box;
@@ -154,194 +70,60 @@ mark {
     transition: height 0.20s cubic-bezier(.22, 1, .36, 1);
 }
 
-#home .container {
-    background: #f5f5f5;
-    border-radius: 0.4rem;
-    padding: 0.8rem;
-    justify-content: center;
-    align-items: center;
-}
-
-#about .container,
-#interests .container,
-#music .container {
-    background: #f5f5f5;
-    color: #000000;
-    border-radius: 0.4rem;
-    padding: 0.8rem;
-}
-
-
-/* navbar */
-
-#navbar {
-    width: 8rem;
-    top: 90%;
-    left: 35%;
-    position: absolute;
-    display: inline-block;
-    z-index: 10;
-    box-sizing: border-box;
-    background: #F5F5F5;
-    border-radius: 0rem 0rem 0.4rem 0.4rem;
-    padding: 0.2rem 0.5rem;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition:
-        opacity 0.2s ease,
-        visibility 0.2s ease;
-}
-
-#navbar.show {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-#pageSelector {
-    border: none;
-    padding: 0.5rem 0.7rem;
-    background: #F5F5F5;
-    border-radius: 0.4rem;
-    font-family: "Trebuchet MS", sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    transition:
-        transform 0.2s ease,
-        border-radius 0.2s ease;
-}
-
-#pageSelector:hover {
-    color: #474747;
-    transform: scale(1.05);
-}
-
-#pageSelector span {
-    display: inline-block;
-    margin-left: 0.3rem;
-    transition: transform 0.2s ease;
-}
-
-#navbar.open #pageSelector span {
-    transform: rotate(180deg);
-}
-
-#pageOptions {
-    position: absolute;
-    left: 0;
-    top: calc(100% + 0.25rem);
-    min-width: 100%;
-    padding: 0.3rem;
-    box-sizing: border-box;
-    background: #F5F5F5;
-    border-radius: 0.4rem;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-0.5rem) scaleY(0.95);
-    transform-origin: top;
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease,
-        visibility 0.2s ease;
-}
-
-#pageOptions button.hidden {
-    display: none;
-}
-
-#navbar.open #pageOptions {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scaleY(1);
-}
-
-#pageOptions button {
-    display: block;
-    width: 100%;
-    border: none;
-    background: none;
-    padding: 0.4rem 0.6rem;
-    text-align: left;
-    font-family: "Trebuchet MS", sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    transition:
-        background-color 0.1s ease,
-        transform 0.1s ease;
-}
-
-#pageOptions button:hover {
-    color: #474747;
-    background-color: #ebebeb;
-    transform: translateX(0.15rem);
-}
-
-
-/* content */
-
-.content-container {
-    display: none;
-    opacity: 0;
-}
-
-.content-container.show {
-    display: block;
-}
-
-
 /* social */
 
-#social {
+#social-container {
     display: flex;
     justify-content: center;
+    gap: 0.75rem;
     padding: 0.4rem;
     box-sizing: border-box;
-    gap: 0.75rem;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition:
-        opacity 0.2s ease,
-        visibility 0.2s ease;
 }
 
-#social.show {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-.fab,
-.fas,
-.fa-brands {
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: #fffafb;
+.social-icon {
     display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    background-color: #fffafb;
+    -webkit-mask-image: var(--icon);
+    mask-image: var(--icon);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.social-icon:hover {
+    background-color: #696963;
+    transform: scale(1.2);
+}
+
+.social-icon-img img {
+    width: 1.5rem;
+    height: 1.5rem;
     transition: transform 0.2s ease;
+}
+
+.social-icon-img:hover img {
+    transform: scale(1.2);
 }
 
 
 /* status.cafe */
 
-#status {
+#status-container {
     width: auto;
-    z-index: 10;
-    position: absolute;
-    bottom: 23%;
-    right: 31rem;
-    flex-shrink: 0;
-    transition: opacity 0.2s ease;
+    z-index: 1;
 }
 
-#status img {
+#status-container img {
     display: block;
     width: 27.5rem;
     height: auto;
     cursor: pointer;
-    transition: transform 0.2s ease;
 }
 
 #statuscafe {
@@ -356,11 +138,6 @@ mark {
     box-sizing: border-box;
     background-color: #F5F5F5;
     border-radius: 5px;
-    opacity: 0;
-    visibility: hidden;
-    transition:
-        opacity 0.2s ease,
-        visibility 0.2s ease;
 }
 
 #statuscafe::after {
@@ -376,11 +153,6 @@ mark {
     transform: translateX(-50%);
 }
 
-#status:hover #statuscafe {
-    opacity: 1;
-    visibility: visible;
-}
-
 #statuscafe-username {
     margin-bottom: 10px;
     font-weight: bold;
@@ -389,65 +161,6 @@ mark {
 
 #statuscafe-content {
     font-family: "Trebuchet MS", monospace;
-}
-
-#album-marquee {
-    width: 100%;
-    overflow: hidden;
-    background-color: #696963;
-    padding: 5px 0;
-    border-radius: 4px;
-    -webkit-mask-image: linear-gradient(to right,
-            transparent 0%,
-            #000 8%,
-            #000 92%,
-            transparent 100%);
-    mask-image: linear-gradient(to right,
-            transparent 0%,
-            #000 8%,
-            #000 92%,
-            transparent 100%);
-}
-
-#album-marquee-content {
-    display: flex;
-    width: max-content;
-    animation: marquee 15s linear infinite;
-}
-
-.marquee-group {
-    display: flex;
-    gap: 0.5rem;
-    padding-right: 0.5rem;
-    flex-shrink: 0;
-}
-
-.marquee-group img {
-    height: 4rem;
-    width: auto;
-    border-radius: 4px;
-    filter: grayscale(60%) brightness(0.8);
-    transition: filter 0.3s ease;
-}
-
-.marquee-group img:hover {
-    filter: none;
-}
-
-#album-marquee:hover #album-marquee-content {
-    animation-play-state: paused;
-}
-
-@keyframes marquee {
-
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-50%);
-    }
-
 }
 
 
