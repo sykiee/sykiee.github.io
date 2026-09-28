@@ -13,12 +13,25 @@ document.addEventListener("click", function () {
     clickSound.play();
 });
 
-
 /* ──────── END CLICK SOUND SCRIPT ─────────────────────────────────────── */
 
 
+/* ──────── START MEOW SOUND SCRIPT ────────────────────────────────────── */
 
-/* ──────── START BACKGROUND CHANGE SCRIPT ─────────────────────────────── */
+// makes the cute little meow sounds
+
+const mascotImage = document.querySelector(".mascot");
+const statusSound = document.getElementById("catSound");
+
+mascotImage.addEventListener("click", () => {
+    statusSound.currentTime = 0;
+    statusSound.play();
+});
+
+/* ──────── END MEOW SOUND SCRIPT ─────────────────────────────────────── */
+
+
+/* ──────── START BACKGROUND CHANGE SCRIPT ────────────────────────────── */
 
 // change background on site refresh
 
@@ -42,3 +55,23 @@ document.body.style.setProperty(
 
 
 /* ──────── END BACKGROUND CHANGE SCRIPT ──────────────────────────────── */
+
+
+/* ──────── START SVG INJECTION SCRIPT ────────────────────────────────── */
+
+function injectSVG(container) {
+    const url = container.dataset.svg;
+    if (!url) return;
+
+    fetch(url)
+        .then(function (response) {
+            return response.text();
+        })
+        .then(function (svgMarkup) {
+            container.innerHTML = svgMarkup;
+        });
+}
+
+document.querySelectorAll("[data-svg]").forEach(injectSVG);
+
+/* ──────── END SVG INJECTION SCRIPT ──────────────────────────────────── */

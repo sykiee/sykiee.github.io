@@ -6,48 +6,67 @@
   <title>bruce</title>
   <link rel="shortcut icon" type="image/x-icon" href="images/icon2.ico">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/5c560bddc0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <audio id="mouseclick" src="audio/click.mp3" preload="auto"></audio>
-  <div id="page-content">
+  <div class="page-wrapper">
 
-    <div id="info-container">
-      <div id="info-wrapper">
-        <p>graphic designer, (amateur) web dev, shark enthusiast</p>
-        <p>hi, my name is bruce.
-          i'm a (amatuer) web dev, photographer and graphic designer. i really like learning new things and
-          meeting new people.
-          i try to be as friendly as possible! so don't be too intimidated</p>
+    <div id="main-page">
+      <div id="header">
+        <div class="column-wrapper">
+          <div class="logo" data-svg="images/sykiee.svg"></div>
+          <div class="row-wrapper">
+            <div id="about">
+              <div class="inner">
+                <p>hi, my name is bruce. i'm a (amatuer) web dev, photographer and graphic designer. i really like
+                  learning new things and
+                  meeting new people.
+                  i try to be as friendly as possible! so don't feel intimidated</p>
+              </div>
+            </div>
+            <img class="mascot" src="images/dacougar3.gif">
+            <audio id="catSound" src="audio/Cat_idle2.ogg"></audio>
+          </div>
+        </div>
+      </div>
+      <div id="main">
+        <div class="row-wrapper">
+          <div class="currently">
+            <center>
+              <h2>currently..</h2>
+            </center>
+            <div class="inner">
+              <p><i class="fa-solid fa-gamepad"></i> warhammer 40k space marine 2, fallout 76, overwatch</p>
+              <p><i class="fa-solid fa-tv"></i> nothing atm</p>
+              <p><i class="fa-solid fa-book-open"></i> chainsmoker cat</p>
+              <p><i class="fa-solid fa-list-check"></i> being silly</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <p style="color: #fffafb;">find me here..</p>
+        <div id="socials">
+          <a href="https://www.github.com/sykiee" title="github" target="_blank" class="social-icon"
+            style="--icon: url('images/github.svg')"></a>
+          <a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank" class="social-icon"
+            style="--icon: url('images/steam-logo.svg')"></a>
+          <a href="https://discordapp.com/users/384860738482733057" title="discord" target="_blank" class="social-icon"
+            style="--icon: url('images/discord.svg')"></a>
+          <a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank" class="social-icon"
+            style="--icon: url('images/lastfm.svg')"></a>
+          <a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube" target="_blank"
+            class="social-icon" style="--icon: url('images/youtube.svg')"></a>
+          <a href="https://www.toyhou.se/sykiee" title="toyhouse" target="_blank" class="social-icon"
+            style="--icon: url('images/toyhouse.svg')"></a>
+        </div>
       </div>
     </div>
-    <div id="status-container">
-      <img src="images/dacougar3.gif">
-      <audio id="statusSound" src="audio/Cat_idle2.ogg"></audio>
-      <script src="scripts/statuscafe.js"></script>
-    </div>
-    <div id="social-container">
-      <a href="https://www.github.com/sykiee" title="github" target="_blank" class="social-icon"
-        style="--icon: url('images/github.svg')"></a>
-      <a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank" class="social-icon"
-        style="--icon: url('images/steam-logo.svg')"></a>
-      <a href="https://discordapp.com/users/384860738482733057" title="discord" target="_blank" class="social-icon"
-        style="--icon: url('images/discord.svg')"></a>
-      <a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank" class="social-icon"
-        style="--icon: url('images/lastfm.svg')"></a>
-      <a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube" target="_blank"
-        class="social-icon" style="--icon: url('images/youtube.svg')"></a>
-      <a href="https://www.toyhou.se/sykiee" title="toyhouse" target="_blank" class="social-icon"
-        style="--icon: url('images/toyhouse.svg')"></a>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-  <script src="scripts/sitejs.js"></script>
-  <script src="scripts/tooltips.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="scripts/sitejs.js"></script>
+    <script src="scripts/tooltips.js"></script>
 </body>
 
 </html>
