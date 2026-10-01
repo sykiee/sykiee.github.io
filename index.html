@@ -12,43 +12,41 @@
 <body>
   <audio id="mouseclick" src="audio/click.mp3" preload="auto"></audio>
   <div class="page-wrapper">
-
     <div id="main-page">
-      <div id="header">
-        <div class="column-wrapper">
-          <div class="logo" data-svg="images/sykiee.svg"></div>
-          <div class="row-wrapper">
-            <div id="about">
-              <div class="inner">
-                <p>hi, my name is bruce. i'm a (amatuer) web dev, photographer and graphic designer. i really like
-                  learning new things and
-                  meeting new people.
-                  i try to be as friendly as possible! so don't feel intimidated</p>
-              </div>
-            </div>
-            <img class="mascot" src="images/dacougar3.gif">
-            <audio id="catSound" src="audio/Cat_idle2.ogg"></audio>
+      <div class="logo" data-svg="images/sykiee.svg"></div>
+      <div class="flex-row">
+        <div id="about">
+          <div class="inner">
+            <p>hi, my name is bruce. i'm a (amatuer) web dev, photographer and graphic designer. i really like
+              learning new things and
+              meeting new people.
+              i try to be as friendly as possible! so don't feel intimidated</p>
           </div>
         </div>
+        <img class="mascot" src="images/dacougar3.gif">
+        <audio id="catSound" src="audio/Cat_idle2.ogg"></audio>
       </div>
-      <div id="main">
-        <div class="row-wrapper">
-          <div class="currently">
-            <center>
-              <h2>currently..</h2>
-            </center>
-            <div class="inner">
-              <p><i class="fa-solid fa-gamepad"></i> warhammer 40k space marine 2, fallout 76, overwatch</p>
-              <p><i class="fa-solid fa-tv"></i> nothing atm</p>
-              <p><i class="fa-solid fa-book-open"></i> chainsmoker cat</p>
-              <p><i class="fa-solid fa-list-check"></i> being silly</p>
-            </div>
+      <div class="flex-row">
+        <div id="currently">
+          <p style="margin: -0.1rem 0 0.5rem 0; padding: 0; font-size: 19px; font-weight: bold;">currently..</p>
+          <div class="inner">
+            <p><span title="playing..">🎮</span> warhammer 40k space marine 2, fallout 76, overwatch</p>
+            <p><span title="watching..">📺</span> nothing atm</p>
+            <p><span title="reading..">📚</span> chainsmoker cat</p>
+            <p><span title="working on..">📝</span> being silly</p>
           </div>
         </div>
+        <div class="flex-column">
+          <div id="statuscafe">
+            <div id="statuscafe-username"></div>
+            <div id="statuscafe-content"></div>
+          </div>
+            <div id="listening"></div>
+        </div>
       </div>
-      <div id="footer">
+      <div id="socials">
         <p style="color: #fffafb;">find me here..</p>
-        <div id="socials">
+        <div id="social-bar">
           <a href="https://www.github.com/sykiee" title="github" target="_blank" class="social-icon"
             style="--icon: url('images/github.svg')"></a>
           <a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank" class="social-icon"
@@ -64,9 +62,16 @@
         </div>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="scripts/sitejs.js"></script>
-    <script src="scripts/tooltips.js"></script>
+    <footer id="site-footer">
+      <p><b>last updated on sept. 29, 26</b></p>
+      <p>coded with <span class="footer-heart">♥</span> by <b>bruce</b></p>
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="scripts/lastfm.js"></script>
+  <script src="https://status.cafe/current-status.js?name=grasscanons" defer></script>
+  <script src="scripts/sitejs.js"></script>
+  <script src="scripts/tooltips.js"></script>
 </body>
 
 </html>
