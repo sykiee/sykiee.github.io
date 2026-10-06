@@ -50,6 +50,10 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: url("images/backdrop1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #main-page {
@@ -107,7 +111,7 @@ p {
     position: relative;
     box-sizing: border-box;
     background-color: #fffafb;
-    padding: 0.4rem;
+    padding: 0.5rem;
     border-radius: 0.4rem;
     border: 1px dotted #000;
 }
@@ -248,6 +252,22 @@ p {
     border-radius: 0.4rem;
 }
 
+@keyframes marquee {
+    0%,
+    15% {
+        transform: translateX(0);
+    }
+
+    75%,
+    85% {
+        transform: translateX(var(--marquee-distance));
+    }
+
+    100% {
+        transform: translateX(var(--marquee-distance));
+    }
+}
+
 /* tooltip + misc. */
 
 #s-m-t-tooltip {
@@ -282,17 +302,5 @@ p {
         left: 30%;
         border-width: 20px 20px 0 20px;
         border-color: #fffafb transparent transparent transparent;
-    }
-}
-
-@keyframes marquee {
-    0%,
-    15% {
-        transform: translateX(0);
-    }
-
-    85%,
-    100% {
-        transform: translateX(var(--marquee-distance));
     }
 }
