@@ -13,7 +13,7 @@
   <audio id="mouseclick" src="audio/click.mp3" preload="auto"></audio>
   <div class="page-wrapper">
     <div id="main-page">
-      <div class="logo" data-svg="images/sykiee.svg"></div>
+      <img class="logo" src="images/logo2.gif">
       <div class="flex-row">
         <div id="about">
           <div class="inner">
@@ -27,38 +27,53 @@
         <audio id="catSound" src="audio/Cat_idle2.ogg"></audio>
       </div>
       <div class="flex-row">
-        <div id="currently">
-          <p style="margin: -0.1rem 0 0.5rem 0; padding: 0; font-size: 19px; font-weight: bold;">currently..</p>
-          <div class="inner">
-            <p><span title="playing..">🎮</span> warhammer 40k space marine 2, fallout 76, overwatch</p>
-            <p><span title="watching..">📺</span> nothing atm</p>
-            <p><span title="reading..">📚</span> chainsmoker cat</p>
-            <p><span title="working on..">📝</span> being silly</p>
+        <div class="flex-column">
+          <div id="welcome">
+            <img src="images/welcome2.gif" style="width: 11.5rem; height: auto; position: absolute; top: -19%;">
+            <div class="inner">
+              <p>welcome to my page. this mainly acts as a bio page for people to click on and scroll through and
+                hopefully get to know me!</p>
+              <br>
+              <p>this website is constantly changing and having stuff added to it, please feel free to poke around!</p>
+            </div>
+          </div>
+          <div id="currently">
+            <img src="images/currently2.gif" style="width: 11.7rem; height: auto; position: absolute; top: -15%;">
+            <div class="inner">
+              <p><span title="playing..">🎮</span> warhammer 40k space marine 2, fallout 76, overwatch</p>
+              <p><span title="watching..">📺</span> nothing atm</p>
+              <p><span title="reading..">📚</span> chainsmoker cat</p>
+              <p><span title="working on..">📝</span> being silly</p>
+            </div>
           </div>
         </div>
         <div class="flex-column">
           <div id="statuscafe">
+            <img src="images/clouddivider1.png" style="width: 15.9rem; z-index: 1; position: absolute; top: -49%; right: -3%;">
             <div id="statuscafe-username"></div>
             <div id="statuscafe-content"></div>
           </div>
           <div id="listening"></div>
         </div>
       </div>
-      <div id="socials">
-        <p style="color: #fffafb;">find me here..</p>
-        <div id="social-bar">
-          <a href="https://www.github.com/sykiee" title="github" target="_blank" class="social-icon"
-            style="--icon: url('images/github.svg')"></a>
-          <a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank" class="social-icon"
-            style="--icon: url('images/steam-logo.svg')"></a>
-          <a href="https://discordapp.com/users/384860738482733057" title="discord" target="_blank" class="social-icon"
-            style="--icon: url('images/discord.svg')"></a>
-          <a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank" class="social-icon"
-            style="--icon: url('images/lastfm.svg')"></a>
-          <a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube" target="_blank"
-            class="social-icon" style="--icon: url('images/youtube.svg')"></a>
-          <a href="https://www.toyhou.se/sykiee" title="toyhouse" target="_blank" class="social-icon"
-            style="--icon: url('images/toyhouse.svg')"></a>
+      <div class="flex-column">
+        <img src="images/starsdivider.png" style="width: 28rem; margin-bottom: -25px">
+        <div id="socials">
+          <p style="color: #fffafb;">find me here..</p>
+          <div id="social-bar">
+            <a href="https://www.github.com/sykiee" title="github" target="_blank" class="social-icon"
+              style="--icon: url('images/github.svg')"></a>
+            <a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank" class="social-icon"
+              style="--icon: url('images/steam-logo.svg')"></a>
+            <a href="https://discordapp.com/users/384860738482733057" title="discord" target="_blank"
+              class="social-icon" style="--icon: url('images/discord.svg')"></a>
+            <a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank" class="social-icon"
+              style="--icon: url('images/lastfm.svg')"></a>
+            <a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube" target="_blank"
+              class="social-icon" style="--icon: url('images/youtube.svg')"></a>
+            <a href="https://www.toyhou.se/sykiee" title="toyhouse" target="_blank" class="social-icon"
+              style="--icon: url('images/toyhouse.svg')"></a>
+          </div>
         </div>
       </div>
     </div>
@@ -72,7 +87,6 @@
   <script src="https://status.cafe/current-status.js?name=grasscanons" defer></script>
   <script src="scripts/sitejs.js"></script>
   <script src="scripts/tooltips.js"></script>
-  <script src="scripts/raineffect.js"></script>
 </body>
 
 </html>

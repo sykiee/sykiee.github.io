@@ -15,17 +15,15 @@ const getTrack = async () => {
         }
 
         const currentTrack = tracks[0];
-        const isPlaying = currentTrack["@attr"]?.nowplaying || false;
         const previousTracks = tracks.slice(1, 3);
 
         document.getElementById("listening").innerHTML = `
-            <h2 style="
-                margin: -0.1rem 0 0.5rem 0;
-                padding: 0;
-                font-size: 19px;
+            <img src="images/lastplayed2.gif" style="
+                width: 9.5rem;
+                height: auto;
+                position: absolute;
+                top: -15%;
             ">
-                ${isPlaying ? "🎵 currently playing.." : "🎵 last played.."}
-            </h2>
 
             <div style="
                 display: flex;

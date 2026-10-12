@@ -1,6 +1,21 @@
 @font-face {
-    font-family: "AnotherTag";
-    src: url("fonts/aAnotherTag.ttf");
+    font-family: "Maplestory Bold";
+    src: url("fonts/Maplestory-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Maplestory Light";
+    src: url("fonts/Maplestory-Light.ttf");
+}
+
+@font-face {
+    font-family: "Yuntaeng";
+    src: url("fonts/Yuntaeng.ttf");
+}
+
+@font-face {
+    font-family: "EuiyeonChae";
+    src: url("fonts/EuiyeonChae.ttf");
 }
 
 
@@ -11,7 +26,7 @@ body {
     width: 100%;
     min-height: 100%;
     margin: 0;
-    font-family: "MS UI Gothic";
+    font-family: "Yuntaeng";
     font-size: 0.9rem;
     background-color: #060605;
     overflow-x: hidden;
@@ -50,18 +65,17 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url("images/backdrop1.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 #main-page {
     width: min(100%, 35rem);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    margin-top: 3.6rem;
+    box-sizing: border-box;
+    gap: 1.4rem;
 }
 
 #site-footer {
@@ -82,22 +96,14 @@ p {
 
 .logo {
     height: auto;
-    width: 14.5rem;
+    width: 23.5rem;
     display: block;
     cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
-.logo svg {
-    display: block;
-    width: 100%;
-    height: auto;
-    fill: #fffafb;
-    transition: fill 0.25s ease, transform 0.2s ease;
-}
-
-.logo:hover svg {
-    fill: #696963;
-    transform: scale(1.05);
+.logo:hover {
+    transform: scale(1.1);
 }
 
 /* speech bubble stuff */
@@ -114,18 +120,35 @@ p {
     padding: 0.5rem;
     border-radius: 0.4rem;
     border: 1px dotted #000;
+    filter:
+        drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.10)) drop-shadow(0px 6px 14px rgba(0, 0, 0, 0.15)) drop-shadow(0px 18px 36px rgba(0, 0, 0, 0.10));
+    transition: transform 0.2s ease;
 }
 
 #about::after {
     content: '';
     position: absolute;
-    display: block;
-    width: 0;
-    border-style: solid;
-    border-color: transparent #fffafb;
-    border-width: 20px 0 20px 20px;
-    top: 28%;
-    right: -1.4rem;
+    top: 30%;
+    right: -0.65rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: #fffafb;
+    border-right: 1px dotted #000;
+    border-top: 1px dotted #000;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+#about:hover {
+    transform: scale(1.1);
+}
+
+#about .inner {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .mascot {
@@ -133,21 +156,57 @@ p {
     width: 18.5rem;
     margin-left: -2.3rem;
     cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.mascot:hover {
+    transform: scale(1.1);
+}
+
+#welcome {
+    width: 20rem;
+    height: auto;
+    box-sizing: border-box;
+    background-color: #fffafb;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    filter:
+        drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.10)) drop-shadow(0px 6px 14px rgba(0, 0, 0, 0.15)) drop-shadow(0px 18px 36px rgba(0, 0, 0, 0.10));
+    transition: transform 0.2s ease;
+}
+
+#welcome:hover {
+    transform: scale(1.1);
 }
 
 #currently {
-    width: 15.7rem;
-    height: 13.9rem;
+    width: 18.9rem;
+    height: 11.9rem;
     box-sizing: border-box;
-    padding: 12px 2px 10px 18px;
-    border-image-slice: 20 11 20 19 fill;
-    border-image-width: 20px 11px 20px 19px;
-    border-image-repeat: repeat round;
-    border-style: solid;
-    border-color: transparent;
-    border-image-source: url(images/notepaper.png);
+    background-color: #fffafb;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
     display: flex;
+    position: relative;
     flex-direction: column;
+    filter:
+        drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.10)) drop-shadow(0px 6px 14px rgba(0, 0, 0, 0.15)) drop-shadow(0px 18px 36px rgba(0, 0, 0, 0.10));
+    transition: transform 0.2s ease;
+}
+
+#currently:hover {
+    transform: scale(1.1);
+}
+
+#currently .inner {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* social bar contents */
@@ -160,6 +219,8 @@ p {
     box-sizing: border-box;
     padding: 0.4rem;
     border-radius: 0.4rem;
+    filter:
+        drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.10)) drop-shadow(0px 6px 14px rgba(0, 0, 0, 0.15)) drop-shadow(0px 18px 36px rgba(0, 0, 0, 0.10));
 }
 
 #social-bar {
@@ -205,7 +266,7 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.9rem;
 }
 
 .flex-row {
@@ -213,12 +274,19 @@ p {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.4rem;
 }
 
 .flex-container {
     display: flex;
     align-items: center;
+}
+
+.titleimg {
+    width: 9.5rem;
+    height: auto;
+    position: absolute;
+    top: -19%;
 }
 
 /* status.cafe widget styling */
@@ -231,6 +299,10 @@ p {
     background-color: #fffafb;
     border: 1px dotted #000;
     border-radius: 0.4rem;
+    position: relative;
+    filter:
+        drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.10)) drop-shadow(0px 6px 14px rgba(0, 0, 0, 0.15)) drop-shadow(0px 18px 36px rgba(0, 0, 0, 0.10));
+    transition: transform 0.2s ease;
 }
 
 #statuscafe-username {
@@ -239,6 +311,10 @@ p {
 
 #statuscafe-content {
     margin: 0 0.5rem 0.2rem 0.5rem;
+}
+
+#statuscafe:hover {
+    transform: scale(1.1);
 }
 
 /* last.fm widget styling */
@@ -250,9 +326,18 @@ p {
     background-color: #fffafb;
     border: 1px dotted #000;
     border-radius: 0.4rem;
+    position: relative;
+    filter:
+        drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.10)) drop-shadow(0px 6px 14px rgba(0, 0, 0, 0.15)) drop-shadow(0px 18px 36px rgba(0, 0, 0, 0.10));
+    transition: transform 0.2s ease;
+}
+
+#listening:hover {
+    transform: scale(1.1);
 }
 
 @keyframes marquee {
+
     0%,
     15% {
         transform: translateX(0);
