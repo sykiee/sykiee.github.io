@@ -17,6 +17,14 @@ const getTrack = async () => {
         const currentTrack = tracks[0];
         const previousTracks = tracks.slice(1, 3);
 
+const lastfmLink = (url, text, style = "") => `
+    <a href="${url}" target="_blank" rel="noopener noreferrer" class="lastfm-link" style="
+        color: inherit;
+        text-decoration: none;
+        ${style}
+    ">${text.toLowerCase()}</a>
+`;
+
         document.getElementById("listening").innerHTML = `
             <img src="images/lastplayed2.gif" style="
                 width: 9.5rem;
@@ -59,7 +67,7 @@ const getTrack = async () => {
                             font-size: 0.75rem;
                             opacity: 0.7;
                         ">
-                            ${currentTrack.album["#text"]}
+                            ${lastfmLink(currentTrack.url, currentTrack.album["#text"])}
                         </p>
                     </div>
 
@@ -74,7 +82,7 @@ const getTrack = async () => {
                             margin: 0;
                             font-size: 0.95rem;
                         ">
-                            ${currentTrack.name}
+                            ${lastfmLink(currentTrack.url, currentTrack.name)}
                         </h3>
                     </div>
 
@@ -89,7 +97,10 @@ const getTrack = async () => {
                             margin: 0;
                             font-size: 0.8rem;
                         ">
-                            ${currentTrack.artist["#text"]}
+                            ${lastfmLink(
+                                `https://www.last.fm/music/${encodeURIComponent(currentTrack.artist["#text"]).replace(/%20/g, "+")}`,
+                                currentTrack.artist["#text"]
+                            )}
                         </p>
                     </div>
                 </div>
@@ -131,7 +142,7 @@ const getTrack = async () => {
                                 text-overflow: ellipsis;
                                 font-size: 0.78rem;
                             ">
-                                ${track.name}
+                                ${lastfmLink(track.url, track.name, "display: block; overflow: hidden; text-overflow: ellipsis;")}
                             </div>
 
                             <div style="
@@ -141,7 +152,11 @@ const getTrack = async () => {
                                 font-size: 0.7rem;
                                 opacity: 0.65;
                             ">
-                                ${track.artist["#text"]}
+                                ${lastfmLink(
+                                    `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"]).replace(/%20/g, "+")}`,
+                                    track.artist["#text"],
+                                    "display: block; overflow: hidden; text-overflow: ellipsis;"
+                                )}
                             </div>
                         </div>
                     </div>

@@ -1,10 +1,7 @@
 /* a lot of this is poached from around the internet and shit,
    but works for my site :) */
 
-
-
-/* ──────── START CLICK SOUND SCRIPT ────────────────────────────────────── */
-
+   
 // makes the cute little clicky sounds
 
 const clickSound = document.getElementById("mouseclick");
@@ -12,11 +9,6 @@ document.addEventListener("click", function () {
     clickSound.currentTime = 0;
     clickSound.play();
 });
-
-/* ──────── END CLICK SOUND SCRIPT ─────────────────────────────────────── */
-
-
-/* ──────── START MEOW SOUND SCRIPT ────────────────────────────────────── */
 
 // makes the cute little meow sounds
 
@@ -27,11 +19,6 @@ mascotImage.addEventListener("click", () => {
     statusSound.currentTime = 0;
     statusSound.play();
 });
-
-/* ──────── END MEOW SOUND SCRIPT ─────────────────────────────────────── */
-
-
-/* ──────── START BACKGROUND CHANGE SCRIPT ────────────────────────────── */
 
 // change background on site refresh
 
@@ -53,11 +40,7 @@ document.body.style.setProperty(
     `url("images/background-${backgroundNumber}.jpg")`
 );
 
-
-/* ──────── END BACKGROUND CHANGE SCRIPT ──────────────────────────────── */
-
-
-/* ──────── START SVG INJECTION SCRIPT ────────────────────────────────── */
+// inject svgs
 
 function injectSVG(container) {
     const url = container.dataset.svg;
@@ -74,4 +57,16 @@ function injectSVG(container) {
 
 document.querySelectorAll("[data-svg]").forEach(injectSVG);
 
-/* ──────── END SVG INJECTION SCRIPT ──────────────────────────────────── */
+// updates the last updated thingy in footer
+
+const lastUpdated = document.getElementById("last-updated");
+
+if (lastUpdated) {
+    const date = new Date();
+
+    lastUpdated.textContent = date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "2-digit",
+        year: "2-digit"
+    }).replace(",", ".").toLowerCase();
+}

@@ -6,6 +6,7 @@
   <title>bruce</title>
   <link rel="shortcut icon" type="image/x-icon" href="images/icon2.ico">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="widgetstyle.css">
   <script src="https://kit.fontawesome.com/5c560bddc0.js" crossorigin="anonymous"></script>
 </head>
 
@@ -14,13 +15,19 @@
   <div class="page-wrapper">
     <div id="main-page">
       <img class="logo" src="images/logo2.gif">
+      <div class="header-marquee">
+        <div class="marquee-track">
+          <span><b>he / they, 23, scorpio, shark enthusiast ✦ 23, he / they, infp, scorpio, shut-in, shark enthusiast ✦ </b></span>
+          <span aria-hidden="true"><b>he / they, 23, scorpio, shark enthusiast ✦ he / they, 23, scorpio, shark enthusiast ✦</b>
+          </span>
+        </div>
+      </div>
       <div class="flex-row">
         <div id="about">
           <div class="inner">
             <p>hi, my name is bruce. i'm a (amatuer) web dev, photographer and graphic designer. i really like
-              learning new things and
-              meeting new people.
-              i try to be as friendly as possible! so don't feel intimidated</p>
+              making things, learning new stuff, and meeting new people!
+              i can be a bit avoidant some times so please bear with me, i still want to get to know you!</p>
           </div>
         </div>
         <img class="mascot" src="images/dacougar3.gif">
@@ -49,7 +56,8 @@
         </div>
         <div class="flex-column">
           <div id="statuscafe">
-            <img src="images/clouddivider1.png" style="width: 15.9rem; z-index: 1; position: absolute; top: -49%; right: -3%;">
+            <img src="images/clouddivider1.png"
+              style="width: 15.9rem; z-index: 1; position: absolute; top: -49%; right: -3%;">
             <div id="statuscafe-username"></div>
             <div id="statuscafe-content"></div>
           </div>
@@ -57,9 +65,9 @@
         </div>
       </div>
       <div class="flex-column">
-        <img src="images/starsdivider.png" style="width: 28rem; margin-bottom: -25px">
+        <img src="images/starsdivider.png" style="width: 28rem; margin-top: 1.2rem;">
         <div id="socials">
-          <p style="color: #fffafb;">find me here..</p>
+          <img src="images/footer.gif" style="width: 11.7rem; height: auto; position: absolute; top: -50%;">
           <div id="social-bar">
             <a href="https://www.github.com/sykiee" title="github" target="_blank" class="social-icon"
               style="--icon: url('images/github.svg')"></a>
@@ -77,10 +85,10 @@
         </div>
       </div>
     </div>
-    <footer id="site-footer">
-      <p><b>last updated on oct. 11, 26</b></p>
-      <p>coded with <span class="footer-heart">♥</span> by <b>bruce</b> since <b>2018</b></p>
-    </footer>
+    <div id="site-footer">
+      <p><b>last updated on <span id="last-updated"></span></b></p>
+      <p>coded with <b>♥</b> by <b>bruce</b> since <b>2018</b></p>
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="scripts/lastfm.js"></script>
