@@ -6,19 +6,24 @@
   <title>bruce</title>
   <link rel="shortcut icon" type="image/x-icon" href="images/icon2.ico">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="widgetstyle.css">
+  <link rel="stylesheet" href="css/widgetstyles.css">
   <script src="https://kit.fontawesome.com/5c560bddc0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <audio id="mouseclick" src="audio/click.mp3" preload="auto"></audio>
+  <div id="loading-screen">
+    <img src="images/loading.gif">
+  </div>
   <div class="page-wrapper">
     <div id="main-page">
       <img class="logo" src="images/logo2.gif">
       <div class="header-marquee">
         <div class="marquee-track">
-          <span><b>he / they, 23, scorpio, shark enthusiast ✦ 23, he / they, infp, scorpio, shut-in, shark enthusiast ✦ </b></span>
-          <span aria-hidden="true"><b>he / they, 23, scorpio, shark enthusiast ✦ he / they, 23, scorpio, shark enthusiast ✦</b>
+          <span><b>he / they, 23, scorpio, shark enthusiast ✦ 23, he / they, infp, scorpio, shut-in, shark enthusiast ✦
+            </b></span>
+          <span aria-hidden="true"><b>he / they, 23, scorpio, shark enthusiast ✦ he / they, 23, scorpio, shark
+              enthusiast ✦</b>
           </span>
         </div>
       </div>
@@ -33,39 +38,90 @@
         <img class="mascot" src="images/dacougar3.gif">
         <audio id="catSound" src="audio/Cat_idle2.ogg"></audio>
       </div>
-      <div class="flex-row">
-        <div class="flex-column">
-          <div id="welcome">
-            <img src="images/welcome2.gif" style="width: 11.5rem; height: auto; position: absolute; top: -19%;">
-            <div class="inner">
-              <p>welcome to my page. this mainly acts as a bio page for people to click on and scroll through and
-                hopefully get to know me!</p>
-              <br>
-              <p>this website is constantly changing and having stuff added to it, please feel free to poke around!</p>
+      <div class="flex-column">
+        <div class="flex-row">
+          <div class="flex-column">
+            <div id="welcome">
+              <img src="images/welcome2.gif" style="width: 11.5rem; height: auto; position: absolute; top: -19%;">
+              <div class="inner">
+                <h2>welcome to my page</h2>
+                <p>this mainly acts as a bio page for people to click on and scroll through and
+                  hopefully get to know me! hopefully in the future i'll pull myself together and make this more
+                  fleshed out but who knows.</p>
+                <br>
+                <p>* this website is constantly changing and having stuff added to it, please feel free to poke around!
+                </p>
+              </div>
+            </div>
+            <div id="currently">
+              <img src="images/currently2.gif" style="width: 11.7rem; height: auto; position: absolute; top: -15%;">
+              <div class="inner">
+                <div id="statuscafe" title="status..">
+                  <div id="statuscafe-username">
+                    <span>💬</span><a href="https://status.cafe/users/grasscanons" target="_blank">grasscanons</a>
+                    <span id="statuscafe-time"></span>
+                  </div>
+                  <div id="statuscafe-content"></div>
+                </div>
+                <p title="playing.."><span>🎮</span> warhammer 40k space marine 2, fallout 76, overwatch</p>
+                <p title="watching.."><span>📺</span> nothing atm</p>
+                <p title="reading.."><span>📚</span> chainsmoker cat</p>
+                <p title="working on.."><span>📝</span> being silly</p>
+                <p style="margin: 8px 0 0; padding-top: 4px; border-top: 1px dotted; font-size: 0.7rem; text-align: center; opacity: 0.7;">last updated: oct 16. 2026</p>
+              </div>
             </div>
           </div>
-          <div id="currently">
-            <img src="images/currently2.gif" style="width: 11.7rem; height: auto; position: absolute; top: -15%;">
-            <div class="inner">
-              <p><span title="playing..">🎮</span> warhammer 40k space marine 2, fallout 76, overwatch</p>
-              <p><span title="watching..">📺</span> nothing atm</p>
-              <p><span title="reading..">📚</span> chainsmoker cat</p>
-              <p><span title="working on..">📝</span> being silly</p>
+          <div class="flex-column">
+            <div id="lanyard-container">
+              <div id="lanyard-presence" title="add me on dsc @grasscanons :)">
+                <img id="discord-avatar" src="">
+                <div>
+                  <div id="discord-username">
+                    <i class="fa-brands fa-discord"></i>
+                    <span>loading...</span>
+                  </div>
+                  <div id="discord-status"></div>
+                </div>
+              </div>
+              <p>powered by <a href="https://github.com/Phineas/lanyard" target="_blank">lanyard</a></p>
+            </div>
+            <div id="listening-container">
+              <div id="listening"></div>
+              <p>pulled from <a href="https://www.last.fm/user/sykiee" target="_blank">last.fm</a></p>
             </div>
           </div>
         </div>
-        <div class="flex-column">
-          <div id="statuscafe">
-            <img src="images/clouddivider1.png"
-              style="width: 15.9rem; z-index: 1; position: absolute; top: -49%; right: -3%;">
-            <div id="statuscafe-username"></div>
-            <div id="statuscafe-content"></div>
+        <div id="literally-me">
+          <img src="images/literallyme.gif" style="width: 11.7rem; height: auto; position: absolute; top: -22%;">
+          <div id="image-marquee">
+            <div class="marquee-track">
+              <div class="marquee-group">
+                <a href="images/funny1.png" target="_blank"><img src="images/funny1.png"></a>
+                <a href="images/funny2.png" target="_blank"><img src="images/funny2.png"></a>
+                <a href="images/funny3.png" target="_blank"><img src="images/funny3.png"></a>
+                <a href="images/funny4.jpg" target="_blank"><img src="images/funny4.jpg"></a>
+                <a href="images/funny5.png" target="_blank"><img src="images/funny5.png"></a>
+                <a href="images/funny6.jpeg" target="_blank"><img src="images/funny6.jpeg"></a>
+                <a href="images/funny7.jpg" target="_blank"><img src="images/funny7.jpg"></a>
+                <a href="images/funny8.jpg" target="_blank"><img src="images/funny8.jpg"></a>
+                <a href="images/funny9.jpg" target="_blank"><img src="images/funny9.jpg"></a>
+              </div>
+              <div class="marquee-group" aria-hidden="true">
+                <a href="images/funny1.png" target="_blank"><img src="images/funny1.png"></a>
+                <a href="images/funny2.png" target="_blank"><img src="images/funny2.png"></a>
+                <a href="images/funny3.png" target="_blank"><img src="images/funny3.png"></a>
+                <a href="images/funny4.jpg" target="_blank"><img src="images/funny4.jpg"></a>
+                <a href="images/funny5.png" target="_blank"><img src="images/funny5.png"></a>
+                <a href="images/funny6.jpeg" target="_blank"><img src="images/funny6.jpeg"></a>
+                <a href="images/funny7.jpg" target="_blank"><img src="images/funny7.jpg"></a>
+                <a href="images/funny8.jpg" target="_blank"><img src="images/funny8.jpg"></a>
+                <a href="images/funny9.jpg" target="_blank"><img src="images/funny9.jpg"></a>
+              </div>
+            </div>
           </div>
-          <div id="listening"></div>
         </div>
       </div>
       <div class="flex-column">
-        <img src="images/starsdivider.png" style="width: 28rem; margin-top: 1.2rem;">
         <div id="socials">
           <img src="images/footer.gif" style="width: 11.7rem; height: auto; position: absolute; top: -50%;">
           <div id="social-bar">
@@ -73,28 +129,26 @@
               style="--icon: url('images/github.svg')"></a>
             <a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank" class="social-icon"
               style="--icon: url('images/steam-logo.svg')"></a>
-            <a href="https://discordapp.com/users/384860738482733057" title="discord" target="_blank"
-              class="social-icon" style="--icon: url('images/discord.svg')"></a>
             <a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank" class="social-icon"
               style="--icon: url('images/lastfm.svg')"></a>
             <a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube" target="_blank"
               class="social-icon" style="--icon: url('images/youtube.svg')"></a>
-            <a href="https://www.toyhou.se/sykiee" title="toyhouse" target="_blank" class="social-icon"
-              style="--icon: url('images/toyhouse.svg')"></a>
           </div>
         </div>
       </div>
     </div>
     <div id="site-footer">
-      <p><b>last updated on <span id="last-updated"></span></b></p>
-      <p>coded with <b>♥</b> by <b>bruce</b> since <b>2018</b></p>
+      <p><a href="credits.html"><b>credits + resources</b></a> listed here / coded with <b>♥</b> by <b>bruce</b> since <b>2018</b></p>
+      <p><b>last updated on <span id="last-updated"></span></b> / hosted on <a
+          href="https://github.com/sykiee/sykiee.github.io" target="_blank"><b>github</b></a></p>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="scripts/lastfm.js"></script>
-  <script src="https://status.cafe/current-status.js?name=grasscanons" defer></script>
+  <script src="scripts/statuscafe.js"></script>
   <script src="scripts/sitejs.js"></script>
   <script src="scripts/tooltips.js"></script>
+  <script src="scripts/lanyard.js"></script>
 </body>
 
 </html>

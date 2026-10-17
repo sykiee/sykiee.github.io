@@ -1,214 +1,115 @@
-// this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
+// MIT license: https://max.nekoweb.org/resources/license.txt
 // edits made by me
 
-const USERNAME = "sykiee";
 const LASTFM_URL = "https://sykiee-lastfm.majorly08.workers.dev/lastfm";
+const LISTENING = document.getElementById("listening");
+
+const lastfmLink = (url, text) => `
+    <a href="${url}" target="_blank" rel="noopener noreferrer" class="lastfm-link">
+        ${text.toLowerCase()}
+    </a>
+`;
+
+const artistUrl = artist =>
+    `https://www.last.fm/music/${encodeURIComponent(artist).replace(/%20/g, "+")}`;
+
+const trackInfo = (track, className, content, url = track.url) => `
+    <div class="${className}">
+        ${lastfmLink(url, content)}
+    </div>
+`;
+
+const previousTrack = track => `
+    <div class="previous-track">
+        <img src="${track.image[0]["#text"]}" class="previous-art" alt="">
+        <div class="previous-info">
+            ${trackInfo(track, "previous-name", track.name)}
+            ${trackInfo(track, "previous-artist", track.artist["#text"], artistUrl(track.artist["#text"]))}
+        </div>
+    </div>
+`;
+
+const setupMarquee = container => {
+    const text = container.firstElementChild;
+    text.style.animation = "none";
+    text.style.transform = "translateX(0)";
+
+    if (text.scrollWidth <= container.clientWidth) return;
+
+    text.style.setProperty(
+        "--marquee-distance",
+        `-${text.scrollWidth - container.clientWidth}px`
+    );
+
+    const run = () => {
+        text.style.animation = "none";
+        text.style.transform = "translateX(0)";
+
+        setTimeout(() => {
+            text.style.animation = "marquee 6s linear";
+
+            text.addEventListener("animationend", () => {
+                setTimeout(() => {
+                    text.style.animation = "none";
+                    text.style.transform = "translateX(0)";
+                    setTimeout(run, 500);
+                }, 2000);
+            }, { once: true });
+        }, 500);
+    };
+
+    run();
+};
 
 const getTrack = async () => {
     try {
         const response = await fetch(LASTFM_URL);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
         const json = await response.json();
         const tracks = json.recenttracks.track;
 
-        if (!tracks || tracks.length === 0) {
-            return;
-        }
+        if (!tracks?.length) return;
 
-        const currentTrack = tracks[0];
-        const previousTracks = tracks.slice(1, 3);
+        const [current, ...previous] = tracks;
 
-const lastfmLink = (url, text, style = "") => `
-    <a href="${url}" target="_blank" rel="noopener noreferrer" class="lastfm-link" style="
-        color: inherit;
-        text-decoration: none;
-        ${style}
-    ">${text.toLowerCase()}</a>
-`;
+        LISTENING.innerHTML = `
+            <img src="images/lastplayed2.gif" class="lastplayed-title" alt="last played">
 
-        document.getElementById("listening").innerHTML = `
-            <img src="images/lastplayed2.gif" style="
-                width: 9.5rem;
-                height: auto;
-                position: absolute;
-                top: -15%;
-            ">
+            <div class="current-track">
+                <img src="${current.image[1]["#text"]}" class="current-art" alt="">
 
-            <div style="
-                display: flex;
-                align-items: center;
-                gap: 0.6rem;
-                width: 100%;
-            ">
-                <img
-                    src="${currentTrack.image[1]["#text"]}"
-                    style="
-                        width: 4rem;
-                        height: 4rem;
-                        object-fit: cover;
-                        flex-shrink: 0;
-                        border-radius: 0.2rem;
-                        filter: brightness(0.8) contrast(1.1) saturate(0.8);
-                    "
-                >
-
-                <div style="
-                    min-width: 0;
-                    overflow: hidden;
-                    flex: 1;
-                ">
-                    <div class="track-marquee" style="
-                        overflow: hidden;
-                        white-space: nowrap;
-                        width: 100%;
-                    ">
-                        <p style="
-                            display: inline-block;
-                            margin: 0;
-                            font-size: 0.75rem;
-                            opacity: 0.7;
-                        ">
-                            ${lastfmLink(currentTrack.url, currentTrack.album["#text"])}
+                <div class="track-info">
+                    <div class="track-marquee">
+                        <p class="track-album">
+                            ${lastfmLink(current.url, current.album["#text"])}
                         </p>
                     </div>
 
-                    <div class="track-marquee" style="
-                        overflow: hidden;
-                        white-space: nowrap;
-                        width: 100%;
-                        margin-top: 0.2rem;
-                    ">
-                        <h3 style="
-                            display: inline-block;
-                            margin: 0;
-                            font-size: 0.95rem;
-                        ">
-                            ${lastfmLink(currentTrack.url, currentTrack.name)}
+                    <div class="track-marquee" style="margin-top: 0.2rem;">
+                        <h3 class="track-name">
+                            ${lastfmLink(current.url, current.name)}
                         </h3>
                     </div>
 
-                    <div class="track-marquee" style="
-                        overflow: hidden;
-                        white-space: nowrap;
-                        width: 100%;
-                        margin-top: 0.3rem;
-                    ">
-                        <p style="
-                            display: inline-block;
-                            margin: 0;
-                            font-size: 0.8rem;
-                        ">
-                            ${lastfmLink(
-                                `https://www.last.fm/music/${encodeURIComponent(currentTrack.artist["#text"]).replace(/%20/g, "+")}`,
-                                currentTrack.artist["#text"]
-                            )}
+                    <div class="track-marquee" style="margin-top: 0.3rem;">
+                        <p class="track-artist">
+                            ${lastfmLink(artistUrl(current.artist["#text"]), current.artist["#text"])}
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div style="
-                margin-top: 0.7rem;
-                padding-top: 0.5rem;
-                border-top: 1px dotted #999;
-            ">
-                ${previousTracks.map(track => `
-                    <div style="
-                        display: flex;
-                        align-items: center;
-                        gap: 0.5rem;
-                        margin-bottom: 0.45rem;
-                        min-width: 0;
-                    ">
-                        <img
-                            src="${track.image[0]["#text"]}"
-                            style="
-                                width: 2rem;
-                                height: 2rem;
-                                object-fit: cover;
-                                flex-shrink: 0;
-                                border-radius: 0.15rem;
-                                filter: brightness(0.8) contrast(1.1) saturate(0.8);
-                            "
-                        >
-
-                        <div style="
-                            min-width: 0;
-                            overflow: hidden;
-                            line-height: 1rem;
-                        ">
-                            <div style="
-                                white-space: nowrap;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                font-size: 0.78rem;
-                            ">
-                                ${lastfmLink(track.url, track.name, "display: block; overflow: hidden; text-overflow: ellipsis;")}
-                            </div>
-
-                            <div style="
-                                white-space: nowrap;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                font-size: 0.7rem;
-                                opacity: 0.65;
-                            ">
-                                ${lastfmLink(
-                                    `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"]).replace(/%20/g, "+")}`,
-                                    track.artist["#text"],
-                                    "display: block; overflow: hidden; text-overflow: ellipsis;"
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                `).join("")}
+            <div class="previous-tracks">
+                ${previous.slice(0, 2).map(previousTrack).join("")}
             </div>
         `;
 
-        document.querySelectorAll(".track-marquee").forEach(container => {
-            const text = container.firstElementChild;
-
-            text.style.animation = "none";
-            text.style.transform = "translateX(0)";
-
-            const textWidth = text.scrollWidth;
-            const containerWidth = container.clientWidth;
-
-            if (textWidth > containerWidth) {
-                const distance = textWidth - containerWidth;
-
-                text.style.setProperty(
-                    "--marquee-distance",
-                    `-${distance}px`
-                );
-
-                const runMarquee = () => {
-                    text.style.animation = "none";
-                    text.style.transform = "translateX(0)";
-
-                    setTimeout(() => {
-                        text.style.animation = "marquee 6s linear";
-
-                        text.addEventListener("animationend", () => {
-                            setTimeout(() => {
-                                text.style.animation = "none";
-                                text.style.transform = "translateX(0)";
-
-                                setTimeout(runMarquee, 500);
-                            }, 2000);
-                        }, { once: true });
-                    }, 500);
-                };
-
-                runMarquee();
-            }
-        });
+        LISTENING.querySelectorAll(".track-marquee").forEach(setupMarquee);
     } catch (error) {
         console.error("Last.fm error:", error);
     }
 };
 
 getTrack();
-
-setInterval(() => {
-    getTrack();
-}, 10000);
+setInterval(getTrack, 10000);
