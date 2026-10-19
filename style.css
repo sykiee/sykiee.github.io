@@ -3,11 +3,6 @@
     src: url("fonts/Yuntaeng.ttf");
 }
 
-@font-face {
-    font-family: "EuiyeonChae";
-    src: url("fonts/EuiyeonChae.ttf");
-}
-
 /* background */
 
 html,
@@ -15,7 +10,7 @@ body {
     width: 100%;
     min-height: 100%;
     margin: 0;
-    font-family: "Yuntaeng";
+    font-family: "Yuntaeng", sans-serif;
     font-size: 0.95rem;
     background-color: #060605;
     overflow-x: hidden;
@@ -128,7 +123,6 @@ body.loaded #loading-screen {
 .logo:hover,
 .mascot:hover,
 #about:hover,
-#welcome:hover,
 #currently:hover,
 #literally-me:hover {
     transform: scale(1.1);
@@ -169,57 +163,57 @@ body.loaded #loading-screen {
 /* about + mascot */
 
 #about {
-    width: 21.4rem;
+    height: 7.6rem;
+    width: 18.4rem;
     max-width: calc(100vw - 2rem);
-    height: 7.3rem;
-    box-sizing: border-box;
-    margin-top: -1.1rem;
-    margin-bottom: 7.4rem;
-    padding: 1.2rem 3.4rem 1.2rem 1.5rem;
     display: flex;
-    align-self: flex-start;
     flex-direction: column;
     position: relative;
-    background: url("images/cloud.gif") center / 100% 100% no-repeat;
+    box-sizing: border-box;
+    background-color: #fffafb;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    border: 1px dashed #000000;
+    box-shadow: 0 0 0 5px #f0f0f0;
     transition: transform 0.2s ease;
 }
 
+#about::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: -0.68rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: #fffafb;
+    border-right: 1px dashed #000;
+    border-top: 1px dashed #000;
+    transform: rotate(45deg);
+    z-index: 1;
+}
+
+#about:hover {
+    transform: scale(1.1);
+}
+
 #about .inner {
-    flex: 1;
-    min-height: 0;
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
-    padding: 0 0.5rem 0 0.2rem;
-    overflow: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .mascot {
     width: 18.5rem;
     height: auto;
-    margin-left: -7.2rem;
+    margin-left: -4.2rem;
     cursor: pointer;
     transition: transform 0.2s ease;
 }
 
-#welcome {
-    width: 20rem;
-    height: 11.9rem;
-    box-sizing: border-box;
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    background-color: #fffafb;
-    border-radius: 0.4rem;
-    transition: transform 0.2s ease;
-    transform: rotate(1deg);
-    transform-origin: right center;
-}
-
 #currently {
-    width: 18.9rem;
+    width: 20.4rem;
     height: 11.9rem;
     box-sizing: border-box;
     padding: 0.5rem;
@@ -228,12 +222,12 @@ body.loaded #loading-screen {
     position: relative;
     background-color: #fffafb;
     border-radius: 0.4rem;
+    border: 1px dashed #000000;
+    box-shadow: 0 0 0 5px #f0f0f0;
     transition: transform 0.2s ease;
-    transform: rotate(-1.5deg);
-    transform-origin: right center;
+    transform: rotate(1.5deg);
 }
 
-#welcome .inner,
 #currently .inner {
     width: 100%;
     height: 100%;
@@ -245,13 +239,14 @@ body.loaded #loading-screen {
 /* literally me + image marquee */
 
 #literally-me {
-    width: 24rem;
+    width: 19.4rem;
     box-sizing: border-box;
     margin-top: 1rem;
     padding: 0.4rem;
     position: relative;
     background: #fffafb;
-    border: 1px dotted #000;
+    border: 1px dashed #000000;
+    box-shadow: 0 0 0 5px #f0f0f0;
     border-radius: 0.4rem;
     transform: rotate(-1deg);
     transform-origin: center;
@@ -283,17 +278,18 @@ body.loaded #loading-screen {
 .marquee-group img {
     width: 6.5rem;
     height: 6.5rem;
-    object-fit: contain;
+    object-fit: cover;
     flex-shrink: 0;
     position: relative;
     z-index: 1;
     border-radius: 0.4rem;
+    box-shadow: 2px 2px 4px #0003;
     filter: grayscale(60%);
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .marquee-group img:hover {
-    filter: grayscale(0%) brightness(1);
+    filter: grayscale(0%);
     transform: scale(1.1);
     z-index: 10;
 }
@@ -317,7 +313,7 @@ body.loaded #loading-screen {
     justify-content: center;
     position: relative;
     box-sizing: border-box;
-    margin-top: 1.2rem;
+    margin-top: 2.7rem;
     padding: 0.4rem;
     border-radius: 0.4rem;
 }
@@ -367,7 +363,7 @@ body.loaded #loading-screen {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1.9rem;
 }
 
 .flex-container {
@@ -382,7 +378,6 @@ body.loaded #loading-screen {
     top: -19%;
 }
 
-
 /* mobile */
 
 @media (max-width: 600px) {
@@ -394,22 +389,14 @@ body.loaded #loading-screen {
     .mascot {
         width: 80vw;
         max-width: 20.4rem;
-        margin: -8rem 0 0;
+        margin: 0;
     }
 
-    #about {
-        height: 8.5rem;
-        padding: 1.2rem 2.5rem 2rem;
-        background-image: url("images/cloud2.gif");
-    }
-
-    #about .inner {
-        flex: 1;
-        min-width: 0;
-        min-height: 0;
-        height: auto;
-        padding-right: 0.2rem;
-        overflow: auto;
-        overflow-x: hidden;
+    #about::after {
+        top: auto;
+        right: auto;
+        bottom: -0.55rem;
+        left: 50%;
+        transform: rotate(135deg);
     }
 }

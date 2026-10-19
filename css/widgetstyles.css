@@ -21,7 +21,8 @@
     box-sizing: border-box;
     padding: 0.5rem;
     background-color: #fffafb;
-    border: 1px dotted #000;
+    border: 1px dashed #999;
+    box-shadow: 0 0 0 5px #f0f0f0;
     border-radius: 0.4rem;
     font-size: 0.9rem;
     overflow-wrap: anywhere;
@@ -32,12 +33,13 @@
     height: 3rem;
     flex-shrink: 0;
     border-radius: 0.3rem;
+    box-shadow: 2px 2px 4px #0003;
     filter: grayscale(60%);
     transition: filter 0.3s ease;
 }
 
 #discord-avatar:hover {
-    filter: grayscale(0%) brightness(1);
+    filter: grayscale(0%);
 }
 
 #discord-username {
@@ -127,7 +129,8 @@
     padding: 0.4rem;
     background-color: #fffafb;
     text-transform: lowercase;
-    border: 1px dotted #000;
+    border:1px dashed #999;
+    box-shadow:0 0 0 5px #f0f0f0;
     border-radius: 0.4rem;
     position: relative;
 }
@@ -152,12 +155,13 @@
     object-fit: cover;
     flex-shrink: 0;
     border-radius: 0.2rem;
+    box-shadow: 2px 2px 4px #0003;
     filter: grayscale(60%);
     transition: filter 0.3s ease;
 }
 
 #listening .current-art:hover {
-    filter: grayscale(0%) brightness(1);
+    filter: grayscale(0%);
 }
 
 #listening .track-info {
@@ -194,7 +198,6 @@
 #listening .previous-tracks {
     margin-top: 0.7rem;
     padding-top: 0.5rem;
-    border-top: 1px dotted #999;
 }
 
 #listening .previous-track {
@@ -211,12 +214,13 @@
     object-fit: cover;
     flex-shrink: 0;
     border-radius: 0.15rem;
+    box-shadow: 2px 2px 4px #0003;
     filter: grayscale(60%);
     transition: filter 0.3s ease;
 }
 
 #listening .previous-art:hover {
-    filter: grayscale(0%) brightness(1);
+    filter: grayscale(0%);
 }
 
 #listening .previous-info {
@@ -269,7 +273,7 @@
     }
 }
 
-#listening-container > p {
+#listening-container>p {
     margin: 0.4rem 0 0;
     font-size: 0.9rem;
     color: #fffafb;
@@ -277,12 +281,12 @@
     text-transform: lowercase;
 }
 
-#listening-container > p a {
+#listening-container>p a {
     color: inherit;
     text-decoration: none;
 }
 
-#listening-container > p a:hover {
+#listening-container>p a:hover {
     color: #696963;
 }
 

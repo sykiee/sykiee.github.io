@@ -100,6 +100,8 @@ const getTrack = async () => {
                 </div>
             </div>
 
+            <img src="images/a11-dashed-line.gif" style="display: block; margin: 0.4rem auto;">
+
             <div class="previous-tracks">
                 ${previous.slice(0, 2).map(previousTrack).join("")}
             </div>
