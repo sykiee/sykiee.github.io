@@ -1,0 +1,78 @@
+/* decoration styles for little cutout stickers go here to reduce clutter :p */
+
+/* cut out decor styling */
+
+.dark-blue-swirl {
+    width: 3.3rem;
+    position: absolute;
+    left: -5%;
+    top: 79%;
+    transform: rotate(-65deg);
+}
+
+.light-blue-swirl {
+    width: 3.3rem;
+    position: absolute;
+    left: 89%;
+    top: 72%;
+    transform: rotate(113deg);
+}
+
+.clownfish {
+    width: 14.3rem;
+    position: absolute;
+    left: 52%;
+    top: -35%;
+    transform: rotate(12deg);
+}
+
+.shark-plush {
+    width: 7.3rem;
+    position: absolute;
+    left: -16%;
+    top: 75%;
+    transform: rotate(12deg);
+}
+
+.blueberry1 {
+    width: 6.9rem;
+    position: absolute;
+    left: 79%;
+    top: -32%;
+    transform: rotate(39deg);
+}
+
+/* container title styling */
+
+.logo {
+    display: block;
+    width: 23.5rem;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.currently-title {
+    width: 11.7rem;
+    height: auto;
+    position: absolute;
+    top: -18%;
+}
+
+.literally-me-title {
+    width: 11.7rem;
+    height: auto;
+    position: absolute;
+    top: -27%;
+}
+
+.footer-title {
+    width: 11.7rem;
+    height: auto;
+    position: absolute;
+    top: -50%;
+}

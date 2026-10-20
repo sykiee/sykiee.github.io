@@ -1,94 +1,40 @@
-/* lanyard discord status widget styling */
 
-#lanyard-container {
-    width: 15rem;
-    display: block;
-    cursor: pointer;
-    transform-origin: left center;
-    transform: rotate(-1.5deg);
-    transition: transform 0.2s ease;
+/* lanyard discord presence styling */
+
+.discord-status-dot {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-left: 0.3rem;
+    margin-right: 0.2rem;
 }
 
-#lanyard-container:hover {
-    transform: scale(1.1);
-}
-
-#lanyard-presence {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    width: 15rem;
-    box-sizing: border-box;
-    padding: 0.5rem;
-    background-color: #fffafb;
-    border: 1px dashed #999;
-    box-shadow: 0 0 0 5px #f0f0f0;
-    border-radius: 0.4rem;
-    font-size: 0.9rem;
-    overflow-wrap: anywhere;
-}
-
-#discord-avatar {
-    width: 3rem;
-    height: 3rem;
-    flex-shrink: 0;
-    border-radius: 0.3rem;
-    box-shadow: 2px 2px 4px #0003;
-    filter: grayscale(60%);
-    transition: filter 0.3s ease;
-}
-
-#discord-avatar:hover {
-    filter: grayscale(0%);
-}
-
-#discord-username {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-#discord-username i {
-    font-size: 0.9rem;
-}
-
-#discord-status {
-    font-size: 0.9rem;
-    text-transform: lowercase;
-    transition: color 0.2s ease;
-}
-
-#discord-status[data-status="online"] {
-    color: #789878;
-}
-
-#discord-status[data-status="idle"] {
-    color: #c49a55;
-}
-
-#discord-status[data-status="dnd"] {
-    color: #b87575;
-}
-
-#discord-status[data-status="offline"] {
-    color: #999999;
-}
-
-#lanyard-container p {
-    margin: 0.4rem 0 0;
-    font-size: 0.8rem;
-    color: #fffafb;
-    text-align: center;
-    text-transform: lowercase;
-}
-
-#lanyard-container p a {
-    color: #fffafb;
+.discord-currently-username,
+.discord-currently-username:hover {
+    font-weight: bold;
+    color: inherit;
     text-decoration: none;
 }
 
-#lanyard-container p a:hover {
-    color: #696963;
+.status-online {
+    color: #8aaf91;
+}
+
+.status-idle {
+    color: #c9ad72;
+}
+
+.status-busy {
+    color: #c98282;
+}
+
+.status-offline {
+    color: #999999;
+}
+
+/* steam currently playing styling */
+
+#steam-games {
+    display: inline;
 }
 
 /* status.cafe widget styling */
@@ -100,14 +46,15 @@
     font-size: 1rem;
 }
 
-#statuscafe-username {
-    margin: 0 0 0.3rem 0;
-    font-weight: bold;
-}
-
 #statuscafe-content {
     margin: 0;
     overflow-wrap: anywhere;
+}
+
+#statuscafe-time {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
 }
 
 /* last.fm widget styling */
@@ -129,8 +76,8 @@
     padding: 0.4rem;
     background-color: #fffafb;
     text-transform: lowercase;
-    border:1px dashed #999;
-    box-shadow:0 0 0 5px #f0f0f0;
+    border: 1px dashed #000000;
+    box-shadow: 0 0 0 5px #f0f0f0;
     border-radius: 0.4rem;
     position: relative;
 }
@@ -292,15 +239,23 @@
 
 /* tooltip + misc. */
 
-#s-m-t-tooltip {
+#custom-tooltip {
+    position: absolute;
     max-width: 20.8rem;
-    z-index: 10;
+    z-index: 99999;
     margin: 1.7rem 1rem;
     padding: 0.2rem 0.5rem;
     font-size: 0.9rem;
     background-color: #1a2937;
-    border: 0.1rem solid #f5f5f5;
+    border: 0.1rem dashed #f5f5f5;
     color: #f5f5f5;
     border-radius: 0.4rem;
     box-sizing: border-box;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+#custom-tooltip.visible {
+    opacity: 1;
 }

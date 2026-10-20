@@ -6,7 +6,8 @@
   <title>bruce</title>
   <link rel="shortcut icon" type="image/x-icon" href="images/icon2.ico">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="css/widgetstyles.css">
+  <link rel="stylesheet" href="css/widstyles.css">
+  <link rel="stylesheet" href="css/decstyles.css">
   <script src="https://kit.fontawesome.com/5c560bddc0.js" crossorigin="anonymous"></script>
 </head>
 
@@ -42,31 +43,36 @@
         <div class="flex-row">
           <div class="flex-column">
             <div id="currently">
-              <img src="images/currently2.gif" style="width: 11.7rem; height: auto; position: absolute; top: -18%;">
+              <img class="currently-title" src="images/currently2.gif">
               <div class="inner">
-                <div id="statuscafe" title="status..">
-                  <div id="statuscafe-username">
-                    <span>💬</span><a href="https://status.cafe/users/grasscanons" target="_blank">grasscanons</a>
-                    <span id="statuscafe-time"></span>
-                  </div>
+
+                <!-- powered by https://github.com/Phineas/lanyard -->
+                <p><span id="discord-currently-status">loading...</span></p>
+                <img src="images/a11-dashed-line.gif">
+
+                <!-- powered by https://status.cafe/ -->
+                <div id="statuscafe"><span title="thinking about..">💬</span> <span id="statuscafe-time"></span>
                   <div id="statuscafe-content"></div>
                 </div>
+
                 <img src="images/a11-dashed-line.gif">
-                <p title="playing.."><span>🎮</span> warhammer 40k space marine 2, fallout 76, overwatch</p>
+                <p><span title="playing..">🎮</span> <span id="steam-games">loading...</span>, minecraft</p>
                 <img src="images/a11-dashed-line.gif">
-                <p title="watching.."><span>📺</span> nothing atm</p>
+                <p><span title="watching..">📺</span> nothing atm</p>
                 <img src="images/a11-dashed-line.gif">
-                <p title="reading.."><span>📚</span> chainsmoker cat</p>
+                <p><span title="reading..">📚</span> chainsmoker cat</p>
                 <img src="images/a11-dashed-line.gif">
-                <p title="working on.."><span>📝</span> being silly</p>
+                <p><span title="working on..">📝</span> building my web page, grinding cruicible mode in sm2, planning
+                  my move, and being silly</p>
                 <p style="margin: 8px 0 0; padding-top: 4px; font-size: 0.7rem; text-align: center; opacity: 0.7;">
-                  last updated: oct 16. 2026</p>
+                  last updated: oct 19. 2026</p>
               </div>
-              <img src="images/darkblueswirl.png"
-                style="width: 3.3rem; position: absolute; left: -5%; top: 79%; transform: rotate(-65deg);">
+              <img class="dark-blue-swirl" src="images/darkblueswirl.png">
+              <img class="blueberry1" src="images/blueberry1.png">
             </div>
+
             <div id="literally-me">
-              <img src="images/literallyme.gif" style="width: 11.7rem; height: auto; position: absolute; top: -27%;">
+              <img class="literally-me-title" src="images/literallyme.gif">
               <div id="image-marquee">
                 <div class="marquee-track">
                   <div class="marquee-group">
@@ -89,36 +95,25 @@
                   </div>
                 </div>
               </div>
-              <img src="images/lightblueswirl.png"
-                style="width: 3.3rem; position: absolute; left: 89%; top: 72%; transform: rotate(113deg);">
+              <img class="light-blue-swirl" src="images/lightblueswirl.png">
+              <img class="shark-plush" src="images/sharkplush.png">
             </div>
           </div>
           <div class="flex-column">
-            <div id="lanyard-container">
-              <div id="lanyard-presence" title="add me on dsc @grasscanons :)">
-                <img id="discord-avatar" src="">
-                <div>
-                  <div id="discord-username">
-                    <i class="fa-brands fa-discord"></i>
-                    <span>loading...</span>
-                  </div>
-                  <div id="discord-status"></div>
-                </div>
-              </div>
-              <p>powered by <a href="https://github.com/Phineas/lanyard" target="_blank">lanyard</a></p>
-              <img src="images/clownfish.png"
-                style="width: 13.3rem; position: absolute; left: 54%; top: -59%; transform: rotate(14deg);">
-            </div>
+
+            <!-- original script from https://max.nekoweb.org/resources/license.txt | edits and tweaks by me -->
             <div id="listening-container">
               <div id="listening"></div>
               <p>pulled from <a href="https://www.last.fm/user/sykiee" target="_blank">last.fm</a></p>
+              <img class="clownfish" src="images/clownfish.png">
             </div>
+
           </div>
         </div>
       </div>
       <div class="flex-column">
         <div id="socials">
-          <img src="images/footer.gif" style="width: 11.7rem; height: auto; position: absolute; top: -50%;">
+          <img class="footer-title" src="images/footer.gif">
           <div id="social-bar">
             <a href="https://www.github.com/sykiee" title="github" target="_blank" class="social-icon"
               style="--icon: url('images/github.svg')"></a>
@@ -136,12 +131,8 @@
       <p>last updated on <b><span id="last-updated"></span></b> / coded with <b>♥</b> by <b>bruce</b></p>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="scripts/lastfm.js"></script>
-  <script src="scripts/statuscafe.js"></script>
   <script src="scripts/sitejs.js"></script>
-  <script src="scripts/tooltips.js"></script>
-  <script src="scripts/lanyard.js"></script>
+  <script src="scripts/widgetjs.js"></script>
 </body>
 
 </html>

@@ -110,23 +110,7 @@ body.loaded #loading-screen {
     color: #696963;
 }
 
-/* logo + header marquee */
-
-.logo {
-    display: block;
-    width: 23.5rem;
-    height: auto;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.logo:hover,
-.mascot:hover,
-#about:hover,
-#currently:hover,
-#literally-me:hover {
-    transform: scale(1.1);
-}
+/* header marquee */
 
 .header-marquee {
     width: 14.5rem;
@@ -163,7 +147,7 @@ body.loaded #loading-screen {
 /* about + mascot */
 
 #about {
-    height: 7.6rem;
+    height: 6.6rem;
     width: 18.4rem;
     max-width: calc(100vw - 2rem);
     display: flex;
@@ -176,24 +160,26 @@ body.loaded #loading-screen {
     border: 1px dashed #000000;
     box-shadow: 0 0 0 5px #f0f0f0;
     transition: transform 0.2s ease;
+    transform: translateY(-2.29rem);
 }
 
 #about::after {
     content: '';
     position: absolute;
-    top: 15%;
-    right: -0.68rem;
-    width: 1.2rem;
-    height: 1.2rem;
+    top: 45%;
+    right: -0.90rem;
+    width: 1.7rem;
+    height: 1.7rem;
     background: #fffafb;
     border-right: 1px dashed #000;
     border-top: 1px dashed #000;
+    box-shadow: 3px -3px 0 0 #f0f0f0;
     transform: rotate(45deg);
-    z-index: 1;
+    z-index: -1;
 }
 
 #about:hover {
-    transform: scale(1.1);
+    transform: translateY(-2.29rem) scale(1.1);
 }
 
 #about .inner {
@@ -210,6 +196,10 @@ body.loaded #loading-screen {
     margin-left: -4.2rem;
     cursor: pointer;
     transition: transform 0.2s ease;
+}
+
+.mascot:hover {
+    transform: scale(1.1);
 }
 
 #currently {
@@ -236,6 +226,10 @@ body.loaded #loading-screen {
     overflow-x: hidden;
 }
 
+#currently:hover {
+    transform: scale(1.1);
+}
+
 /* literally me + image marquee */
 
 #literally-me {
@@ -251,6 +245,10 @@ body.loaded #loading-screen {
     transform: rotate(-1deg);
     transform-origin: center;
     transition: transform 0.2s ease;
+}
+
+#literally-me:hover {
+    transform: scale(1.1);
 }
 
 #image-marquee {
@@ -395,8 +393,8 @@ body.loaded #loading-screen {
     #about::after {
         top: auto;
         right: auto;
-        bottom: -0.55rem;
-        left: 50%;
+        bottom: -0.89rem;
+        left: 40%;
         transform: rotate(135deg);
     }
 }
