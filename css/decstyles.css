@@ -42,12 +42,20 @@
     transform: rotate(39deg);
 }
 
+.stitched-cloud2 {
+    width: 26.3rem;
+    position: absolute;
+    z-index: -1;
+    top: -24%;
+}
+
 /* container title styling */
 
 .logo {
     display: block;
     width: 23.5rem;
     height: auto;
+    z-index: 2;
     cursor: pointer;
     transition: transform 0.2s ease;
 }

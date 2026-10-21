@@ -7,13 +7,9 @@ document.addEventListener("click", () => {
 });
 
 // loading screen
-const hideLoadingScreen = () => document.body.classList.add("loaded");
-
-if (document.readyState === "complete") {
-    hideLoadingScreen();
-} else {
-    window.addEventListener("load", hideLoadingScreen);
-}
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
 
 // cute little meow sounds
 const mascotImage = document.querySelector(".mascot");
