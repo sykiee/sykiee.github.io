@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>bruce</title>
   <link rel="shortcut icon" type="image/x-icon" href="images/icon2.ico">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/blog.css">
 </head>
 
 <body>
@@ -14,32 +15,26 @@
   </div>
   <div class="page-wrapper">
     <div id="main-page">
+      <img class="logo" src="images/logo2.gif">
       <div id="header">
-        <img class="logo" src="images/logo2.gif">
-        <div class="flex-row">
-          <div id="about">
-            <div class="inner">
-              <p>hi, my name is bruce. i'm a (amateur) web dev, photographer and graphic designer. i really like
-                making things, learning new stuff, and meeting new people!
-                i can be a bit avoidant sometimes so please bear with me, i still want to get to know you!</p>
-            </div>
+        <div id="about">
+          <div class="inner">
+            <p>hi, my name is bruce. i'm a (amateur) web dev, photographer and graphic designer. i really like
+              making things, learning new stuff, and meeting new people!
+              i can be a bit avoidant sometimes so please bear with me, i still want to get to know you!</p>
           </div>
-          <img class="mascot" src="images/dacougar3.gif">
         </div>
+        <img class="mascot" src="images/dacougar3.gif">
       </div>
-      <div class="flex-column">
-        <div id="socials">
-          <div id="social-bar">
-            <a href="https://www.github.com/sykiee" title="github" target="_blank" class="social-icon"
-              style="--icon: url('images/github.svg')"></a>
-            <a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank" class="social-icon"
-              style="--icon: url('images/steam-logo.svg')"></a>
-            <a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank" class="social-icon"
-              style="--icon: url('images/lastfm.svg')"></a>
-            <a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube" target="_blank"
-              class="social-icon" style="--icon: url('images/youtube.svg')"></a>
-          </div>
-        </div>
+      <div id="social-bar">
+        <a href="https://www.github.com/sykiee" title="github" target="_blank" class="social-icon"
+          style="--icon: url('../images/github.svg')"></a>
+        <a href="https://steamcommunity.com/id/47r739423/" title="steam" target="_blank" class="social-icon"
+          style="--icon: url('../images/steam-logo.svg')"></a>
+        <a href="https://www.last.fm/user/sykiee" title="last.fm" target="_blank" class="social-icon"
+          style="--icon: url('../images/lastfm.svg')"></a>
+        <a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube" target="_blank"
+          class="social-icon" style="--icon: url('../images/youtube.svg')"></a>
       </div>
       <div id="presence">
         <div id="presence-card">loading...</div>
@@ -51,8 +46,33 @@
           <span id="pill-time"></span>
         </button>
       </div>
+      <button id="blog" title="journal →"></button>
     </div>
-    <div id="site-footer">
+
+    <div id="blog-page">
+      <div id="blog-notebook">
+        <div id="notebook-content">
+          <p>some day i'll write something here..</p>
+          <br>
+          <p>just not today</p>
+        </div>
+
+        <!-- powered by https://status.cafe/ -->
+        <div id="statuscafe"><span title="thinking about..">💬</span> <span id="statuscafe-time"></span>
+          <div id="statuscafe-content"></div>
+        </div>
+
+        <div id="blog-notecard">
+          <div id="notecard-content">
+            <p>this one too..</p>
+          </div>
+        </div>
+
+      </div>
+      <button id="blog-back-button" title="← home">← home</button>
+    </div>
+
+    <div id="footer">
       <p>last updated on <b><span id="last-updated"></span></b> / made with <b>♥</b> by <b>bruce</b></p>
     </div>
   </div>

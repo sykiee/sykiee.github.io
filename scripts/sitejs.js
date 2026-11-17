@@ -11,20 +11,24 @@ function finishLoading() {
     const remaining = Math.max(0, 900 - (performance.now() - loadingStartedAt));
 
     setTimeout(() => {
-        loadingScreen.classList.remove("visible");
         loadingScreen.classList.add("hidden");
-        setTimeout(() => document.body.classList.add("loaded"), 800);
+
+        setTimeout(() => {
+            document.body.classList.add("loaded");
+        }, 800);
     }, remaining);
 }
 
 window.addEventListener("load", finishLoading, { once: true });
 setTimeout(finishLoading, 6000);
 
+
 // rotate background on refresh
 
 let backgroundNumber = (Number(localStorage.getItem("backgroundNumber")) || 0) % 3 + 1;
 localStorage.setItem("backgroundNumber", backgroundNumber);
-document.body.style.setProperty("--background-url", `url("images/background-${backgroundNumber}.jpg")`);
+document.body.style.setProperty("--background-url", `url("../images/background-${backgroundNumber}.jpg")`);
+
 
 // discord presence widget
 
@@ -133,12 +137,12 @@ const renderActivity = activities => {
         <div class="presence-section">
             <div class="presence-section-label">ACTIVITY</div>
             ${activities.map(activity => {
-                const activityImage = activityImageUrl(activity);
-                const details = [activity.details, activity.state].filter(Boolean).join(" · ");
-                const start = activity.timestamps?.start || 0;
-                const verb = ACTIVITY_VERBS[activity.type] || "playing";
+        const activityImage = activityImageUrl(activity);
+        const details = [activity.details, activity.state].filter(Boolean).join(" · ");
+        const start = activity.timestamps?.start || 0;
+        const verb = ACTIVITY_VERBS[activity.type] || "playing";
 
-                return `
+        return `
                     <div class="presence-item">
                         <div class="presence-item-image">
                             ${activityImage ? `<img src="${escapeHTML(activityImage)}" alt="">` : `<span>🎮</span>`}
@@ -149,14 +153,14 @@ const renderActivity = activities => {
                             ${start ? `<div class="activity-duration" data-start="${start}" data-verb="${verb}"></div>` : ""}
                         </div>
                     </div>`;
-            }).join("")}
+    }).join("")}
         </div>`;
 };
 
 const renderSpotify = spotify => {
     if (!spotify) return `
         <div class="presence-section">
-            <div class="presence-section-label spotify-label">
+            <div class="presence-section-label spotify-label spotify-inactive">
                 <span class="spotify-indicator"></span>
                 LISTENING TO
             </div>
@@ -169,31 +173,41 @@ const renderSpotify = spotify => {
 
     const start = spotify.timestamps?.start || 0;
     const end = spotify.timestamps?.end || 0;
-    const spotifyUrl = spotify.track_id ? `https://open.spotify.com/track/${spotify.track_id}` : null;
+    const spotifyUrl = spotify.track_id
+        ? `https://open.spotify.com/track/${spotify.track_id}`
+        : null;
+
+    const artists = (spotify.artist || "").split(";").map(name => name.trim()).filter(Boolean);
 
     return `
         <div class="presence-section">
-            <div class="presence-section-label spotify-label">
+            <div class="presence-section-label spotify-label spotify-active">
                 <span class="spotify-indicator"></span>
                 LISTENING TO
             </div>
             <div class="presence-item spotify-item">
                 <div class="presence-item-image spotify-art" title="${escapeHTML((spotify.album || spotify.song).toLowerCase())}">
-                    <img src="${escapeHTML(spotify.album_art_url)}" alt="">
+                    ${spotify.album_art_url ? `<img src="${escapeHTML(spotify.album_art_url)}" alt="">` : `<span>🎵</span>`}
                 </div>
                 <div class="presence-item-info">
                     <div class="presence-item-title">
-                        ${spotifyUrl ? `<a class="spotify-song-link" href="${escapeHTML(spotifyUrl)}" target="_blank" rel="noopener noreferrer">${escapeHTML(spotify.song)}</a>` : escapeHTML(spotify.song)}
+                        ${spotifyUrl
+            ? `<a class="spotify-song-link" href="${escapeHTML(spotifyUrl)}" target="_blank" rel="noopener noreferrer">${escapeHTML(spotify.song)}</a>`
+            : escapeHTML(spotify.song)}
                     </div>
                     <div class="presence-item-subtitle">
-                        ${spotifyUrl ? `<a class="spotify-artist-link" href="https://open.spotify.com/search/${encodeURIComponent(spotify.artist)}" target="_blank" rel="noopener noreferrer">${escapeHTML(spotify.artist)}</a>` : escapeHTML(spotify.artist)}
+                        ${spotifyUrl
+            ? artists.map(name => `<a class="spotify-artist-link" href="https://open.spotify.com/search/${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer">${escapeHTML(name)}</a>`).join(", ")
+            : escapeHTML(artists.join(", "))}
                     </div>
                     <div class="spotify-now-playing">NOW PLAYING</div>
                 </div>
             </div>
             ${start && end && end > start ? `
                 <div class="spotify-progress" data-start="${start}" data-end="${end}">
-                    <div class="spotify-progress-track"><div class="spotify-progress-fill"></div></div>
+                    <div class="spotify-progress-track">
+                        <div class="spotify-progress-fill"></div>
+                    </div>
                     <div class="spotify-progress-times">
                         <span class="spotify-elapsed">0:00</span>
                         <span class="spotify-duration">0:00</span>
@@ -350,6 +364,86 @@ document.addEventListener("visibilitychange", () => {
     if (!document.hidden) updateDiscordStatus();
 });
 
+
+// status.cafe widget
+
+fetch("https://status.cafe/users/grasscanons/status.json")
+    .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+    })
+    .then(r => {
+        document.getElementById("statuscafe-time").textContent = r.timeAgo;
+        document.getElementById("statuscafe-content").textContent = r.content || "no status yet.";
+    })
+    .catch(() => {
+        document.getElementById("statuscafe-content").textContent = "couldn't load status.";
+    });
+
+
+// blog page navigation
+
+const blogButton = document.getElementById("blog");
+const blogPage = document.getElementById("blog-page");
+const blogBack = document.getElementById("blog-back-button");
+const mainPage = document.getElementById("main-page");
+
+let pageTransitioning = false;
+
+const transitionDuration = 300;
+
+const openBlog = () => {
+    if (pageTransitioning) return;
+    pageTransitioning = true;
+
+    mainPage.classList.add("fade-out");
+
+    setTimeout(() => {
+        mainPage.style.display = "none";
+        blogPage.style.display = "flex";
+        blogBack?.focus({ preventScroll: true });
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                blogPage.classList.add("visible");
+
+                setTimeout(() => {
+                    pageTransitioning = false;
+                    window.scrollTo(0, 0);
+                }, transitionDuration);
+            });
+        });
+    }, transitionDuration);
+};
+
+const closeBlog = () => {
+    if (pageTransitioning) return;
+    pageTransitioning = true;
+
+    blogPage.classList.remove("visible");
+
+    setTimeout(() => {
+        blogPage.style.display = "none";
+        mainPage.style.display = "";
+        blogButton?.focus({ preventScroll: true });
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                mainPage.classList.remove("fade-out");
+
+                setTimeout(() => {
+                    pageTransitioning = false;
+                    window.scrollTo(0, 0);
+                }, transitionDuration);
+            });
+        });
+    }, transitionDuration);
+};
+
+blogButton?.addEventListener("click", openBlog);
+blogBack?.addEventListener("click", closeBlog);
+
+
 // custom tooltips script
 
 const customTooltip = document.createElement("div");
@@ -366,7 +460,7 @@ function positionCustomTooltip() {
     if (!tooltipTarget) return;
 
     const gap = 11;
-    customTooltip.style.left = "6px";
+    customTooltip.style.left = "0px";
     customTooltip.style.top = "0px";
 
     const rect = customTooltip.getBoundingClientRect();
@@ -431,21 +525,32 @@ document.addEventListener("mousedown", hideCustomTooltip);
 document.addEventListener("scroll", hideCustomTooltip, true);
 window.addEventListener("blur", hideCustomTooltip);
 
+
 // update footer date
 
 const lastUpdated = document.getElementById("last-updated");
 
 if (lastUpdated) {
-    fetch("https://api.github.com/repos/sykiee/sykiee.github.io/commits?per_page=1")
-        .then(response => {
-            if (!response.ok) throw new Error("GitHub API error");
-            return response.json();
-        })
-        .then(commits => {
-            if (!commits.length) throw new Error("No commits found");
-            lastUpdated.textContent = new Date(commits[0].commit.committer.date)
-                .toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "2-digit" })
-                .replace(",", ".").toLowerCase();
-        })
-        .catch(() => lastUpdated.textContent = "unknown");
+    const cachedDate = sessionStorage.getItem("lastUpdated");
+
+    if (cachedDate) {
+        lastUpdated.textContent = cachedDate;
+    } else {
+        fetch("https://api.github.com/repos/sykiee/sykiee.github.io/commits?per_page=1")
+            .then(response => {
+                if (!response.ok) throw new Error("GitHub API error");
+                return response.json();
+            })
+            .then(commits => {
+                if (!commits.length) throw new Error("No commits found");
+
+                const formatted = new Date(commits[0].commit.committer.date)
+                    .toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "2-digit" })
+                    .replace(",", ".").toLowerCase();
+
+                sessionStorage.setItem("lastUpdated", formatted);
+                lastUpdated.textContent = formatted;
+            })
+            .catch(() => lastUpdated.textContent = "unknown");
+    }
 }

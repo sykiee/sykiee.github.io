@@ -1,0 +1,219 @@
+/* blog page */
+
+#blog-page {
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 0;
+    padding-bottom: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#blog-page.visible {
+    opacity: 1;
+}
+
+
+/* notebook */
+
+#blog-notebook {
+    position: relative;
+    width: 100%;
+    max-width: 34.6rem;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    background-image: url("../images/notepad.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#notebook-content {
+    position: absolute;
+    top: 19%;
+    right: 27%;
+    bottom: 19%;
+    left: 27%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0.5rem;
+    overflow-y: auto;
+    border: 1px dashed var(--ink);
+    background-color: var(--blog);
+    color: var(--ink);
+    border-radius: 0.4rem;
+    box-shadow:
+        inset 0 3px 10px rgba(0, 0, 0, 0.16),
+        inset 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+#notebook-content p {
+    text-align: center;
+}
+
+
+/* status cafe */
+
+#statuscafe {
+    position: absolute;
+    z-index: 10;
+    top: 3.9rem;
+    right: 19.1rem;
+    width: 12rem;
+    padding: 0.75rem 0.9rem;
+    font-size: 0.85rem;
+    color: var(--ink);
+    background: var(--cream);
+    border: 1px dashed var(--ink);
+    border-radius: 1.2rem;
+    box-shadow: 0 0 0 3px var(--ring);
+    transform: rotate(-7deg);
+    transition: transform 0.2s ease;
+}
+
+#statuscafe:hover {
+    transform: scale(1.1);
+}
+
+#statuscafe-content {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+#statuscafe-time {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+
+/* notecard */
+
+#blog-notecard {
+    position: absolute;
+    width: 100%;
+    max-width: 11.6rem;
+    top: 21.5rem;
+    left: 23.7rem;
+    aspect-ratio: 1 / 1;
+    background-image: url("../images/notecard.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(6deg);
+    transition: transform 0.2s ease;
+}
+
+#blog-notecard:hover {
+    transform: scale(1.1);
+}
+
+#notecard-content {
+    position: absolute;
+    top: 8%;
+    right: 8%;
+    bottom: 8%;
+    left: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0.5rem;
+    overflow-y: auto;
+    border: 1px dashed var(--ink);
+    background-color: var(--blog);
+    color: var(--ink);
+    border-radius: 0.4rem;
+    box-shadow:
+        inset 0 3px 10px rgba(0, 0, 0, 0.16),
+        inset 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+#notecard-content p {
+    text-align: center;
+}
+
+/* back button */
+
+#blog-back-button {
+    display: block;
+    margin: 1.2rem auto 2rem;
+    padding: 0.4rem;
+    background-color: var(--cream);
+    color: var(--ink);
+    border: 1px dashed var(--ink);
+    font: inherit;
+    border-radius: 0.4rem;
+    box-shadow: 0 0 0 4px var(--ring);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#blog-back-button:hover {
+    transform: scale(1.1);
+}
+
+/* mobile */
+
+@media (max-width: 700px) {
+
+    #blog-page {
+        justify-content: flex-start;
+        padding: 1rem 0 2rem;
+    }
+
+    #blog-notebook {
+        width: 100%;
+        max-width: min(34rem, 100vw);
+    }
+
+    #notebook-content {
+        top: 19%;
+        right: 27%;
+        bottom: 19%;
+        left: 27%;
+        padding: 0.4rem;
+    }
+
+    #notebook-content p {
+        font-size: 0.8rem;
+    }
+
+    #statuscafe {
+        top: 10%;
+        left: 7%;
+        right: auto;
+        width: 36%;
+        max-width: 9rem;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.7rem;
+    }
+
+    #statuscafe-time {
+        font-size: 0.7rem;
+    }
+
+    #blog-notecard {
+        width: 34%;
+        max-width: 8.5rem;
+        top: auto;
+        left: auto;
+        right: 3%;
+        bottom: 3%;
+    }
+
+    #notecard-content {
+        padding: 0.35rem;
+    }
+
+    #notecard-content p {
+        font-size: 0.7rem;
+    }
+}
