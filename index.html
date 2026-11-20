@@ -18,7 +18,7 @@
       <img class="logo" src="images/logo2.gif">
       <div id="header">
         <div id="about">
-          <div class="inner">
+          <div id="about-inner">
             <p>hi, my name is bruce. i'm a (amateur) web dev, photographer and graphic designer. i really like
               making things, learning new stuff, and meeting new people!
               i can be a bit avoidant sometimes so please bear with me, i still want to get to know you!</p>
@@ -46,30 +46,47 @@
           <span id="pill-time"></span>
         </button>
       </div>
-      <button id="blog" title="journal →"></button>
+      <div class="page-buttons">
+        <button id="blog" title="journal →"></button>
+        <button id="bookmarks" title="bookmarks →"></button>
+      </div>
     </div>
 
     <div id="blog-page">
       <div id="blog-notebook">
-        <div id="notebook-content">
+        <div id="notebook-inner">
           <p>some day i'll write something here..</p>
-          <br>
           <p>just not today</p>
         </div>
 
         <!-- powered by https://status.cafe/ -->
         <div id="statuscafe"><span title="thinking about..">💬</span> <span id="statuscafe-time"></span>
-          <div id="statuscafe-content"></div>
+          <div id="statuscafe-inner"></div>
         </div>
 
         <div id="blog-notecard">
-          <div id="notecard-content">
-            <p>this one too..</p>
+          <div id="notecard-inner">
           </div>
         </div>
-
+        
+        <div id="blog-polaroid">
+          <div id="polaroid-inner">
+          </div>
+        </div>
       </div>
-      <button id="blog-back-button" title="← home">← home</button>
+
+      <button id="blog-back" title="← home">← home</button>
+    </div>
+
+    <div id="bookmarks-page">
+      <div id="bookmarks-clipboard">
+        <div id="clipboard-inner">
+          <p>got some really cool shit coming here too...</p>
+          <p>just you wait..</p>
+        </div>
+      </div>
+
+      <button id="bookmarks-back" title="← home">← home</button>
     </div>
 
     <div id="footer">

@@ -374,25 +374,29 @@ fetch("https://status.cafe/users/grasscanons/status.json")
     })
     .then(r => {
         document.getElementById("statuscafe-time").textContent = r.timeAgo;
-        document.getElementById("statuscafe-content").textContent = r.content || "no status yet.";
+        document.getElementById("statuscafe-inner").textContent = r.content || "no status yet.";
     })
     .catch(() => {
-        document.getElementById("statuscafe-content").textContent = "couldn't load status.";
+        document.getElementById("statuscafe-inner").textContent = "couldn't load status.";
     });
 
 
-// blog page navigation
+// page navigation
 
 const blogButton = document.getElementById("blog");
 const blogPage = document.getElementById("blog-page");
-const blogBack = document.getElementById("blog-back-button");
+const blogBack = document.getElementById("blog-back");
+
+const bookmarksButton = document.getElementById("bookmarks");
+const bookmarksPage = document.getElementById("bookmarks-page");
+const bookmarksBack = document.getElementById("bookmarks-back");
+
 const mainPage = document.getElementById("main-page");
 
 let pageTransitioning = false;
-
 const transitionDuration = 300;
 
-const openBlog = () => {
+const openPage = (page) => {
     if (pageTransitioning) return;
     pageTransitioning = true;
 
@@ -400,12 +404,12 @@ const openBlog = () => {
 
     setTimeout(() => {
         mainPage.style.display = "none";
-        blogPage.style.display = "flex";
-        blogBack?.focus({ preventScroll: true });
+        page.style.display = "flex";
+        page.querySelector("button")?.focus({ preventScroll: true });
 
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-                blogPage.classList.add("visible");
+                page.classList.add("visible");
 
                 setTimeout(() => {
                     pageTransitioning = false;
@@ -416,16 +420,16 @@ const openBlog = () => {
     }, transitionDuration);
 };
 
-const closeBlog = () => {
+const closePage = (page, returnTo) => {
     if (pageTransitioning) return;
     pageTransitioning = true;
 
-    blogPage.classList.remove("visible");
+    page.classList.remove("visible");
 
     setTimeout(() => {
-        blogPage.style.display = "none";
+        page.style.display = "none";
         mainPage.style.display = "";
-        blogButton?.focus({ preventScroll: true });
+        returnTo?.focus({ preventScroll: true });
 
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
@@ -440,8 +444,11 @@ const closeBlog = () => {
     }, transitionDuration);
 };
 
-blogButton?.addEventListener("click", openBlog);
-blogBack?.addEventListener("click", closeBlog);
+blogButton?.addEventListener("click", () => openPage(blogPage));
+blogBack?.addEventListener("click", () => closePage(blogPage, blogButton));
+
+bookmarksButton?.addEventListener("click", () => openPage(bookmarksPage));
+bookmarksBack?.addEventListener("click", () => closePage(bookmarksPage, bookmarksButton));
 
 
 // custom tooltips script

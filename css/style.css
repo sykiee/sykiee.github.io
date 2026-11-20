@@ -1,5 +1,3 @@
-/* fonts and global styles */
-
 @font-face {
     font-family: "Yuntaeng";
     src: url("../fonts/Yuntaeng.ttf");
@@ -25,7 +23,7 @@ html {
     font-family: "Yuntaeng", sans-serif;
     font-size: 0.95rem;
     background-color: var(--bg);
-    overflow-x: hidden; 
+    overflow-x: hidden;
     overflow-y: scroll;
 }
 
@@ -63,6 +61,12 @@ a:hover {
     transform: scale(1.1);
 }
 
+.page-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
 
 /* loading screen */
 
@@ -220,7 +224,7 @@ body.loaded #header {
     transform: rotate(45deg);
 }
 
-.inner {
+#about-inner {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
@@ -310,6 +314,7 @@ body.loaded #presence-pill {
     font-size: 0.8rem;
     line-height: 1;
     white-space: nowrap;
+    font-weight: bold;
 }
 
 #presence-card {
@@ -643,7 +648,7 @@ body.loaded #presence-pill {
 
 #blog {
     z-index: 1;
-    width: 9.4rem;
+    width: 2.4rem;
     height: 2.4rem;
     padding: 0;
     margin-top: 1rem;
@@ -668,6 +673,39 @@ body.loaded #blog {
 }
 
 #blog:hover {
+    transform: scale(1.1);
+}
+
+
+/* bookmarks */
+
+#bookmarks {
+    z-index: 1;
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: 0;
+    margin-top: 1rem;
+    background-image: url("../images/folder.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    opacity: 0;
+    translate: 0 20px;
+    transition:
+        opacity 0.6s ease 0.8s,
+        translate 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.8s,
+        transform 0.2s ease;
+    cursor: pointer;
+}
+
+body.loaded #bookmarks {
+    opacity: 1;
+    translate: 0 0;
+}
+
+#bookmarks:hover {
     transform: scale(1.1);
 }
 
@@ -753,7 +791,7 @@ body.loaded #footer {
         margin-left: 0;
     }
 
-    #blog {
+    .page-buttons {
         margin-bottom: 1.2rem;
     }
 }
