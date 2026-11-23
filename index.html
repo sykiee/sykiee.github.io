@@ -6,7 +6,6 @@
   <title>bruce</title>
   <link rel="shortcut icon" type="image/x-icon" href="images/icon2.ico">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/blog.css">
 </head>
 
 <body>
@@ -14,7 +13,18 @@
     <p class="loading-face">╰૮₍ >\./< ₎ა╯</p>
   </div>
   <div class="page-wrapper">
-    <div id="main-page">
+    <nav id="navbar">
+      <div id="nav-buttons">
+        <button id="home" class="active">home</button>
+        <button id="journal">journal</button>
+        <button id="bookmarks">bookmarks</button>
+      </div>
+
+      <button id="nav-toggle">
+        <span id="nav-arrow">^</span>
+      </button>
+    </nav>
+    <div id="main-page" class="visible">
       <img class="logo" src="images/logo2.gif">
       <div id="header">
         <div id="about">
@@ -36,19 +46,14 @@
         <a href="https://www.youtube.com/channel/UC3aJFLk944AqVTxdBjKFwsQ?" title="youtube" target="_blank"
           class="social-icon" style="--icon: url('../images/youtube.svg')"></a>
       </div>
-      <div id="presence">
-        <div id="presence-card">loading...</div>
-        <button id="presence-pill">
-          <span class="presence-avatar">
-            <img id="pill-avatar">
-            <span id="pill-dot" class="presence-dot status-offline"></span>
-          </span>
-          <span id="pill-time"></span>
+      <div id="discord-presence">
+        <div id="discord-card">loading...</div>
+        <button id="discord-button">
+<span class="presence-avatar"><img id="button-avatar">
+    <span id="button-dot" class="presence-dot status-offline"></span>
+</span>
+          <span id="button-time"></span>
         </button>
-      </div>
-      <div class="page-buttons">
-        <button id="blog" title="journal →"></button>
-        <button id="bookmarks" title="bookmarks →"></button>
       </div>
     </div>
 
@@ -68,25 +73,42 @@
           <div id="notecard-inner">
           </div>
         </div>
-        
+
         <div id="blog-polaroid">
           <div id="polaroid-inner">
           </div>
         </div>
       </div>
-
-      <button id="blog-back" title="← home">← home</button>
     </div>
 
     <div id="bookmarks-page">
       <div id="bookmarks-clipboard">
         <div id="clipboard-inner">
-          <p>got some really cool shit coming here too...</p>
-          <p>just you wait..</p>
+
+          <h1>tools i like to use</h1>
+          <a href="https://cobalt.tools/" target="_blank" title="free media downloader">cobalt.tools</a>
+          <a href="https://bendodson.com/projects/apple-music-artwork-finder/" target="_blank"
+            title="album cover artwork finder">bendodson.com/projects/apple-music-artwork-finder</a>
+          <a href="https://status.cafe/login" target="_blank" title="cute little status widget">status.cafe</a>
+          <a href="https://svgco.de/" target="_blank" title="svg generator">svgco.de/</a>
+          <a href="https://www.textemoji.org/" target="_blank" title="text emoji database">textemoji.org</a>
+          <a href="https://emojidb.org/" target="_blank" title="emoji database">emojidb.org</a>
+          <a href="https://unsplash.com/" target="_blank" title="free high-resolution stock photos">unsplash.com</a>
+          <a href="https://pixel-converter.ameniwa.com/" target="_blank"
+            title="really cool dithering tool">pixel-converter.ameniwa.com</a>
+          <a href="https://ditherit.com/" target="_blank" title="another really cool dithering tool">ditherit.com</a>
+
+          <h1>coding stuff</h1>
+          <a href="https://www.valentinely.cc/scrollbar" target="_blank"
+            title="custom scrollbar generator">valentinely.cc/scrollbar</a>
+          <a href="https://ribo.zone/free/snippets/borders" target="_blank"
+            title="custom image border tutorial + snippets">ribo.zone/free/snippets/borders</a>
+          <a href="https://docs.emmet.io/cheat-sheet/" target="_blank"
+            title="css cheat sheet">docs.emmet.io/cheat-sheet</a>
+          <a href="https://projects.verou.me/bubbly/" target="_blank"
+            title="text bubble tutorial">projects.verou.me/bubbly</a>
         </div>
       </div>
-
-      <button id="bookmarks-back" title="← home">← home</button>
     </div>
 
     <div id="footer">
