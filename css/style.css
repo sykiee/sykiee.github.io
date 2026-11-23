@@ -123,16 +123,25 @@ a:hover {
     align-items: center;
     justify-content: center;
     gap: 1.4rem;
+}
+
+
+/* page navigation */
+
+#main-page,
+#blog-page {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-#main-page.fade-out {
-    opacity: 0;
+#main-page.visible,
+#blog-page.visible {
+    opacity: 1;
 }
 
-#main-page.visible {
-    opacity: 1;
+#main-page[hidden],
+#blog-page[hidden] {
+    display: none !important;
 }
 
 
@@ -167,7 +176,6 @@ a:hover {
     transform: translateY(0);
 }
 
-
 #nav-buttons {
     display: flex;
     align-items: center;
@@ -188,8 +196,8 @@ a:hover {
     font: inherit;
     font-size: 0.85rem;
     color: var(--ink);
-    background: transparent;
-    border: 1px dashed transparent;
+    background: none;
+    border: none;
     border-radius: 0.3rem;
     cursor: pointer;
     transition:
@@ -205,7 +213,7 @@ a:hover {
 #nav-buttons button.active {
     color: #302820;
     font-weight: 700;
-    background: var(--blog);
+    background: none;
     border-color: var(--ink);
 }
 
@@ -379,423 +387,17 @@ body.loaded #social-bar {
 }
 
 
-/* lanyard discord presence */
-
-#discord-presence {
-    position: relative;
-    z-index: 999;
-}
-
-#discord-button {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    padding: 0.35rem 0.65rem;
-    font: inherit;
-    color: var(--ink);
-    background: var(--cream);
-    border: 1px dashed var(--ink);
-    border-radius: 0.4rem;
-    box-shadow: 0 0 0 3px var(--ring);
-    cursor: pointer;
-    opacity: 0;
-    translate: 0 20px;
-    transition:
-        opacity 0.6s ease 0.6s,
-        translate 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s,
-        transform 0.2s ease;
-}
-
-body.loaded #discord-button {
-    opacity: 1;
-    translate: 0 0;
-}
-
-#discord-button:hover {
-    transform: scale(1.1);
-}
-
-.button-avatar {
-    position: relative;
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-}
-
-#card-avatar {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.button-dot {
-    position: absolute;
-    right: -2px;
-    bottom: -2px;
-    width: 9px;
-    height: 9px;
-    border: 2px solid var(--cream);
-    border-radius: 50%;
-    box-sizing: content-box;
-}
-
-.button-dot.status-online {
-    background: #79CDA7;
-}
-
-.button-dot.status-idle {
-    background: #FDBB49;
-}
-
-.button-dot.status-busy {
-    background: #F04242;
-}
-
-.button-dot.status-offline {
-    background: #848D9A;
-}
-
-#button-time {
-    font-size: 0.8rem;
-    line-height: 1;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-#discord-card {
-    position: absolute;
-    bottom: calc(100% + 0.75rem);
-    left: 50%;
-    width: min(290px, calc(100vw - 2rem));
-    padding: 1rem;
-    color: var(--ink);
-    text-transform: lowercase;
-    background-color: var(--cream);
-    border: 1px dashed var(--ink);
-    border-radius: 0.4rem;
-    box-shadow: 0 0 0 5px var(--ring);
-    opacity: 0;
-    visibility: hidden;
-    transform: translate(-50%, 0.5rem);
-    transition:
-        opacity 0.25s ease,
-        transform 0.25s ease,
-        visibility 0.25s ease;
-}
-
-#discord-card.open {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, 0);
-}
-
-.presence-profile {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.presence-profile-avatar {
-    position: relative;
-    flex-shrink: 0;
-    width: 46px;
-    height: 46px;
-}
-
-.presence-profile-avatar img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.presence-profile-info {
-    min-width: 0;
-}
-
-.presence-name {
-    font-size: 0.95rem;
-    font-weight: 600;
-}
-
-.presence-tag {
-    font-size: 0.75rem;
-    color: var(--muted);
-}
-
-.presence-status {
-    margin-top: 2px;
-    font-size: 0.7rem;
-}
-
-.presence-avatar {
-    position: relative;
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-}
-
-.presence-avatar img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.presence-dot {
-    position: absolute;
-    right: -2px;
-    bottom: -2px;
-    width: 9px;
-    height: 9px;
-    border: 2px solid var(--cream);
-    border-radius: 50%;
-    box-sizing: content-box;
-}
-
-.presence-dot.status-online {
-    background: #79CDA7;
-}
-
-.presence-dot.status-idle {
-    background: #FDBB49;
-}
-
-.presence-dot.status-busy {
-    background: #F04242;
-}
-
-.presence-dot.status-offline {
-    background: #848D9A;
-}
-
-.status-text-online {
-    color: #79CDA7;
-}
-
-.status-text-idle {
-    color: #FDBB49;
-}
-
-.status-text-busy {
-    color: #F04242;
-}
-
-.status-text-offline {
-    color: #848D9A;
-}
-
-.presence-section {
-    margin-top: 1rem;
-    padding-top: 0.85rem;
-    border-top: 1px dashed var(--ink);
-}
-
-.presence-section-label {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-bottom: 0.55rem;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.09em;
-    color: var(--muted);
-}
-
-.presence-item {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    min-width: 0;
-}
-
-.presence-item-image {
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-    width: 43px;
-    height: 43px;
-    overflow: hidden;
-    border-radius: 0.4rem;
-    background: var(--ring);
-    box-shadow: 2px 2px 4px #0003;
-    font-size: 1.2rem;
-}
-
-.presence-item-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: inherit;
-}
-
-.presence-item-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.presence-item-title {
-    font-size: 0.8rem;
-    font-weight: 600;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.presence-item-subtitle {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-top: 3px;
-    font-size: 0.7rem;
-    color: var(--muted);
-}
-
-.activity-duration {
-    margin-top: 3px;
-    font-size: 0.7rem;
-    color: var(--muted);
-}
-
-.presence-empty {
-    margin-top: 0.9rem;
-    font-size: 0.75rem;
-    color: var(--muted);
-}
-
-.spotify-now-playing {
-    color: var(--spotify-text);
-    margin-top: 4px;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-}
-
-.spotify-item .presence-item-title {
-    overflow: visible;
-    text-overflow: clip;
-}
-
-.spotify-item .presence-item-subtitle {
-    overflow: visible;
-    text-overflow: clip;
-}
-
-.spotify-item .presence-item-info {
-    min-width: 0;
-    overflow: visible;
-}
-
-.spotify-song-link {
-    position: relative;
-    z-index: 2;
-    max-width: 100%;
-    font-weight: inherit;
-    transform-origin: left center;
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
-}
-
-.spotify-song-link:hover {
-    color: var(--spotify-text);
-    transform: scale(1.05);
-}
-
-.spotify-artist-link {
-    position: relative;
-    z-index: 2;
-    max-width: 100%;
-    font-weight: inherit;
-    transform-origin: left center;
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
-}
-
-.spotify-artist-link:hover {
-    color: var(--spotify-text);
-    transform: scale(1.05);
-}
-
-.spotify-progress {
-    margin-top: 0.7rem;
-}
-
-.spotify-progress-track {
-    width: 100%;
-    height: 3px;
-    overflow: hidden;
-    border-radius: 0.4rem;
-    background: #e0e0e0;
-}
-
-.spotify-progress-fill {
-    width: 0;
-    height: 100%;
-    border-radius: 0.4rem;
-    background: var(--spotify);
-}
-
-.spotify-progress-times {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-    font-size: 0.65rem;
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
-}
-
-.spotify-label {
-    transition: color 0.2s ease;
-}
-
-.spotify-active {
-    color: var(--spotify-text);
-}
-
-.spotify-inactive {
-    color: var(--muted);
-}
-
-.spotify-indicator {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    transition: background-color 0.2s ease;
-}
-
-.spotify-active .spotify-indicator {
-    background: var(--spotify);
-}
-
-.spotify-inactive .spotify-indicator {
-    background: var(--muted);
-}
-
-
 /* blog page */
 
 #blog-page {
     flex: 1;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     min-height: 0;
     padding-bottom: 1rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-#blog-page.visible {
-    opacity: 1;
 }
 
 
@@ -835,202 +437,6 @@ body.loaded #discord-button {
 
 #notebook-inner p {
     text-align: center;
-}
-
-
-/* status cafe */
-
-#statuscafe {
-    position: absolute;
-    z-index: 10;
-    top: 9%;
-    left: 14%;
-    width: min(100%, 15.5rem);
-    padding: 0.75rem 0.9rem;
-    font-size: 0.85rem;
-    color: var(--ink);
-    background: var(--cream);
-    border: 1px dashed var(--ink);
-    border-radius: 1.2rem;
-    box-shadow: 0 0 0 3px var(--ring);
-    transform: rotate(-7deg);
-    transition: transform 0.2s ease;
-}
-
-#statuscafe:hover {
-    transform: scale(1.1);
-}
-
-#statuscafe-inner {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    overflow-wrap: anywhere;
-}
-
-#statuscafe-time {
-    display: inline-block;
-    font-weight: bold;
-    margin-bottom: 0.2rem;
-}
-
-
-/* polaroid */
-
-#blog-polaroid {
-    position: absolute;
-    width: min(100%, 9.6rem);
-    top: 40%;
-    left: 72%;
-    aspect-ratio: 1 / 1;
-    background-image: url("../images/polaroid.png");
-    background-size: 100% 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    transform: rotate(-6deg);
-    transition: transform 0.2s ease;
-}
-
-#blog-polaroid:hover {
-    transform: scale(1.1);
-}
-
-#polaroid-inner {
-    position: absolute;
-    top: 8%;
-    right: 8%;
-    bottom: 32%;
-    left: 8%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0.5rem;
-    overflow-y: auto;
-    border: 1px dashed var(--ink);
-    background-color: var(--blog);
-    color: var(--ink);
-    border-radius: 0.4rem;
-    box-shadow:
-        inset 0 3px 10px rgba(0, 0, 0, 0.16),
-        inset 0 1px 3px rgba(0, 0, 0, 0.12);
-}
-
-#polaroid-inner p {
-    text-align: center;
-}
-
-/* notecard */
-
-#blog-notecard {
-    position: absolute;
-    width: 100%;
-    max-width: 12.6rem;
-    bottom: 8%;
-    left: 65%;
-    aspect-ratio: 5 / 3;
-    background-image: url("../images/notecard.png");
-    background-size: 100% 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    transform: rotate(6deg);
-    transition: transform 0.2s ease;
-}
-
-#blog-notecard:hover {
-    transform: scale(1.1);
-}
-
-#notecard-inner {
-    position: absolute;
-    top: 8%;
-    right: 8%;
-    bottom: 8%;
-    left: 8%;
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-    overflow-y: auto;
-    border: 1px dashed var(--ink);
-    background-color: var(--blog);
-    color: var(--ink);
-    border-radius: 0.4rem;
-    box-shadow:
-        inset 0 3px 10px rgba(0, 0, 0, 0.16),
-        inset 0 1px 3px rgba(0, 0, 0, 0.12);
-}
-
-
-/* bookmarks page */
-
-#bookmarks-page {
-    flex: 1;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 0;
-    padding-bottom: 1rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-#bookmarks-page.visible {
-    opacity: 1;
-}
-
-
-/* clipboard */
-
-#bookmarks-clipboard {
-    position: relative;
-    width: 100%;
-    max-width: 35.6rem;
-    aspect-ratio: 1 / 1;
-    margin: 0 auto;
-    background-image: url("../images/clipboard.png");
-    background-size: 100% 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-#clipboard-inner {
-    position: absolute;
-    top: 25%;
-    right: 28.5%;
-    bottom: 14%;
-    left: 25%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.6rem;
-    padding: 1rem;
-    overflow-y: auto;
-    overflow-x: hidden;
-    border: 1px dashed var(--ink);
-    background-color: var(--cream);
-    color: var(--ink);
-    border-radius: 1.8rem 0.4rem 0.4rem 1.8rem;
-    box-shadow:
-        inset 0 3px 10px rgba(0, 0, 0, 0.16),
-        inset 0 1px 3px rgba(0, 0, 0, 0.12);
-    box-sizing: border-box;
-    transform: rotate(-3.2deg);
-    transform-origin: center;
-}
-
-#clipboard-inner h1 {
-    margin: 0.5rem 0;
-    font-size: 1.2rem;
-    text-align: center;
-}
-
-#clipboard-inner a {
-    max-width: 100%;
-    text-align: center;
-    overflow-wrap: anywhere;
 }
 
 
@@ -1136,8 +542,7 @@ body.loaded #footer {
     }
 
     #main-page,
-    #blog-page,
-    #bookmarks-page {
+    #blog-page {
         flex: none;
         min-height: auto;
         height: auto;
@@ -1208,20 +613,6 @@ body.loaded #footer {
         font-size: 0.8rem;
     }
 
-    #statuscafe {
-        top: 10%;
-        left: 16%;
-        right: auto;
-        width: 36%;
-        max-width: 15.3rem;
-        padding: 0.5rem 0.6rem;
-        font-size: 0.7rem;
-    }
-
-    #statuscafe-time {
-        font-size: 0.7rem;
-    }
-
     #blog-notecard {
         width: 34%;
         max-width: min(19.5rem, 100vw);
@@ -1237,35 +628,5 @@ body.loaded #footer {
 
     #notecard-inner p {
         font-size: 0.7rem;
-    }
-
-    #blog-polaroid {
-        width: 21%;
-        top: 45%;
-        left: auto;
-        right: 3%;
-        bottom: auto;
-    }
-
-    #polaroid-inner {
-        padding: 0.35rem;
-    }
-
-    #polaroid-inner p {
-        font-size: 0.7rem;
-    }
-
-    #bookmarks-page {
-        justify-content: flex-start;
-        padding: 1rem 0 2rem;
-    }
-
-    #bookmarks-clipboard {
-        max-width: min(43rem, 100vw);
-    }
-
-    #clipboard-inner {
-        padding: 0.5rem;
-        gap: 0.5rem;
     }
 }

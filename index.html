@@ -6,6 +6,7 @@
   <title>bruce</title>
   <link rel="shortcut icon" type="image/x-icon" href="images/icon2.ico">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/discord.css">
 </head>
 
 <body>
@@ -16,8 +17,7 @@
     <nav id="navbar">
       <div id="nav-buttons">
         <button id="home" class="active">home</button>
-        <button id="journal">journal</button>
-        <button id="bookmarks">bookmarks</button>
+        <button id="blog">blog</button>
       </div>
 
       <button id="nav-toggle">
@@ -49,66 +49,32 @@
       <div id="discord-presence">
         <div id="discord-card">loading...</div>
         <button id="discord-button">
-<span class="presence-avatar"><img id="button-avatar">
-    <span id="button-dot" class="presence-dot status-offline"></span>
-</span>
+          <span class="presence-avatar"><img id="button-avatar">
+            <span id="button-dot" class="presence-dot status-offline"></span>
+          </span>
           <span id="button-time"></span>
         </button>
       </div>
     </div>
 
-    <div id="blog-page">
+    <div id="blog-page" hidden>
       <div id="blog-notebook">
         <div id="notebook-inner">
           <p>some day i'll write something here..</p>
           <p>just not today</p>
         </div>
 
-        <!-- powered by https://status.cafe/ -->
-        <div id="statuscafe"><span title="thinking about..">💬</span> <span id="statuscafe-time"></span>
-          <div id="statuscafe-inner"></div>
-        </div>
-
         <div id="blog-notecard">
           <div id="notecard-inner">
           </div>
         </div>
-
-        <div id="blog-polaroid">
-          <div id="polaroid-inner">
-          </div>
-        </div>
       </div>
-    </div>
 
-    <div id="bookmarks-page">
       <div id="bookmarks-clipboard">
         <div id="clipboard-inner">
-
-          <h1>tools i like to use</h1>
-          <a href="https://cobalt.tools/" target="_blank" title="free media downloader">cobalt.tools</a>
-          <a href="https://bendodson.com/projects/apple-music-artwork-finder/" target="_blank"
-            title="album cover artwork finder">bendodson.com/projects/apple-music-artwork-finder</a>
-          <a href="https://status.cafe/login" target="_blank" title="cute little status widget">status.cafe</a>
-          <a href="https://svgco.de/" target="_blank" title="svg generator">svgco.de/</a>
-          <a href="https://www.textemoji.org/" target="_blank" title="text emoji database">textemoji.org</a>
-          <a href="https://emojidb.org/" target="_blank" title="emoji database">emojidb.org</a>
-          <a href="https://unsplash.com/" target="_blank" title="free high-resolution stock photos">unsplash.com</a>
-          <a href="https://pixel-converter.ameniwa.com/" target="_blank"
-            title="really cool dithering tool">pixel-converter.ameniwa.com</a>
-          <a href="https://ditherit.com/" target="_blank" title="another really cool dithering tool">ditherit.com</a>
-
-          <h1>coding stuff</h1>
-          <a href="https://www.valentinely.cc/scrollbar" target="_blank"
-            title="custom scrollbar generator">valentinely.cc/scrollbar</a>
-          <a href="https://ribo.zone/free/snippets/borders" target="_blank"
-            title="custom image border tutorial + snippets">ribo.zone/free/snippets/borders</a>
-          <a href="https://docs.emmet.io/cheat-sheet/" target="_blank"
-            title="css cheat sheet">docs.emmet.io/cheat-sheet</a>
-          <a href="https://projects.verou.me/bubbly/" target="_blank"
-            title="text bubble tutorial">projects.verou.me/bubbly</a>
         </div>
       </div>
+
     </div>
 
     <div id="footer">
@@ -116,6 +82,7 @@
     </div>
   </div>
   <script src="scripts/sitejs.js"></script>
+  <script src="scripts/discord.js"></script>
 </body>
 
 </html>
