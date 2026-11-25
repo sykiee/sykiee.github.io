@@ -1,5 +1,5 @@
-// poached from the internet, take what you want :)
 
+// poached from the internet, take what you want :)
 
 // discord activity widget
 
@@ -18,6 +18,19 @@ const discordButton = document.getElementById("discord-button");
 const avatar = document.getElementById("button-avatar");
 const discordDot = document.getElementById("button-dot");
 const clock = document.getElementById("button-time");
+
+// discord tooltips
+
+const initDiscordTooltips = () => {
+    if (!discordCard || typeof jQuery === "undefined" || !jQuery.fn.style_my_tooltips) return;
+
+    jQuery(discordCard).find("[title]").style_my_tooltips({
+        tip_follows_cursor: true,
+        tip_delay_time: 100,
+        tip_fade_speed: 200,
+        attribute: "title"
+    });
+};
 
 let presence = null;
 let lastSnapshot = "";
@@ -144,16 +157,17 @@ const activityHTML = activities => {
                 const details = [activity.details, activity.state].filter(Boolean).join(" · ");
                 const start = activity.timestamps?.start || 0;
                 const verb = activityVerbs[activity.type] || "playing";
+                const activityName = activity.name || "Unknown activity";
 
                 return `
                     <div class="presence-item">
-                        <div class="presence-item-image">
+                        <div class="presence-item-image" title="${escapeText(activityName)}">
                             ${image
                                 ? `<img src="${escapeText(image)}">`
                                 : `<span>🎮</span>`}
                         </div>
                         <div class="presence-item-info">
-                            <div class="presence-item-title">${escapeText(activity.name || "Unknown activity")}</div>
+                            <div class="presence-item-title" title="${escapeText(activityName)}">${escapeText(activityName)}</div>
                             ${details
                                 ? `<div class="presence-item-subtitle">${escapeText(details)}</div>`
                                 : ""}
@@ -210,13 +224,13 @@ const spotifyHTML = spotify => {
                 <div class="presence-item-info">
                     <div class="presence-item-title">
                         ${spotifyUrl
-                            ? `<a class="spotify-song-link" href="${escapeText(spotifyUrl)}" target="_blank" rel="noopener noreferrer">${escapeText(spotify.song)}</a>`
-                            : escapeText(spotify.song)}
+                            ? `<a class="spotify-song-link" title="${escapeText(spotify.song)}" href="${escapeText(spotifyUrl)}" target="_blank" rel="noopener noreferrer">${escapeText(spotify.song)}</a>`
+                            : `<span title="${escapeText(spotify.song)}">${escapeText(spotify.song)}</span>`}
                     </div>
                     <div class="presence-item-subtitle">
                         ${spotifyUrl
                             ? artists.map(name => `
-                                <a class="spotify-artist-link" href="https://open.spotify.com/search/${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer">${escapeText(name)}</a>
+                                <a class="spotify-artist-link" title="${escapeText(name)}" href="https://open.spotify.com/search/${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer">${escapeText(name)}</a>
                             `).join(", ")
                             : escapeText(artists.join(", "))}
                     </div>
@@ -279,6 +293,8 @@ const updateCard = () => {
             <div class="presence-empty">discord status unavailable</div>
             ${activityHTML([])}
             ${spotifyHTML(null)}`;
+
+        initDiscordTooltips();
         return;
     }
 
@@ -303,6 +319,8 @@ const updateCard = () => {
             ${activityHTML(activities)}
             ${spotifyHTML(presence.spotify)}
         </div>`;
+
+    initDiscordTooltips();
 
     updateTimers();
     updateProgress();
@@ -405,11 +423,11 @@ const updateDisplay = () => {
     updateProgress();
 };
 
+
 updateDisplay();
 getPresence();
 
 setInterval(updateDisplay, 1000);
-
 
 setInterval(getPresence, 30000);
 

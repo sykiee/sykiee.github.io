@@ -1,17 +1,28 @@
 // poached from around the internet, take what you want :)
 
+// /* credits for all scripts below */
 
-// loading screen
+
+// custom tooltips | {https://manos.malihu.gr/style-my-tooltips-jquery-plugin/}
+
+(function($) {
+    $(document).ready(function() {
+        $("[title]").style_my_tooltips({
+            tip_follows_cursor: true,
+            tip_delay_time: 100,
+            tip_fade_speed: 200,
+            attribute: "title"
+        });
+    });
+})(jQuery);
+
+
+// loading screen | {https://stackoverflow.com/questions/1853662/}
 
 const loader = document.getElementById("loading-screen");
-const loadStart = performance.now();
-let loaded = false;
 
 function hideLoader() {
-    if (loaded) return;
-    loaded = true;
-
-    const delay = Math.max(0, 900 - (performance.now() - loadStart));
+    if (!loader || loader.classList.contains("hidden")) return;
 
     setTimeout(() => {
         loader.classList.add("hidden");
@@ -23,192 +34,113 @@ function hideLoader() {
                 document.getElementById("navbar")?.classList.add("ready");
             }, 1000);
         }, 800);
-    }, delay);
+    }, 900);
 }
 
 window.addEventListener("load", hideLoader, { once: true });
 setTimeout(hideLoader, 6000);
 
 
-// rotate background on refresh
+// rotate background on refresh {https://stackoverflow.com/questions/55170278/}
 
-let background = (Number(localStorage.getItem("backgroundNumber")) || 0) % 3 + 1;
-localStorage.setItem("backgroundNumber", background);
+const backgrounds = [
+    "../images/background-1.jpg",
+    "../images/background-2.jpg",
+    "../images/background-3.jpg"
+];
+
+let lastIndex = Number.parseInt(localStorage.getItem("last_index"));
+
+if (Number.isNaN(lastIndex)) {
+    lastIndex = 0;
+} else {
+    lastIndex++;
+}
+
+localStorage.setItem("last_index", lastIndex);
+
+const backgroundIndex = lastIndex % backgrounds.length;
 
 document.body.style.setProperty(
     "--background-url",
-    `url("../images/background-${background}.jpg")`
+    `url("${backgrounds[backgroundIndex]}")`
 );
 
-
-// page navigation
-
-const pages = {
-    home: document.getElementById("main-page"),
-    blog: document.getElementById("blog-page")
-};
+// page navigation | {https://gist.github.com/hellobrian/f99b48ad868afe4d0dbc}
 
 const buttons = {
     home: document.getElementById("home"),
     blog: document.getElementById("blog")
 };
 
+const pages = {
+    home: document.getElementById("main-page"),
+    blog: document.getElementById("blog-page")
+};
+
 const navbar = document.getElementById("navbar");
 const navToggle = document.getElementById("nav-toggle");
 
 let currentPage = "home";
-let navigationTimer;
+let switching = false;
 
 navToggle?.addEventListener("click", () => {
     navbar.classList.toggle("open");
 });
 
-Object.keys(pages).forEach(name => {
+function switchPage(selected) {
+    if (selected === currentPage || switching) return;
+
+    switching = true;
+
+    const oldPage = pages[currentPage];
+    const newPage = pages[selected];
+
+    oldPage.classList.remove("visible");
+
+    setTimeout(() => {
+        oldPage.hidden = true;
+        newPage.hidden = false;
+
+        buttons[currentPage]?.classList.remove("active");
+        buttons[selected]?.classList.add("active");
+
+        currentPage = selected;
+        navbar.classList.remove("open");
+
+        requestAnimationFrame(() => {
+            newPage.classList.add("visible");
+
+            setTimeout(() => {
+                switching = false;
+            }, 300);
+        });
+    }, 300);
+}
+
+Object.keys(buttons).forEach(name => {
     buttons[name]?.addEventListener("click", () => {
-        if (name === currentPage) return;
-
-        clearTimeout(navigationTimer);
-
-        const oldPage = pages[currentPage];
-        const nextPage = pages[name];
-
-        oldPage.classList.remove("visible");
-
-        navigationTimer = setTimeout(() => {
-            oldPage.hidden = true;
-            nextPage.hidden = false;
-            nextPage.scrollTop = 0;
-
-            requestAnimationFrame(() => {
-                nextPage.classList.add("visible");
-            });
-
-            buttons[currentPage]?.classList.remove("active");
-            buttons[name]?.classList.add("active");
-
-            currentPage = name;
-        }, 300);
+        switchPage(name);
     });
 });
 
 
-// footer date
+// footer date update
 
-const footerDate = document.getElementById("last-updated");
-
-if (footerDate) {
-    const savedDate = sessionStorage.getItem("lastUpdated");
-
-    if (savedDate) {
-        footerDate.textContent = savedDate;
-    } else {
-        fetch("https://api.github.com/repos/sykiee/sykiee.github.io/commits?per_page=1")
-            .then(response => {
-                if (!response.ok) throw new Error();
-                return response.json();
+fetch("https://api.github.com/repos/sykiee/sykiee.github.io/commits?per_page=1")
+    .then(res => res.json())
+    .then(res => {
+        const date = new Date(res[0].commit.committer.date)
+            .toLocaleDateString("en-US", {
+                month: "short",
+                day: "2-digit",
+                year: "2-digit"
             })
-            .then(commits => {
-                const date = new Date(commits[0].commit.committer.date)
-                    .toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "2-digit",
-                        year: "2-digit"
-                    })
-                    .replace(",", ".")
-                    .toLowerCase();
+            .replace(",", ".")
+            .toLowerCase();
 
-                sessionStorage.setItem("lastUpdated", date);
-                footerDate.textContent = date;
-            })
-            .catch(() => footerDate.textContent = "unknown");
-    }
-}
-
-
-// custom tooltips
-
-const tooltip = document.createElement("div");
-tooltip.id = "custom-tooltip";
-document.body.appendChild(tooltip);
-
-let hoveredElement = null;
-let tooltipTimer;
-let mouseX = 0;
-let mouseY = 0;
-
-function moveTooltip() {
-    const gap = 11;
-    const rect = tooltip.getBoundingClientRect();
-
-    let x = mouseX + gap;
-    let y = mouseY + gap;
-
-    if (x + rect.width > window.innerWidth - 8) {
-        x = mouseX - rect.width - gap;
-    }
-
-    if (y + rect.height > window.innerHeight - 8) {
-        y = mouseY - rect.height - gap;
-    }
-
-    tooltip.style.left = `${Math.max(8, Math.min(x, window.innerWidth - rect.width - 8))}px`;
-    tooltip.style.top = `${Math.max(8, Math.min(y, window.innerHeight - rect.height - 8))}px`;
-}
-
-function hideTooltip() {
-    clearTimeout(tooltipTimer);
-
-    if (hoveredElement) {
-        hoveredElement.setAttribute("title", hoveredElement.dataset.customTooltipTitle);
-        delete hoveredElement.dataset.customTooltipTitle;
-    }
-
-    hoveredElement = null;
-    tooltip.classList.remove("visible");
-}
-
-document.addEventListener("mouseover", event => {
-    const element = event.target.closest("[title]");
-
-    if (!element || element === hoveredElement) return;
-
-    hideTooltip();
-
-    const title = element.getAttribute("title");
-    if (!title) return;
-
-    element.dataset.customTooltipTitle = title;
-    element.removeAttribute("title");
-
-    hoveredElement = element;
-    mouseX = event.clientX;
-    mouseY = event.clientY;
-
-    tooltipTimer = setTimeout(() => {
-        if (!hoveredElement?.isConnected) return;
-
-        tooltip.textContent = title;
-        tooltip.classList.add("visible");
-        moveTooltip();
-    }, 100);
-});
-
-document.addEventListener("mousemove", event => {
-    mouseX = event.clientX;
-    mouseY = event.clientY;
-
-    if (hoveredElement && tooltip.classList.contains("visible")) {
-        moveTooltip();
-    }
-});
-
-document.addEventListener("mouseout", event => {
-    if (hoveredElement?.contains(event.target) &&
-        !hoveredElement.contains(event.relatedTarget)) {
-        hideTooltip();
-    }
-});
-
-document.addEventListener("mousedown", hideTooltip);
-document.addEventListener("scroll", hideTooltip, true);
-window.addEventListener("blur", hideTooltip);
+        document.getElementById("last-updated").textContent = date;
+    })
+    .catch(() => {
+        document.getElementById("last-updated").textContent = "unknown";
+    });
