@@ -7,6 +7,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="images/icon2.ico">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/discord.css">
+  <link rel="stylesheet" href="css/blog.css">
 </head>
 
 <body>
@@ -14,20 +15,10 @@
     <p class="loading-face">╰૮₍ >\./< ₎ა╯</p>
   </div>
   <div class="page-wrapper">
-    <nav id="navbar">
-      <div id="nav-buttons">
-        <button id="home" class="active">home</button>
-        <button id="blog">blog</button>
-      </div>
-
-      <button id="nav-toggle">
-        <span id="nav-arrow">^</span>
-      </button>
-    </nav>
-    <div id="main-page" class="visible">
+    <div id="main-page">
       <img class="logo" src="images/logo2.gif">
       <div id="header">
-        <div id="about" title="a little about me..">
+        <div id="about">
           <div id="about-inner">
             <p>hi, my name is bruce. i'm a (amateur) web dev, photographer and graphic designer. i really like
               making things, learning new stuff, and meeting new people!
@@ -55,18 +46,32 @@
           <span id="button-time"></span>
         </button>
       </div>
+      <button id="blog-open-button">
+        <img src="images/notepad-icon.png">
+      </button>
     </div>
 
-    <div id="blog-page" hidden>
+    <div id="blog-page">
+      <div id="blog-image-viewer">
+        <img id="blog-expanded-image">
+      </div>
       <div id="blog-notebook">
         <div id="notebook-inner">
-          <p>some day i'll write something here..</p>
-          <p>just not today</p>
-        </div>
-      </div>
+          <div id="blog-header">
+            <span id="blog-date"></span>
+            <span id="blog-posted"></span>
+            <span id="blog-ago"></span>
+          </div>
 
-      <div id="bookmarks-clipboard">
-        <div id="clipboard-inner">
+          <div id="blog-image-container">
+            <div id="blog-images"></div>
+          </div>
+
+          <div id="blog-navigation">
+            <button id="blog-older">‹ older</button>
+            <span id="blog-counter"></span>
+            <button id="blog-newer">newer ›</button>
+          </div>
         </div>
       </div>
 
@@ -78,6 +83,7 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="scripts/s-m-t.js"></script>
+  <script src="scripts/interact.js"></script>
   <script src="scripts/sitejs.js"></script>
   <script src="scripts/discord.js"></script>
 </body>

@@ -126,132 +126,6 @@ a:hover {
 }
 
 
-/* page transitions */
-
-#main-page,
-#blog-page {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-#main-page.visible,
-#blog-page.visible {
-    opacity: 1;
-}
-
-#main-page[hidden],
-#blog-page[hidden] {
-    display: none !important;
-}
-
-
-/* navigation */
-
-#navbar {
-    position: relative;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: fit-content;
-    max-width: calc(100% - 2rem);
-    margin: 0 auto 1.5rem;
-    padding: 0;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    opacity: 0;
-    transform: translateY(calc(-100% - 20px));
-    transition:
-        opacity 0.4s ease,
-        transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-#navbar.ready {
-    opacity: 1;
-    transform: translateY(calc(-100% + 1.5rem));
-}
-
-#navbar.ready.open {
-    transform: translateY(0);
-}
-
-#nav-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.25rem;
-    width: max-content;
-    max-width: calc(100vw - 2rem);
-    padding: 0.35rem;
-    background: var(--cream);
-    border: 1px dashed var(--ink);
-    border-radius: 0 0 0.5rem 0.5rem;
-    box-shadow: 0 0 0 3px var(--ring);
-}
-
-#nav-buttons button {
-    flex-shrink: 0;
-    padding: 0.4rem 0.75rem;
-    font: inherit;
-    font-size: 0.85rem;
-    color: var(--ink);
-    background: none;
-    border: none;
-    border-radius: 0.3rem;
-    cursor: pointer;
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
-}
-
-#nav-buttons button:hover {
-    transform: scale(1.05);
-}
-
-#nav-buttons button.active {
-    color: #302820;
-    font-weight: 700;
-    background: none;
-    border-color: var(--ink);
-}
-
-#nav-toggle {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 1.5rem;
-    padding: 0.2rem;
-    font: inherit;
-    color: var(--ink);
-    background: var(--cream);
-    border: 1px dashed var(--ink);
-    border-top: none;
-    border-radius: 0 0 0.4rem 0.4rem;
-    box-shadow: 0 0 0 3px var(--ring);
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-#nav-toggle:hover {
-    transform: scale(1.1);
-}
-
-#nav-arrow {
-    display: inline-block;
-    transform: rotate(180deg);
-    transition: transform 0.25s ease;
-}
-
-#navbar.open #nav-arrow {
-    transform: rotate(0);
-}
-
-
 /* logo */
 
 .logo {
@@ -387,59 +261,6 @@ body.loaded #social-bar {
 }
 
 
-/* blog page */
-
-#blog-page {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 0;
-    padding-bottom: 1rem;
-}
-
-
-/* notebook */
-
-#blog-notebook {
-    position: relative;
-    width: 100%;
-    max-width: 34.6rem;
-    aspect-ratio: 1 / 1;
-    margin: 0 auto;
-    background-image: url("../images/notepad.png");
-    background-size: 100% 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-#notebook-inner {
-    position: absolute;
-    top: 19%;
-    right: 27%;
-    bottom: 19%;
-    left: 27%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0.5rem;
-    overflow-y: auto;
-    border: 1px dashed var(--ink);
-    background-color: var(--blog);
-    color: var(--ink);
-    border-radius: 0.4rem;
-    box-shadow:
-        inset 0 3px 10px rgba(0, 0, 0, 0.16),
-        inset 0 1px 3px rgba(0, 0, 0, 0.12);
-}
-
-#notebook-inner p {
-    text-align: center;
-}
-
-
 /* footer */
 
 #footer {
@@ -518,9 +339,10 @@ body.loaded #footer {
 }
 
 
-/* mobile layout */
+/* mobile */
 
 @media (max-width: 700px) {
+
     html,
     body {
         width: 100%;
@@ -533,29 +355,6 @@ body.loaded #footer {
     body {
         display: flex;
         flex-direction: column;
-    }
-
-    #main-page,
-    #blog-page {
-        flex: none;
-        min-height: auto;
-        height: auto;
-        overflow: visible;
-    }
-
-    #navbar {
-        margin: 0 auto 1.25rem;
-        max-width: calc(100% - 2rem);
-    }
-
-    #nav-buttons {
-        gap: 0.15rem;
-        max-width: calc(100vw - 1.5rem);
-    }
-
-    #nav-buttons button {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.8rem;
     }
 
     #header {
@@ -588,39 +387,5 @@ body.loaded #footer {
 
     #footer {
         margin-top: 1.5rem;
-    }
-
-    #blog-page {
-        justify-content: flex-start;
-        padding: 1rem 0 2rem;
-    }
-
-    #blog-notebook {
-        max-width: min(43rem, 100vw);
-    }
-
-    #notebook-inner {
-        padding: 0.4rem;
-    }
-
-    #notebook-inner p {
-        font-size: 0.8rem;
-    }
-
-    #blog-notecard {
-        width: 34%;
-        max-width: min(19.5rem, 100vw);
-        top: auto;
-        left: auto;
-        right: 3%;
-        bottom: 3%;
-    }
-
-    #notecard-inner {
-        padding: 0.35rem;
-    }
-
-    #notecard-inner p {
-        font-size: 0.7rem;
     }
 }

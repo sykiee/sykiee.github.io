@@ -19,8 +19,6 @@ const avatar = document.getElementById("button-avatar");
 const discordDot = document.getElementById("button-dot");
 const clock = document.getElementById("button-time");
 
-// discord tooltips
-
 const initDiscordTooltips = () => {
     if (!discordCard || typeof jQuery === "undefined" || !jQuery.fn.style_my_tooltips) return;
 
@@ -51,11 +49,9 @@ const activityVerbs = {
     5: "competing"
 };
 
-
 const getAvatar = user => user.avatar
     ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}?size=128`
     : `https://cdn.discordapp.com/embed/avatars/${Number((BigInt(user.id) >> 22n) % 6n)}.png`;
-
 
 const getAppIcon = async id => {
     if (!id) return null;
@@ -82,7 +78,6 @@ const getAppIcon = async id => {
     return request;
 };
 
-
 const getActivityImage = activity => {
     const image = activity.assets?.large_image || activity.assets?.small_image;
 
@@ -105,12 +100,10 @@ const getActivityImage = activity => {
     return activity.application_icon || null;
 };
 
-
 const songTime = ms => {
     const seconds = Math.floor(Math.max(0, ms) / 1000);
     return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
 };
-
 
 const activityTime = ms => {
     const seconds = Math.floor(Math.max(0, ms) / 1000);
@@ -120,9 +113,7 @@ const activityTime = ms => {
     return hours ? `${hours}h ${minutes}m` : minutes ? `${minutes}m` : `${seconds}s`;
 };
 
-
 const showActivity = activity => activity.type !== 2 && activity.type !== 4;
-
 
 const updateButton = () => {
     if (!discordDot || !avatar) return;
@@ -136,7 +127,6 @@ const updateButton = () => {
         if (avatar.src !== image) avatar.src = image;
     }
 };
-
 
 const activityHTML = activities => {
     if (!activities.length) return `
@@ -153,33 +143,32 @@ const activityHTML = activities => {
         <div class="presence-section">
             <div class="presence-section-label">ACTIVITY</div>
             ${activities.map(activity => {
-                const image = getActivityImage(activity);
-                const details = [activity.details, activity.state].filter(Boolean).join(" · ");
-                const start = activity.timestamps?.start || 0;
-                const verb = activityVerbs[activity.type] || "playing";
-                const activityName = activity.name || "Unknown activity";
+        const image = getActivityImage(activity);
+        const details = [activity.details, activity.state].filter(Boolean).join(" · ");
+        const start = activity.timestamps?.start || 0;
+        const verb = activityVerbs[activity.type] || "playing";
+        const activityName = activity.name || "Unknown activity";
 
-                return `
+        return `
                     <div class="presence-item">
                         <div class="presence-item-image" title="${escapeText(activityName)}">
                             ${image
-                                ? `<img src="${escapeText(image)}">`
-                                : `<span>🎮</span>`}
+                ? `<img src="${escapeText(image)}">`
+                : `<span>🎮</span>`}
                         </div>
                         <div class="presence-item-info">
                             <div class="presence-item-title" title="${escapeText(activityName)}">${escapeText(activityName)}</div>
                             ${details
-                                ? `<div class="presence-item-subtitle">${escapeText(details)}</div>`
-                                : ""}
+                ? `<div class="presence-item-subtitle">${escapeText(details)}</div>`
+                : ""}
                             ${start
-                                ? `<div class="activity-duration" data-start="${start}" data-verb="${verb}"></div>`
-                                : ""}
+                ? `<div class="activity-duration" data-start="${start}" data-verb="${verb}"></div>`
+                : ""}
                         </div>
                     </div>`;
-            }).join("")}
+    }).join("")}
         </div>`;
 };
-
 
 const spotifyHTML = spotify => {
     if (!spotify) return `
@@ -218,21 +207,21 @@ const spotifyHTML = spotify => {
             <div class="presence-item spotify-item">
                 <div class="presence-item-image spotify-art" title="${escapeText(albumName)}">
                     ${spotify.album_art_url
-                        ? `<img src="${escapeText(spotify.album_art_url)}">`
-                        : `<span>🎵</span>`}
+            ? `<img src="${escapeText(spotify.album_art_url)}">`
+            : `<span>🎵</span>`}
                 </div>
                 <div class="presence-item-info">
                     <div class="presence-item-title">
                         ${spotifyUrl
-                            ? `<a class="spotify-song-link" title="${escapeText(spotify.song)}" href="${escapeText(spotifyUrl)}" target="_blank" rel="noopener noreferrer">${escapeText(spotify.song)}</a>`
-                            : `<span title="${escapeText(spotify.song)}">${escapeText(spotify.song)}</span>`}
+            ? `<a class="spotify-song-link" title="${escapeText(spotify.song)}" href="${escapeText(spotifyUrl)}" target="_blank" rel="noopener noreferrer">${escapeText(spotify.song)}</a>`
+            : `<span title="${escapeText(spotify.song)}">${escapeText(spotify.song)}</span>`}
                     </div>
                     <div class="presence-item-subtitle">
                         ${spotifyUrl
-                            ? artists.map(name => `
+            ? artists.map(name => `
                                 <a class="spotify-artist-link" title="${escapeText(name)}" href="https://open.spotify.com/search/${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer">${escapeText(name)}</a>
                             `).join(", ")
-                            : escapeText(artists.join(", "))}
+            : escapeText(artists.join(", "))}
                     </div>
                     <div class="spotify-now-playing">NOW PLAYING</div>
                 </div>
@@ -252,9 +241,7 @@ const spotifyHTML = spotify => {
         </div>`;
 };
 
-
 const cardIsOpen = () => discordCard?.classList.contains("open");
-
 
 const updateTimers = () => {
     if (!cardIsOpen()) return;
@@ -263,7 +250,6 @@ const updateTimers = () => {
         timer.textContent = `${timer.dataset.verb} for ${activityTime(Date.now() - Number(timer.dataset.start))}`;
     });
 };
-
 
 const updateProgress = () => {
     if (!cardIsOpen()) return;
@@ -283,7 +269,6 @@ const updateProgress = () => {
     progress.querySelector(".spotify-elapsed").textContent = songTime(elapsed);
     progress.querySelector(".spotify-duration").textContent = songTime(duration);
 };
-
 
 const updateCard = () => {
     if (!discordCard) return;
@@ -326,7 +311,6 @@ const updateCard = () => {
     updateProgress();
 };
 
-
 const updateClock = () => {
     if (!clock) return;
 
@@ -336,7 +320,6 @@ const updateClock = () => {
         timeZone
     });
 };
-
 
 const getPresence = async () => {
     if (document.hidden) return;
@@ -385,7 +368,6 @@ const getPresence = async () => {
     }
 };
 
-
 const toggleCard = open => {
     if (!discordCard || !discordButton) return;
 
@@ -396,7 +378,6 @@ const toggleCard = open => {
         updateProgress();
     }
 };
-
 
 if (discordButton && discordCard) {
     discordButton.addEventListener("click", () => {
@@ -416,13 +397,11 @@ if (discordButton && discordCard) {
     });
 }
 
-
 const updateDisplay = () => {
     updateClock();
     updateTimers();
     updateProgress();
 };
-
 
 updateDisplay();
 getPresence();
@@ -430,7 +409,6 @@ getPresence();
 setInterval(updateDisplay, 1000);
 
 setInterval(getPresence, 30000);
-
 
 document.addEventListener("visibilitychange", () => {
     if (!document.hidden) getPresence();

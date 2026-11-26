@@ -1,9 +1,9 @@
 //style-my-tootltips by malihu (http://manos.malihu.gr)
 //plugin home http://manos.malihu.gr/style-my-tooltips-jquery-plugin
 
-(function($) {
+(function ($) {
     var methods = {
-        init: function(options) {
+        init: function (options) {
             var defaults = {
                 tip_follows_cursor: false, //tooltip follows cursor: boolean
                 tip_delay_time: 700, //tooltip delay before displaying: milliseconds
@@ -31,7 +31,7 @@
                     smtCursorCoordsY: smtCursorCoordsY
                 });
             }
-            $(document).on("mouseout mousedown click", ".smt-current-element", function() {
+            $(document).on("mouseout mousedown click", ".smt-current-element", function () {
                 var $this = $(this);
                 clearTimeout(smtTooltip_delay);
                 smtTooltip.style_my_tooltips("hide", {
@@ -43,7 +43,7 @@
                     $this.attr(options.attribute, $this.data("smt-title"));
                 }
             });
-            return this["on"]("mouseover", function(event) {
+            return this["on"]("mouseover", function (event) {
                 var $this = $(this),
                     title = $this.attr(options.attribute);
                 $this.addClass("smt-current-element").data({
@@ -56,40 +56,40 @@
                     delay: options.tip_delay_time,
                     tip_follows_cursor: options.tip_follows_cursor
                 });
-                $(document).bind("mousemove", function(event) {
+                $(document).bind("mousemove", function (event) {
                     smtGetCursorCoords(event);
                 });
             });
         },
-        update: function(options) {
+        update: function (options) {
             var $this = $(this);
             $this.stop().css({
                 "display": "none",
                 "z-index": $this.data("smt-z-index")
             }).children("div").text(options.title);
-            smtTooltip_delay = setTimeout(function() {
+            smtTooltip_delay = setTimeout(function () {
                 $this.style_my_tooltips("show", {
                     speed: options.speed,
                     tip_follows_cursor: options.tip_follows_cursor
                 })
             }, options.delay);
         },
-        show: function(options) {
+        show: function (options) {
             var $this = $(this);
             $this.stop().fadeTo(options.speed, 1);
             if (!options.tip_follows_cursor) {
                 $(document).unbind("mousemove");
             }
         },
-        hide: function(options) {
+        hide: function (options) {
             var $this = $(this);
-            $this.stop().fadeTo(options.speed, 0, function() {
+            $this.stop().fadeTo(options.speed, 0, function () {
                 $this.css({
                     "z-index": "-1"
                 });
             });
         },
-        position: function(options) {
+        position: function (options) {
             var $this = $(this),
                 winScrollX = $(window).scrollLeft(),
                 winScrollY = $(window).scrollTop(),
@@ -119,7 +119,7 @@
             }
         }
     }
-    $.fn.style_my_tooltips = function(method) {
+    $.fn.style_my_tooltips = function (method) {
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
         } else if (typeof method === "object" || !method) {

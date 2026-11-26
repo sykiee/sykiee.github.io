@@ -1,0 +1,225 @@
+/* blog button */
+
+#blog-open-button {
+    display: block;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transform: rotate(-3deg);
+    transition: transform 0.2s ease;
+}
+
+#blog-open-button img {
+    display: block;
+    width: 5rem;
+    height: auto;
+}
+
+#blog-open-button:hover {
+    transform: scale(1.1);
+}
+
+
+/* blog overlay */
+
+#blog-page {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    background: rgba(0, 0, 0, 0.65);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+#blog-page.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+body.blog-open {
+    overflow: hidden;
+}
+
+
+/* notebook */
+
+#blog-notebook {
+    position: relative;
+    width: 100%;
+    max-width: 48.6rem;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    background-image: url("../images/notepad.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateY(1rem) scale(0.96);
+    opacity: 0;
+    transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.3s ease;
+}
+
+#blog-page.open #blog-notebook {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+#notebook-inner {
+    position: absolute;
+    top: 19%;
+    right: 27%;
+    bottom: 19%;
+    left: 27%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    overflow: hidden;
+    border: 1px dashed var(--ink);
+    background-color: var(--blog);
+    color: var(--ink);
+    border-radius: 0.4rem;
+    box-shadow:
+        inset 0 3px 10px rgba(0, 0, 0, 0.16),
+        inset 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+
+/* blog header */
+
+#blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--ink);
+    font-size: 0.7rem;
+}
+
+#blog-date {
+    font-weight: bold;
+}
+
+#blog-ago {
+    opacity: 0.6;
+    white-space: nowrap;
+}
+
+
+/* post information */
+
+#blog-posted {
+    font-size: 0.65rem;
+    opacity: 0.65;
+}
+
+
+/* blog navigation */
+
+#blog-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--ink);
+    font-size: 0.7rem;
+}
+
+#blog-navigation button {
+    padding: 0;
+    color: var(--ink);
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+#blog-navigation button:hover {
+    opacity: 0.6;
+}
+
+#blog-navigation button:disabled {
+    opacity: 0.25;
+    cursor: default;
+}
+
+#blog-counter {
+    opacity: 0.65;
+}
+
+
+/* expand blog image */
+
+#blog-image-viewer {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+#blog-image-viewer.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+#blog-expanded-image {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 0.4rem;
+    transform: scale(0.95);
+    transition: transform 0.25s ease;
+}
+
+#blog-image-viewer.open #blog-expanded-image {
+    transform: scale(1);
+}
+
+
+/* mobile */
+
+@media (max-width: 700px) {
+    #blog-page {
+        justify-content: flex-start;
+        padding: 1rem 0 2rem;
+        overflow-y: auto;
+    }
+
+    #blog-notebook {
+        max-width: min(48.6rem, 100vw);
+        flex-shrink: 0;
+    }
+
+    #notebook-inner {
+        padding: 0.4rem;
+    }
+
+    #notebook-inner p {
+        font-size: 0.8rem;
+    }
+}

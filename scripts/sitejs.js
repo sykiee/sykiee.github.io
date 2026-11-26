@@ -1,12 +1,12 @@
 // poached from around the internet, take what you want :)
 
-// /* credits for all scripts below */
+/* credits for all scripts below */
 
 
 // custom tooltips | {https://manos.malihu.gr/style-my-tooltips-jquery-plugin/}
 
-(function($) {
-    $(document).ready(function() {
+(function ($) {
+    $(document).ready(function () {
         $("[title]").style_my_tooltips({
             tip_follows_cursor: true,
             tip_delay_time: 100,
@@ -41,7 +41,7 @@ window.addEventListener("load", hideLoader, { once: true });
 setTimeout(hideLoader, 6000);
 
 
-// rotate background on refresh {https://stackoverflow.com/questions/55170278/}
+// rotate background on refresh | {https://stackoverflow.com/questions/55170278/}
 
 const backgrounds = [
     "../images/background-1.jpg",
@@ -66,63 +66,133 @@ document.body.style.setProperty(
     `url("${backgrounds[backgroundIndex]}")`
 );
 
-// page navigation | {https://gist.github.com/hellobrian/f99b48ad868afe4d0dbc}
 
-const buttons = {
-    home: document.getElementById("home"),
-    blog: document.getElementById("blog")
-};
+// blog popup | {https://jasonwatmore.com/post/2023/01/04/vanilla-js-css-modal-popup-dialog-tutorial-with-example}
 
-const pages = {
-    home: document.getElementById("main-page"),
-    blog: document.getElementById("blog-page")
-};
-
-const navbar = document.getElementById("navbar");
-const navToggle = document.getElementById("nav-toggle");
-
-let currentPage = "home";
-let switching = false;
-
-navToggle?.addEventListener("click", () => {
-    navbar.classList.toggle("open");
-});
-
-function switchPage(selected) {
-    if (selected === currentPage || switching) return;
-
-    switching = true;
-
-    const oldPage = pages[currentPage];
-    const newPage = pages[selected];
-
-    oldPage.classList.remove("visible");
-
-    setTimeout(() => {
-        oldPage.hidden = true;
-        newPage.hidden = false;
-
-        buttons[currentPage]?.classList.remove("active");
-        buttons[selected]?.classList.add("active");
-
-        currentPage = selected;
-        navbar.classList.remove("open");
-
-        requestAnimationFrame(() => {
-            newPage.classList.add("visible");
-
-            setTimeout(() => {
-                switching = false;
-            }, 300);
-        });
-    }, 300);
+function openBlog() {
+    document.getElementById("blog-page").classList.add("open");
+    document.body.classList.add("blog-open");
 }
 
-Object.keys(buttons).forEach(name => {
-    buttons[name]?.addEventListener("click", () => {
-        switchPage(name);
+function closeBlog() {
+    document.getElementById("blog-page").classList.remove("open");
+    document.body.classList.remove("blog-open");
+}
+
+window.addEventListener("load", function () {
+    document.getElementById("blog-open-button")?.addEventListener("click", openBlog);
+
+    document.addEventListener("click", event => {
+        if (
+            document.getElementById("blog-page").classList.contains("open") &&
+            event.target === document.getElementById("blog-page")
+        ) {
+            closeBlog();
+        }
     });
 });
+
+
+// blog photo journal
+
+const blogPosts = [
+    {
+        date: "2026-11-18T02:04:00",
+        images: [
+            "images/blog/photo-1.jpg"
+        ]
+    },
+    {
+        date: "2026-11-18T02:04:00",
+        images: [
+            "images/blog/photo-1.jpg"
+        ]
+    }
+];
+
+const blogDate = document.getElementById("blog-date");
+const blogPosted = document.getElementById("blog-posted");
+const blogAgo = document.getElementById("blog-ago");
+const blogImages = document.getElementById("blog-images");
+const blogCounter = document.getElementById("blog-counter");
+const blogOlder = document.getElementById("blog-older");
+const blogNewer = document.getElementById("blog-newer");
+
+const blogImageViewer = document.getElementById("blog-image-viewer");
+const blogExpandedImage = document.getElementById("blog-expanded-image");
+
+let currentPost = 0;
+
+function updateBlog() {
+    const post = blogPosts[currentPost];
+    const date = new Date(post.date);
+
+    const formattedDate = date.toLocaleDateString("en-US", {
+        month: "2-digit",
+        day: "2-digit",
+        year: "2-digit"
+    });
+
+    const daysAgo = Math.floor(
+        (new Date() - date) / (1000 * 60 * 60 * 24)
+    );
+
+    blogDate.textContent = "[ bruce's journal ]";
+    blogPosted.textContent = formattedDate;
+    blogAgo.textContent = `(${daysAgo}d ago)`;
+
+    blogImages.replaceChildren();
+
+    post.images.forEach(imagePath => {
+        const image = document.createElement("img");
+
+        image.src = imagePath;
+        image.className = "blog-gallery-image";
+
+        blogImages.appendChild(image);
+    });
+
+    blogCounter.textContent = `${currentPost + 1}/${blogPosts.length}`;
+
+    blogOlder.disabled = currentPost === blogPosts.length - 1;
+    blogNewer.disabled = currentPost === 0;
+
+    closeBlogImage();
+}
+
+blogOlder.addEventListener("click", () => {
+    if (currentPost < blogPosts.length - 1) {
+        currentPost++;
+        updateBlog();
+    }
+});
+
+blogNewer.addEventListener("click", () => {
+    if (currentPost > 0) {
+        currentPost--;
+        updateBlog();
+    }
+});
+
+blogImages.addEventListener("click", event => {
+    if (event.target.classList.contains("blog-gallery-image")) {
+        blogExpandedImage.src = event.target.src;
+        blogImageViewer.classList.add("open");
+    }
+});
+
+function closeBlogImage() {
+    blogImageViewer.classList.remove("open");
+    blogExpandedImage.src = "";
+}
+
+blogImageViewer.addEventListener("click", event => {
+    if (event.target === blogImageViewer) {
+        closeBlogImage();
+    }
+});
+
+updateBlog();
 
 
 // footer date update
