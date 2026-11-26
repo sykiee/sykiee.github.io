@@ -1,26 +1,3 @@
-/* blog button */
-
-#blog-open-button {
-    display: block;
-    padding: 0;
-    border: none;
-    background: none;
-    cursor: pointer;
-    transform: rotate(-3deg);
-    transition: transform 0.2s ease;
-}
-
-#blog-open-button img {
-    display: block;
-    width: 5rem;
-    height: auto;
-}
-
-#blog-open-button:hover {
-    transform: scale(1.1);
-}
-
-
 /* blog overlay */
 
 #blog-page {
