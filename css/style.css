@@ -31,7 +31,6 @@ body {
     min-height: 100vh;
     margin: 0;
     font-size: 0.95rem;
-    --background-url: url("../images/background-3.jpg");
 }
 
 body::before {
@@ -117,6 +116,7 @@ a:hover {
 
 #main-page {
     flex: 1;
+    position: relative;
     width: min(100%, 35rem);
     display: flex;
     flex-direction: column;
@@ -293,10 +293,13 @@ body.loaded #discord-button {
 }
 
 
-/* blog button */
+/* fish tank button */
 
-#blog-open-button {
+#aquarium-open-button {
     display: block;
+    position: absolute;
+    top: 69%;
+    left: 3%;
     padding: 0;
     border: none;
     background: none;
@@ -310,19 +313,19 @@ body.loaded #discord-button {
         transform 0.2s ease;
 }
 
-#blog-open-button img {
+#aquarium-open-button img {
     display: block;
     width: 5rem;
     height: auto;
 }
 
-body.loaded #blog-open-button {
+body.loaded #aquarium-open-button {
     opacity: 1;
     translate: 0 0;
 }
 
-#blog-open-button:hover {
-    transform: rotate(-3deg) scale(1.1);
+#aquarium-open-button:hover {
+    transform: rotate(3deg) scale(1.1);
 }
 
 
@@ -404,6 +407,99 @@ body.loaded #footer {
 }
 
 
+/* custom confirm */
+
+.c2 {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+}
+
+.c2_content {
+    position: relative;
+    width: min(100% - 2rem, 22rem);
+    margin: 0 auto;
+    padding: 0.8rem 1rem;
+    box-sizing: border-box;
+    color: var(--ink);
+    background: var(--cream);
+    border: 2px dashed var(--ink);
+    border-radius: 0.8rem;
+    box-shadow: 0 0 0 0.3rem var(--ring);
+    text-align: center;
+}
+
+.c2_header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c2_title {
+    flex: 1;
+    margin: 0;
+    color: var(--ink);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.c2_body {
+    margin: 0.6rem 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+.c2_body strong {
+    display: block;
+    margin-top: 0.8rem;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+    color: var(--ink);
+}
+
+.c2_footer {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.8rem;
+}
+
+.c2_btn-yes,
+.c2_btn-no {
+    margin: 0;
+    padding: 0.3rem 0.8rem;
+    color: var(--ink);
+    background: var(--blog);
+    border: 1px dashed var(--ink);
+    border-radius: 0.4rem;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.c2_btn-yes:hover,
+.c2_btn-no:hover {
+    transform: scale(1.05);
+    background: var(--cream);
+}
+
+.c2_overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.65);
+}
+
+
 /* mobile */
 
 @media (max-width: 700px) {
@@ -422,14 +518,35 @@ body.loaded #footer {
         flex-direction: column;
     }
 
+    .page-wrapper {
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding: 1.5rem 0 0;
+    }
+
+    #main-page {
+        width: 100%;
+        gap: 1rem;
+        padding: 1rem 0 2rem;
+    }
+
+    .logo {
+        width: min(82vw, 23.5rem);
+        margin-bottom: 0.5rem;
+    }
+
     #header {
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.25rem;
     }
 
     #about {
         transform: translateY(0);
         margin-top: 1.5rem;
+    }
+
+    #about:hover {
+        transform: scale(1.03);
     }
 
     #about::after {
@@ -440,17 +557,43 @@ body.loaded #footer {
         transform: rotate(135deg);
     }
 
-    #about:hover {
-        transform: translateY(0) scale(1.1);
-    }
-
     .mascot {
-        width: 80vw;
-        max-width: 20.4rem;
+        width: min(80vw, 20.4rem);
         margin-left: 0;
     }
 
+    #social-bar {
+        gap: 0.65rem;
+        padding: 0.6rem;
+    }
+
+    .social-icon {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    #discord-button {
+        margin-top: 0.25rem;
+    }
+
+    #aquarium-open-button {
+        top: auto;
+        bottom: 15rem;
+        left: 3%;
+    }
+
+    #aquarium-open-button img {
+        width: 4.5rem;
+    }
+
     #footer {
-        margin-top: 1.5rem;
+        margin-top: 1rem;
+        margin-bottom: max(1rem, env(safe-area-inset-bottom));
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    #footer p {
+        line-height: 1.3;
     }
 }

@@ -5,21 +5,6 @@
     z-index: 999;
 }
 
-.button-avatar {
-    position: relative;
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-}
-
-#card-avatar {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
 .button-dot {
     position: absolute;
     right: -2px;
@@ -29,22 +14,6 @@
     border: 2px solid var(--cream);
     border-radius: 50%;
     box-sizing: content-box;
-}
-
-.button-dot.status-online {
-    background: #79CDA7;
-}
-
-.button-dot.status-idle {
-    background: #FDBB49;
-}
-
-.button-dot.status-busy {
-    background: #F04242;
-}
-
-.button-dot.status-offline {
-    background: #848D9A;
 }
 
 #button-time {
@@ -294,7 +263,7 @@
 
 .spotify-song-link:hover {
     color: var(--spotify-text);
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .spotify-artist-link {
@@ -310,7 +279,7 @@
 
 .spotify-artist-link:hover {
     color: var(--spotify-text);
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .spotify-progress {

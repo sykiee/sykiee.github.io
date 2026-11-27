@@ -403,6 +403,46 @@ const updateDisplay = () => {
     updateProgress();
 };
 
+discordCard?.addEventListener("click", event => {
+    const link = event.target.closest("a[href]");
+
+    if (!link) return;
+
+    const url = new URL(link.href, window.location.href);
+
+    if (url.hostname === window.location.hostname) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    CustomConfirm({
+        title: "leaving sykiee.me",
+        body: "are you sure you want to visit:",
+        btn_yes: "yes",
+        btn_no: "no",
+        has_overlay: true
+    }, function (confirmed) {
+        if (confirmed) {
+            window.open(url.href, "_blank", "noopener,noreferrer");
+        }
+    });
+
+    const body = document.querySelector(".c2 .c2_body");
+
+    if (body) {
+        body.replaceChildren();
+
+        const message = document.createElement("div");
+        message.textContent = "are you sure you want to visit:";
+
+        const linkText = document.createElement("strong");
+        linkText.textContent = url.href;
+
+        body.append(message, linkText);
+    }
+});
+
+
 updateDisplay();
 getPresence();
 

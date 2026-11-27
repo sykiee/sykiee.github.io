@@ -46,16 +46,23 @@
           <span id="button-time"></span>
         </button>
       </div>
+      <button id="aquarium-open-button">
+        <img src="images/clownfish.png">
+      </button>
       <button id="blog-open-button">
         <img src="images/notepad-icon.png">
+        <span class="blog-new-tag">new!</span>
       </button>
     </div>
 
     <div id="blog-page">
-      <div id="blog-image-viewer">
-        <img id="blog-expanded-image">
-      </div>
       <div id="blog-notebook">
+
+        <!-- powered by https://status.cafe/ -->
+        <div id="statuscafe"><span title="thinking about..">💬</span> <span id="statuscafe-time"></span>
+          <div id="statuscafe-inner"></div>
+        </div>
+
         <div id="notebook-inner">
           <div id="blog-header">
             <span id="blog-date"></span>
@@ -63,18 +70,24 @@
             <span id="blog-ago"></span>
           </div>
 
+          <div id="blog-text"></div>
+
           <div id="blog-image-container">
             <div id="blog-images"></div>
           </div>
 
           <div id="blog-navigation">
-            <button id="blog-older">‹ older</button>
+            <button id="blog-previous">‹ previous</button>
             <span id="blog-counter"></span>
-            <button id="blog-newer">newer ›</button>
+            <button id="blog-next">next ›</button>
           </div>
         </div>
       </div>
-
+      <div id="blog-image-viewer">
+        <button id="blog-image-previous">‹</button>
+        <img id="blog-expanded-image">
+        <button id="blog-image-next">›</button>
+      </div>
     </div>
 
     <div id="footer">
@@ -82,10 +95,7 @@
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="scripts/s-m-t.js"></script>
-  <script src="scripts/interact.js"></script>
-  <script src="scripts/sitejs.js"></script>
-  <script src="scripts/discord.js"></script>
+  <script type="module" src="scripts/main.js"></script>
 </body>
 
 </html>
